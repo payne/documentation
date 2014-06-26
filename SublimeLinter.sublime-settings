@@ -1,0 +1,100 @@
+{
+    // jshint: options for linting JavaScript. See http://www.jshint.com/docs/#options for more info.
+    // By deault, eval is allowed.
+    "jshint_options":
+    {
+        // To fix column positions for JSHint errors you may want to add `"indent": 1` to your
+        // **User** "jshint_options". This issue affects users with tabs for indentation.
+        // This fix was reverted due to a conflict with using the `"white": true` option.
+        // "indent": 1,
+        
+        // enforcers - true means its on
+        "bitwise":false,
+        "camelcase":true,
+        "curly":true,
+        "eqeqeq":true,
+        "es3":true,
+        "evil": true,
+        "forin":true,
+        "freeze":false,
+        "immed":true,
+        "indent":2,
+        "latedef":"nofunc",
+        "newcap":true,
+        "noarg":true,
+        "noempty":false,
+        "nonew":true,
+        "plusplus":false,
+        "quotmark":"double",
+        "undef":true,
+        "unused":true,
+        "strict":true,
+        "trailing": true,
+        "maxparams":4,
+        "maxdepth":4,
+        "maxstatements":20,
+        "maxcomplexity":7,
+        "maxlen":100,
+
+        //  relaxers - false means its on
+        //  true relaxes the rule
+        "asi":false,
+        "boss":false,
+        "debug":true,
+        "eqnull":false,
+        "esnext":false,
+        "evil":false,
+        "expr":false,
+        "funscope":false,
+        "gcl":false,
+        "globalstrict":false,
+        "iterator":false,
+        "lastsemic":false,
+        "laxbreak":false,
+        "laxcomma":false,
+        "loopfunc":false,
+        "maxerr":50,
+        "moz":true,
+        "multistr":false,
+        "notypeof":false,
+        "proto":false,
+        "scripturl":false,
+        "smarttabs":false,
+        "shadow":false,
+        "sub":false,
+        "supernew":false,
+        "validthis":false,
+        "noyield":false,
+
+        // environments
+        "browser":true,
+        "couch":false,
+        "devel":true,
+        "dojo":false,
+        "jquery":true,
+        "mootools":false,
+        "node":true,
+        "nonstandard":false,
+        "phantom":false,
+        "prototypejs":false,
+        "rhino":false,
+        "worker":false,
+        "wsh":false,
+        "yui":false
+    },
+    /*
+        The minimum delay in seconds (fractional seconds are okay) before
+        a linter is run when the "sublimelinter" setting is true. This allows
+        you to have background linting active, but defer the actual linting
+        until you are idle. When this value is greater than the built in linting delay,
+        errors are erased when the file is modified, since the assumption is
+        you don't want to see errors while you type.
+    */
+    "sublimelinter_delay": 1,
+    /*
+        Selects the way the lines with errors or warnings are marked; "outline" draws
+        outline boxes around the lines, "fill" fills the lines with the outline color,
+        and "none" (default) disables all outline styles.
+    */
+    "sublimelinter_mark_style": "outline"
+}
