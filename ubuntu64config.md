@@ -47,9 +47,14 @@
   ```
 
 10. Install git
+  * Install git and set global identity variables
+  * Have git use sublime for editing messages and such
 
   ```bash
   sudo apt-get install git
+  git config --global user.email brandynlbennett@gmail.com
+  git config --global user.name "Brandyn Bennett"
+  git config --global core.editor subl --wait
   ```
 
 11. NVM
@@ -144,6 +149,30 @@
     "line_numbers": true,
     "draw_centered": false
     ```
+
+18. Copy sublime settings into documentation folder
+  
+  ```bash
+  cp /home/brandyn/.config/sublime-text-2/Packages/User/SublimeLinter.sublime-settings /mnt/hgfs/Development/infrastructure/documentation/
+  ```
+
+19. Create GitHub repo for documentation
+  * Create the 'documentation' repo on GitHub site with a readme.md
+  * Connect the local documentation folder to the github repo
+  
+  ```bash
+  cd ~/Development/Infrastructure/documentation
+  # create a local git repo
+  git init
+  # establish the remote repo to connect to
+  git remote add origin https://github.com/brandyn1bennett/documentation.git
+  # merge with the remote repo
+  git pull origin master
+  # add the doc files and commit them
+  git add -A && git commit -m 'added files'
+  push them to the remote repo
+  git push
+  ```
 
 
 
