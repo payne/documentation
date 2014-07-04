@@ -1,0 +1,8 @@
+is_shown=$(defaults read com.apple.finder AppleShowAllFiles)
+if [ $is_shown != "TRUE" ]
+then
+defaults write com.apple.finder AppleShowAllFiles TRUE
+else
+defaults write com.apple.finder AppleShowAllFiles FALSE
+fi
+killall Finder

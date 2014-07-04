@@ -170,10 +170,20 @@
   git pull origin master
   # add the doc files and commit them
   git add -A && git commit -m 'added files'
-  push them to the remote repo
+  # push them to the remote repo
   git push
   ```
+20. Install Yeoman
+  
+  ```bash
+  # Install yeoman globally with npm.  May take a while. Will throw some errors but it's fine
+  npm install -g yo
+  # Install webapp generator
+  npm install -g generator-webapp
+  ```
 
+21. Install Yeoman Ember-Generator
 
-
+  ```bash
+  
 
