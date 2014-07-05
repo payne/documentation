@@ -11,6 +11,8 @@
   * Click download
   * Select the 64-bit chrome for debian/ubuntu
   * install the package
+  * Install Chrome Accessibility Developer Tools extension
+    - Get it from https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb/related?hl=en
 
 6. Install sublime text 2
   * Add a new repo to apt-get, update it, and install it
@@ -147,7 +149,15 @@
     ```json
     "color_scheme": "Packages/MarkdownEditing/MarkdownEditor.tmTheme",
     "line_numbers": true,
-    "draw_centered": false
+    "draw_centered": false,
+    "tab_size": 2,
+    "translate_tabs_to_spaces": true,
+    "wrap_width": 200
+    ```
+    * Copy markdown settings into documentation folder
+    
+    ```bash
+    cp ~/.config/sublime-text-2/Packages/User/Markdown.sublime-settings /mnt/hgfs/Development/infrastructure/documentation/
     ```
 
 18. Copy sublime settings into documentation folder
@@ -173,6 +183,7 @@
   # push them to the remote repo
   git push
   ```
+
 20. Install Yeoman
   
   ```bash

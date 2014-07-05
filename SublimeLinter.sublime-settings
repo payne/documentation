@@ -11,12 +11,12 @@
         // enforcers - true means its on
         "bitwise":false,
         "camelcase":true,
-        "curly":true,
+        "curly":true, 
         "eqeqeq":true,
         "es3":true,
         "evil": true,
         "forin":true,
-        "freeze":false,
+        //"freeze":false,
         "immed":true,
         "indent":2,
         "latedef":"nofunc",
@@ -45,7 +45,7 @@
         "esnext":false,
         "evil":false,
         "expr":false,
-        "funscope":false,
+        "funcscope":false,
         "gcl":false,
         "globalstrict":false,
         "iterator":false,
@@ -56,7 +56,7 @@
         "maxerr":50,
         "moz":true,
         "multistr":false,
-        "notypeof":false,
+        //"notypeof":false,
         "proto":false,
         "scripturl":false,
         "smarttabs":false,
@@ -64,7 +64,7 @@
         "sub":false,
         "supernew":false,
         "validthis":false,
-        "noyield":false,
+        //"noyield":false,
 
         // environments
         "browser":true,
@@ -80,7 +80,15 @@
         "rhino":false,
         "worker":false,
         "wsh":false,
-        "yui":false
+        "yui":false,
+
+        // global variables
+        "predef": [
+            "Ember",
+            "moment",
+            "Showdown",
+            "Handlebars"
+        ]
     },
     /*
         The minimum delay in seconds (fractional seconds are okay) before
