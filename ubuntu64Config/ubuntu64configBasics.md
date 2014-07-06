@@ -59,6 +59,7 @@ Basic Ubuntu 64-bit config
     . ~/.nvm/nvm.sh
     ```
     **Note:** Go to http://www.ccsf.edu/Pub/Fac/vi.html to learn how to use vi
+    
   * Close and reopen the terminal or type:
   
     ```bash
@@ -66,17 +67,17 @@ Basic Ubuntu 64-bit config
     ```
 
 11. Install node
-* Go to https://nodejs.org and see what the most current version of node is
-* Install the most current nvmversion with nvm
+  * Go to https://nodejs.org and see what the most current version of node is
+  * Install the most current nvmversion with nvm
 
-  ```bash
-  nvm install <current node version>
-  ```
-* Set the default version so that the bash shell doesn't say "N/A version not installed" everytime you open it
-  
-  ```bash  
-  nvm alias default <current node version>
-  ```
+    ```bash
+    nvm install <current node version>
+    ```
+  * Set the default version so that the bash shell doesn't say "N/A version not installed" everytime you open it
+    
+    ```bash  
+    nvm alias default <current node version>
+    ```
 
 12. Make a globalnode script
   * Make a new file called 'globalnode'
