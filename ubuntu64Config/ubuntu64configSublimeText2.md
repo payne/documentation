@@ -54,24 +54,10 @@ Installing Sublime Text 2 on Ubuntu 64-bit
   ln -s /mnt/hgfs/Development/ ~/Development
   ```
 
-12. Add MarkdownEditing Plugin to sublime
-  * Do ctrl+shift+p -> type 'install' -> type 'MarkdownEditing' and select the first one
-  * Open up a file with extension '.md'
-  * Make all '.md' files use the MarkdownEditing configurations 
-    - Select the language selector -> 'Open all with current extension as..' -> MarkdownEditing -> MarkdownGFM
-  * Make '.md' files use a different color scheme than other languages
-    - Select Preferences-> Settings-More -> Syntax Specific-User
-    - Add this to the file
-  
-    ```json
-    "color_scheme": "Packages/MarkdownEditing/MarkdownEditor.tmTheme",
-    "line_numbers": true,
-    "draw_centered": false,
-    "tab_size": 2,
-    "translate_tabs_to_spaces": true,
-    "wrap_width": 200
-    ```
-    * Copy markdown settings into documentation folder
+12. Install MarkdownEditing Package
+  * Follow instructions at https://github.com/brandyn1bennett/documentation/blob/master/ubuntu64Config/installMarkdownEditing.md
+
+* Copy markdown settings into documentation folder
     
     ```bash
     cp ~/.config/sublime-text-2/Packages/User/Markdown.sublime-settings /mnt/hgfs/Development/infrastructure/documentation/
