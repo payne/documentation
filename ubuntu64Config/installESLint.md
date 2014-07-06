@@ -8,3 +8,9 @@ Install ESLint
   ```bash
   npm install -g eslint
   ```
+
+3. Run globalnode command so that sublimelinter3 can find eslint in /usr/local/bin
+  
+  ```bash
+  globalnode
+  ```
