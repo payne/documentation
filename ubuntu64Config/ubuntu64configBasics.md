@@ -25,7 +25,18 @@ Basic Ubuntu 64-bit config
   sudo apt-get install curl
   ```
 
-8. Install git
+8. Reinstall VMWare tools
+  * In the VMWare menu (at the top), select Virtual Machine->Reinstall VMware tools
+  * Extract the tar.gz file to the desktop
+
+  ```bash
+  cd Desktop/vmware-tools-distrib
+  sudo ./vmware-install.pl -d
+  ```
+
+  **Note:** The *-d* means to accept the defaults
+
+9. Install git
   * Install git and set global identity variables
 
   ```bash
@@ -33,3 +44,62 @@ Basic Ubuntu 64-bit config
   git config --global user.email brandynlbennett@gmail.com
   git config --global user.name "Brandyn Bennett"
   ```
+
+10. NVM
+  * Clone nvm into ~/.nvm
+   
+    ```bash
+    git clone https://github.com/creationix/nvm.git ~/.nvm
+    ```
+  * Source nvm in the ~/.bashrc so it opens, so the nvm shell script is loaded each time the terminal opens
+  * Open ~/.bashrc with vi and add the following lines at the bottom of it
+    - Go to http://www.ccsf.edu/Pub/Fac/vi.html to learn how to use vi
+      
+    ```bash
+    # Source nvm
+    . ~/.nvm/nvm.sh
+    ```
+  * Close and reopen the terminal or type:
+  
+    ```bash
+    source ~/.bashrc
+    ```
+
+11. Install node
+* Go to https://nodejs.org and see what the most current version of node is
+* Install the most current nvmversion with nvm
+
+  ```bash
+  nvm install <current node version>
+  ```
+* Set the default version so that the bash shell doesn't say "N/A version not installed" everytime you open it
+  
+  ```bash  
+  nvm alias default <current node version>
+  ```
+
+12. Make a globalnode script
+  * Make a new file called 'globalnode'
+
+  ```bash
+  sudo touch /usr/local/bin/globalnode
+  ```
+  * Add execute permission on the file
+    
+  ```bash
+  sudo chmod 755 /usr/local/bin/globalnode
+  ```
+  * Open the file in vi
+
+  ```bash
+  sudo vi /usr/local/bin/globalnode
+  ```
+  * Copy and paste the contents from this file: https://github.com/brandyn1bennett/documentation/blob/master/bashScripts/globalnode into the globalnode script and save it
+  * Run the command
+
+  ```bash 
+  globalnode
+  ```
+
+
+  

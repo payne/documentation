@@ -21,10 +21,7 @@ Installing Sublime Text 2 on Ubuntu 64-bit
   sudo ln -s /opt/sublime_text_2/sublime_text /usr/local/bin/subl
   ```
   * Tell git to use sublime as default editor
-
-  ```bash
-  git config --global core.editor subl --wait
-  ```
+    - Follow instructions here: https://github.com/brandyn1bennett/documentation/blob/master/ubuntu64Config/sublimeDefaultGitEditor.md
 
 3. Install sublime package manager
   * Go to https://sublime.wbond.net/installation#st2
@@ -33,53 +30,6 @@ Installing Sublime Text 2 on Ubuntu 64-bit
   * In the toolbar click view -> view console
   * paste the code into the console
   * restart sublime
-
-6. NVM
-  * Clone nvm into ~/.nvm
-   
-    ```bash
-    git clone https://github.com/creationix/nvm.git ~/.nvm
-    ```
-  * Source nvm in the ~/.bashrc so it opens, so the nvm shell script is loaded each time the terminal opens
-  * Open ~/.bashrc and add the following lines at the bottom of it
-      
-    ```bash
-    # Source nvm
-    . ~/.nvm/nvm.sh
-    ```
-  * Close and reopen the terminal or type:
-  
-    ```bash
-    source ~/.bashrc
-    ```
-
-7. Install node
-  * Go to nodejs.org and see what the most current version of node is
-  * Install the most current nvmversion with nvm
-  
-    ```bash
-    nvm install <current node version>
-    ```
-  * Set the default version so that the bash shell doesn't say "N/A version not installed" everytime you open it
-    
-    ```bash  
-    nvm alias default <current node version>
-    ```
-
-8. Make a globalnode script
-  * Open a text editor via sudo
-  * Make a script with the following command, so that the current version of node set by NVM can be found by other programs
-
-    ```bash
-    #! /bin/bash
-    n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
-    ```
-  * Save this file in /usr/local/bin with the name 'globalnode' (no file extension)
-  * Add execute permission on the file
-    
-    ```bash
-    chmod 755 /usr/local/bin/globalnode
-    ```
 
 9. Install SublimeLinter
   * Open sublime and press ctrl+shift+p
@@ -90,17 +40,6 @@ Installing Sublime Text 2 on Ubuntu 64-bit
     - "jshint_options" object and start adding configuration from http://www.jshint.com/docs/options/
     - Change "sublimelinter_delay" to 1
     - Change "sublimelinter_mark_style" to outline
-
-10. Reinstall VMWare tools
-  * In the VMWare menu (at the top), select Virtual Machine->Reinstall VMware tools
-  * Extract the tar.gz file to the desktop
-
-  ```bash
-  cd Desktop/vmware-tools-distrib
-  sudo ./vmware-install.pl -d
-  ```
-
-  **Note:** The *-d* means to accept the defaults
 
 11. Share the *Development* folder with the VM
   * Select Virtual Machine->Settings->Sharing from the VMWare menu
