@@ -29,28 +29,28 @@ Basic Ubuntu 64-bit config
   * In the VMWare menu (at the top), select Virtual Machine->Reinstall VMware tools
   * Extract the tar.gz file to the desktop
 
-  ```bash
-  cd Desktop/vmware-tools-distrib
-  sudo ./vmware-install.pl -d
-  ```
+   ```bash
+   cd Desktop/vmware-tools-distrib
+   sudo ./vmware-install.pl -d
+   ```
 
   **Note:** The *-d* means to accept the defaults
 
 9. Install git
   * Install git and set global identity variables
 
-  ```bash
-  sudo apt-get install git
-  git config --global user.email brandynlbennett@gmail.com
-  git config --global user.name "Brandyn Bennett"
-  ```
+   ```bash
+   sudo apt-get install git
+   git config --global user.email brandynlbennett@gmail.com
+   git config --global user.name "Brandyn Bennett"
+   ```
 
 10. NVM
   * Clone nvm into ~/.nvm
    
-    ```bash
-    git clone https://github.com/creationix/nvm.git ~/.nvm
-    ```
+     ```bash
+     git clone https://github.com/creationix/nvm.git ~/.nvm
+     ```
   * Source nvm in the ~/.bashrc so it opens, so the nvm shell script is loaded each time the terminal opens
   * Open ~/.bashrc with vi and add the following lines at the bottom of it
       
