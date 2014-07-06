@@ -8,3 +8,4 @@ Ember Questions
 4. Is this like Django notation for going through an object graph?
   * e.g. "post_id" is same as post.id
 5. Is it possible to only have camelCase in ember
+  * Router defaults to look for the id in the json object, so i think you can call that variable whatever the heck you want

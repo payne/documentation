@@ -1,3 +1,6 @@
+Installing Sublime Text 2 on Ubuntu 64-bit
+===========================================
+
 1. Install sublime text 2
   * Add a new repo to apt-get, update it, and install it
    
@@ -17,6 +20,11 @@
   ```bash
   sudo ln -s /opt/sublime_text_2/sublime_text /usr/local/bin/subl
   ```
+  * Tell git to use sublime as default editor
+
+  ```bash
+  git config --global core.editor subl --wait
+  ```
 
 3. Install sublime package manager
   * Go to https://sublime.wbond.net/installation#st2
@@ -25,23 +33,6 @@
   * In the toolbar click view -> view console
   * paste the code into the console
   * restart sublime
-
-4. Install curl
-  
-  ```bash
-  sudo apt-get install curl
-  ```
-
-5. Install git
-  * Install git and set global identity variables
-  * Have git use sublime for editing messages and such
-
-  ```bash
-  sudo apt-get install git
-  git config --global user.email brandynlbennett@gmail.com
-  git config --global user.name "Brandyn Bennett"
-  git config --global core.editor subl --wait
-  ```
 
 6. NVM
   * Clone nvm into ~/.nvm
