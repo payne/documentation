@@ -6,3 +6,4 @@ Sublime as Default Git Editor
     ```bash
     git config --global core.editor subl --wait
     ```
+
