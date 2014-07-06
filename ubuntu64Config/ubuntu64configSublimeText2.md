@@ -63,11 +63,6 @@ Installing Sublime Text 2 on Ubuntu 64-bit
     cp ~/.config/sublime-text-2/Packages/User/Markdown.sublime-settings /mnt/hgfs/Development/infrastructure/documentation/
     ```
 
-13. Copy sublime settings into documentation folder
-  
-  ```bash
-  cp /home/brandyn/.config/sublime-text-2/Packages/User/SublimeLinter.sublime-settings /mnt/hgfs/Development/infrastructure/documentation/
-  ```
 
 14. Create GitHub repo for documentation
   * Create the 'documentation' repo on GitHub site with a readme.md

@@ -6,6 +6,7 @@ Installing Sublime Text 3 to Ubuntu 64 bit
 2. Go to http://www.sublimetext.com/3 and download the Ubuntu 64 bit download
   * Click on the package in the downloads folder and install it
     **Note:** This will automatically add the 'subl' command to /usr/bin
+  * Go to Preferences -> Settings-User and copy the Sublime configuration settings in from https://github.com/brandyn1bennett/documentation/blob/master/sublimeSettings/Preferences.sublime-settings
 
 3. Install package manager
   * Go to https://sublime.wbond.net/installation and copy the code for sublime text 3
