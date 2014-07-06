@@ -9,10 +9,7 @@ Installing Sublime Text 2 on Ubuntu 64-bit
   sudo apt-get update
   sudo apt-get install sublime-text
   ```
-  * Go to Preferences -> Settings-User and copy the desired Sublime configuration settings in.
-    - Convert tabs to spaces
-    - Each tab is 2 spaces
-    - don't open files in new windows
+  * Go to Preferences -> Settings-User and copy the Sublime configuration settings in from https://github.com/brandyn1bennett/documentation/blob/master/sublimeSettings/Preferences.sublime-settings
 
 2. Copy sublime settings to documentation folder
   
