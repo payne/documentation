@@ -53,12 +53,12 @@ Basic Ubuntu 64-bit config
     ```
   * Source nvm in the ~/.bashrc so it opens, so the nvm shell script is loaded each time the terminal opens
   * Open ~/.bashrc with vi and add the following lines at the bottom of it
-    - Go to http://www.ccsf.edu/Pub/Fac/vi.html to learn how to use vi
       
     ```bash
     # Source nvm
     . ~/.nvm/nvm.sh
     ```
+    **Note:** Go to http://www.ccsf.edu/Pub/Fac/vi.html to learn how to use vi
   * Close and reopen the terminal or type:
   
     ```bash
