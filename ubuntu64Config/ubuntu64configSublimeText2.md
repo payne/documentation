@@ -14,6 +14,12 @@ Installing Sublime Text 2 on Ubuntu 64-bit
     - Each tab is 2 spaces
     - don't open files in new windows
 
+2. Copy sublime settings to documentation folder
+  
+  ```bash
+  sudo cp ~/.config/sublime-text-2/Packages/User/Preferences.sublime-settings Development/Infrastructure/documentation/sublimeSettings/
+  ```
+
 2. Add subl command
   * Create a symlink from sublime text 2 to /usr/local/bin
     
