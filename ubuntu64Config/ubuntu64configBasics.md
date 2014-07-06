@@ -62,9 +62,10 @@ Basic Ubuntu 64-bit config
     
   * Close and reopen the terminal or type:
   
-    ```bash
-    source ~/.bashrc
-    ```
+     ```bash
+     source ~/.bashrc
+     ```
+
 11. Install node
   * Go to https://nodejs.org and see what the most current version of node is
   * Install the most current nvmversion with nvm
