@@ -1,20 +1,4 @@
-1. Load up Ubuntu-64bit.iso in VMware with 2-cores and 4gb of ram
-
-2. Install OS updates
-
-3. Change the resolution and change it back in display settings, so that the background-image fills up the whole screen
-
-4. Go to "brightness & lock" in the settings menu and set the screen to turn off never
-
-5. Install chrome
-  * Open firefox and go to https://www.google.com/chrome/browser/
-  * Click download
-  * Select the 64-bit chrome for debian/ubuntu
-  * install the package
-  * Install Chrome Accessibility Developer Tools extension
-    - Get it from https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb/related?hl=en
-
-6. Install sublime text 2
+1. Install sublime text 2
   * Add a new repo to apt-get, update it, and install it
    
   ```bash
@@ -27,14 +11,14 @@
     - Each tab is 2 spaces
     - don't open files in new windows
 
-7. Add subl command
+2. Add subl command
   * Create a symlink from sublime text 2 to /usr/local/bin
     
   ```bash
   sudo ln -s /opt/sublime_text_2/sublime_text /usr/local/bin/subl
   ```
 
-8. Install sublime package manager
+3. Install sublime package manager
   * Go to https://sublime.wbond.net/installation#st2
   * Copy the code for Sublime Text 2
   * Open sublime
@@ -42,13 +26,13 @@
   * paste the code into the console
   * restart sublime
 
-9. Install curl
+4. Install curl
   
   ```bash
   sudo apt-get install curl
   ```
 
-10. Install git
+5. Install git
   * Install git and set global identity variables
   * Have git use sublime for editing messages and such
 
@@ -59,7 +43,7 @@
   git config --global core.editor subl --wait
   ```
 
-11. NVM
+6. NVM
   * Clone nvm into ~/.nvm
    
     ```bash
@@ -78,7 +62,7 @@
     source ~/.bashrc
     ```
 
-12. Install node
+7. Install node
   * Go to nodejs.org and see what the most current version of node is
   * Install the most current nvmversion with nvm
   
@@ -91,7 +75,7 @@
     nvm alias default <current node version>
     ```
 
-13. Make a globalnode script
+8. Make a globalnode script
   * Open a text editor via sudo
   * Make a script with the following command, so that the current version of node set by NVM can be found by other programs
 
@@ -106,7 +90,7 @@
     chmod 755 /usr/local/bin/globalnode
     ```
 
-14. Install SublimeLinter
+9. Install SublimeLinter
   * Open sublime and press ctrl+shift+p
   * In the window that opens start typing 'install', select "package control: Install package"
   * Then type 'SublimeLinter' and choose the one that ISN't the 'google closure one'
@@ -116,7 +100,7 @@
     - Change "sublimelinter_delay" to 1
     - Change "sublimelinter_mark_style" to outline
 
-15. Reinstall VMWare tools
+10. Reinstall VMWare tools
   * In the VMWare menu (at the top), select Virtual Machine->Reinstall VMware tools
   * Extract the tar.gz file to the desktop
 
@@ -127,7 +111,7 @@
 
   **Note:** The *-d* means to accept the defaults
 
-16. Share the *Development* folder with the VM
+11. Share the *Development* folder with the VM
   * Select Virtual Machine->Settings->Sharing from the VMWare menu
   * Turn sharing on (slider)
   * Click the + icon, browse to the *Development* folder and select it
@@ -137,7 +121,7 @@
   ln -s /mnt/hgfs/Development/ ~/Development
   ```
 
-17. Add MarkdownEditing Plugin to sublime
+12. Add MarkdownEditing Plugin to sublime
   * Do ctrl+shift+p -> type 'install' -> type 'MarkdownEditing' and select the first one
   * Open up a file with extension '.md'
   * Make all '.md' files use the MarkdownEditing configurations 
@@ -160,13 +144,13 @@
     cp ~/.config/sublime-text-2/Packages/User/Markdown.sublime-settings /mnt/hgfs/Development/infrastructure/documentation/
     ```
 
-18. Copy sublime settings into documentation folder
+13. Copy sublime settings into documentation folder
   
   ```bash
   cp /home/brandyn/.config/sublime-text-2/Packages/User/SublimeLinter.sublime-settings /mnt/hgfs/Development/infrastructure/documentation/
   ```
 
-19. Create GitHub repo for documentation
+14. Create GitHub repo for documentation
   * Create the 'documentation' repo on GitHub site with a readme.md
   * Connect the local documentation folder to the github repo
   
@@ -184,7 +168,7 @@
   git push
   ```
 
-20. Install Yeoman
+15. Install Yeoman
   
   ```bash
   # Install yeoman globally with npm.  May take a while. Will throw some errors but it's fine
@@ -193,7 +177,7 @@
   npm install -g generator-webapp
   ```
 
-21. Install Yeoman Ember-Generator
+16. Install Yeoman Ember-Generator
 
   ```bash
   
