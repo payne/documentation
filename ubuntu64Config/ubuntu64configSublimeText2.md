@@ -81,18 +81,3 @@ Installing Sublime Text 2 on Ubuntu 64-bit
   # push them to the remote repo
   git push
   ```
-
-15. Install Yeoman
-  
-  ```bash
-  # Install yeoman globally with npm.  May take a while. Will throw some errors but it's fine
-  npm install -g yo
-  # Install webapp generator
-  npm install -g generator-webapp
-  ```
-
-16. Install Yeoman Ember-Generator
-
-  ```bash
-  
-
