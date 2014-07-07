@@ -15,4 +15,8 @@ Install RVM
   source ~/.rvm/scripts/rvm
   ```
 
-4. 
+4. Make the terminal run as a login shell, because RVM needs it to 
+  * Open the terminal and go to Edit -> Profile Preferences -> Title and Commands
+  * Check 'Run Command as a login shell'
+  * Close and reopen the terminal
+  * See https://rvm.io/integration/gnome-terminal for more details
