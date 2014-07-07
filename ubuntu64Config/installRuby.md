@@ -14,3 +14,9 @@ Install Ruby
   ```bash
   rvm use ruby --default
   ```
+
+4. Make sure rubygems is current
+
+  ```bash
+  rvm rubygems current
+  ```
