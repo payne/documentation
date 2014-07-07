@@ -13,4 +13,4 @@ Install Ruby
 
   ```bash
   rvm use ruby --default
-  ``
+  ```
