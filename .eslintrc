@@ -131,7 +131,7 @@
     "no-ternary": 2, // disallow use of ternary operators
     "no-underscore-dangle": 2, // disallow dangling underscores
     "no-wrap-func": 2, // disallow wrapping functions in parens that isn't a immediately-invoking function expression (IIFE)
-    "quotes": [2, "double"], // keep consistent quotation mark style 
+    "quotes": [2, "single"], // keep consistent quotation mark style 
     "quote-props": 2, // require quotes around property names
     "semi": [2, "always"], // require semi-colons when they are needed
     "sort-vars": 2, // require variables in the same declaration block to be sorted alphabetically

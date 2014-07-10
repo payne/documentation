@@ -44,12 +44,6 @@ Installing Sublime Text 2 on Ubuntu 64-bit
     - Change "sublimelinter_delay" to 1
     - Change "sublimelinter_mark_style" to outline
 
-11. Share the *Development* folder with the VM
-  * Select Virtual Machine->Settings->Sharing from the VMWare menu
-  * Turn sharing on (slider)
-  * Click the + icon, browse to the *Development* folder and select it
-  * Make a symlink from the /mnt/hgfs/ folder to the home directory
-
   ```bash
   ln -s /mnt/hgfs/Development/ ~/Development
   ```

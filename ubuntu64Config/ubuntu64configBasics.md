@@ -36,7 +36,13 @@ Basic Ubuntu 64-bit config
 
   **Note:** The *-d* means to accept the defaults
 
-9. Install git
+9. Share the *Development* folder with the VM
+  * Select Virtual Machine->Settings->Sharing from the VMWare menu
+  * Turn sharing on (slider)
+  * Click the + icon, browse to the *Development* folder and select it
+  * Make a symlink from the /mnt/hgfs/ folder to the home directory
+
+10. Install git
   * Install git and set global identity variables
 
    ```bash
@@ -45,7 +51,7 @@ Basic Ubuntu 64-bit config
    git config --global user.name "Brandyn Bennett"
    ```
 
-10. NVM
+11. NVM
   * Clone nvm into ~/.nvm
    
      ```bash
@@ -67,7 +73,7 @@ Basic Ubuntu 64-bit config
     source ~/.bashrc
     ```
 
-11. Install node
+12. Install node
   * Go to https://nodejs.org and see what the most current version of node is
   * Install the most current nvmversion with nvm
 
@@ -80,7 +86,7 @@ Basic Ubuntu 64-bit config
     nvm alias default <current node version>
     ```
 
-12. Make a globalnode script
+13. Make a globalnode script
   * Make a new file called 'globalnode'
 
   ```bash
