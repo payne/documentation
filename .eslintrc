@@ -119,7 +119,7 @@
     "brace-style": 2, // enforce "one true" brace style
     "camelcase": 2, // require camelcase names
     "consistent-this": [2, "self"], // require the renaming of "this" to the consistent
-    "func-names": 2, // require functions to have name so they can be identified in a stack trace instead of being called "anonymous function"
+    "func-names": 0, // require functions to have name so they can be identified in a stack trace instead of being called "anonymous function"
     "func-style": [2, "declaration"], // establish a consistent way to create functions, either as a declaration or an expression
     "new-cap": 2, // require a capital letter for constructors
     "new-parens": 2, // require parens in a new declaration even if there are no parameters
