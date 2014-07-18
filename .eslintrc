@@ -119,18 +119,22 @@
     "brace-style": 2, // enforce "one true" brace style
     "camelcase": 2, // require camelcase names
     "consistent-this": [2, "self"], // require the renaming of "this" to the consistent
+    "eol-last": 2, // enforce newline at the end of file, with no multiple empty lines
     "func-names": 0, // require functions to have name so they can be identified in a stack trace instead of being called "anonymous function"
     "func-style": [2, "declaration"], // establish a consistent way to create functions, either as a declaration or an expression
     "new-cap": 2, // require a capital letter for constructors
     "new-parens": 2, // require parens in a new declaration even if there are no parameters
     "no-nested-ternary": 2, // disallow nexted ternary expressions
     "no-array-constructor": 2, // disallow use of the Array constructor
+    "no-lonely-if": 2, // disallow if as the only statment in an else block
     "no-new-object": 2, // disallow use of the Object constructor
     "no-spaced-func": 2, // disallow whitespace between function and executing parens
     "no-space-before-semi": 2, // disallow space before a semicolon
     "no-ternary": 2, // disallow use of ternary operators
+    "no-trailing-spaces": 2, // disallow trailing whitespaces at end of lines
     "no-underscore-dangle": 2, // disallow dangling underscores
     "no-wrap-func": 2, // disallow wrapping functions in parens that isn't a immediately-invoking function expression (IIFE)
+    "no-mixed-spaces-and-tabs": 2, // disallow mixed spaces and tabs for indentation
     "quotes": [2, "single"], // keep consistent quotation mark style 
     "quote-props": 2, // require quotes around property names
     "semi": [2, "always"], // require semi-colons when they are needed
@@ -158,6 +162,6 @@
   * define what your global variables are
   */
   "globals": {
-
+    
   }
 }
