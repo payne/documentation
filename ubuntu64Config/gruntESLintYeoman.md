@@ -98,5 +98,15 @@ Configure Grunt
       }
     },
   ```
+
+10. Increase the amount of watch files possible
+  * For some reason when you add eslint, it breaks the watch task even though there are the same amount of tasks.  The solution is to increase the number of tasks on the Linux operating system
   
+  ```bash
+  echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+  ```
+
+  **Note:** This will add a new line to the /etc/sysctl.conf file that increases the number of possible watches to 524288 or 512k
+
+11. 
 
