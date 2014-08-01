@@ -1,0 +1,167 @@
+{
+/*
+  * ESLINT environments
+  * Adds global variables for these environments
+  */ 
+  "env": {
+    "browser": false, // Browser global variables
+    "node": false, // node global variables and node rules
+    "amd": false, // require() and define() variables
+    "mocha":false // mocha testing variables
+  },
+ 
+ /*
+ * ESLINT rules
+ * Use the rules from http://eslint.org/docs/rules/
+ * 0 - off
+ * 0 - sets off warning
+ * 0 - sets off error
+ */
+  "rules": {
+    // Possible Errors
+    "no-cond-assign":0, // disallow assignment in conditional expressions 
+    "no-console": 0, // disallow use of the console. don't want this in prod unless using node.js
+    "no-constant-condition":0, // disallow use of constant expressions in conditions ('false','false', a number)
+    "no-comma-dangle": 0, // disallow dangling commas in object literals (early ie versions don't support it)
+    "no-control-regex": 0, // disallow control characters in regular expressions
+    "no-debugger": 0, // disallow debugger statements. don't want this in prod
+    "no-dupe-keys": 0, // disallow having the same key in an object
+    "no-empty": 0, // disallow have empty block statements
+    "no-empty-class": 0, // disallow use of empty character classes in regular expressions
+    "no-ex-assign": 0, // disallow overrighting a reference to an error in a catch block
+    "no-extra-boolean-cast": 0, // disallow extra boolean conditions (double negation)
+    "no-extra-parens": 0, // disallow unnecessary parens
+    "no-extra-semi": 0, // disallow unnecessary semi-colons
+    "no-func-assign": 0, // disallow overwriting functions that were created as a function declaration
+    "no-inner-declarations": 0, // disallow declaring functions in another function, keeps declarations at the top for clarity
+    "no-invalid-regexp": 0, // disallow invalid regex 
+    "no-negated-in-lhs": 0, // disallow negated left operand of an in operator
+    "no-obj-calls": 0, // disallow global object function calls, cant use Math and JSON objects as functions
+    "no-regex-spaces": 0, // disallow multiple spaces in a regular expression literal
+    "no-sparse-arrays": 0, // disallow arrays with empty spots [,,]
+    "no-unreachable": 0, // disallow unreachable code
+    "use-isnan": 0, // disallow comparison with the value NaN
+    // ensure jsdocs comments are valid
+    "valid-jsdoc": [ 0, {
+      "return":"return", // enforce using either @return or @returns
+      "requireReturn": false // if a function doesn't return anything, you don't have to include @return {void}
+    }],
+    "valid-typeof": 0, // ensure that typeof are comparing a valid string
+  
+    // Best Practices
+    "block-scoped-var": 0, // requires using variables inside of the scope they were defined in
+    "complexity": [ 0, 7 ], // specifies the maximum cyclomatic complexity allowed in a program
+    "consistent-return": 0, // require return statements to either always or never specify values within a block;
+    "curly": 0, // require following curly braces
+    "default-case": 0, // require a default case in switch statements
+    "dot-notation": 0, // encourage dot notation whenever possible
+    "eqeqeq": 0, // require use of ===
+    "guard-for-in": 0, // make sure for-in loops do hasOwnProperty 
+    "no-alert": 0, // prevents alerts
+    "no-caller": 0, // disallow arguments.caller or arguments.callee
+    "no-div-regex": 0, // disallow division operator at beginning of regular expression
+    "no-else-return": 0, // disallow putting return statements in else blocks, because they are unnecessary
+    "no-empty-label": 0, // can only use label with iteration or switch
+    "no-eq-null": 0, // have to use === when comparing with null
+    "no-eval": 0, // can't use eval()
+    "no-extend-native": 0, // can't extend native types
+    "no-fallthrough": 0, // have to use break; in switch statements
+    "no-floating-decimal": 0, // can't have a number start with . (e.g. var num = .5)
+    "no-implied-eval": 0, // disallow use of eval-like methods (e.g. setTimeout("alert('hi');"))
+    "no-labels": 0, // disallow use of label statements
+    "no-iterator": 0, // disallow use of __iterator__ property
+    "no-lone-blocks": 0, // disallow unnecessary nested blocks
+    "no-loop-func": 0, // disallow creation of function within loops
+    "no-multi-str": 0, // disallow use of multi-string lines
+    "no-native-reassign": 0, // disallow reassignment of native objects
+    "no-new": 0, // disallow new operator when not part of an assignment
+    "no-new-func": 0, // disallow use of new operator for Function object
+    "no-new-wrappers": 0, // disallow creating new instances of String, Number, and Boolean
+    "no-octal": 0, // disallow use of octal literals ( e.g. var num = 070 )
+    "no-octal-escape": 0, // disallow use of octal escape characters ( e.g. var foo = "Copyright \050"; )
+    "no-proto": 0, // disallow use of __proto__ property
+    "no-redeclare": 0, // disallow redeclaring the same variable more than once
+    "no-return-assign": 0, // disallow use of assignment in return statement
+    "no-script-url": 0, // no javascript: urls (e.g. location.href = "javascript:void(0)"; )
+    "no-self-compare": 0, // don't compare a value to itself
+    "no-sequences": 0, // disallow use of comma operator
+    "no-unused-expressions": 0, // disallow usage of expressions in statement position
+    "no-warning-comments": 0, // disallows warning comments.  Makes sure TODO: and FIXME: comments are found
+    "no-with": 0, // disallows with statements
+    "no-yoda": 0, // disallows Yoda expressions.  The code needs to read like straight english, not like how yoda talks
+    "radix": 0, // requires the second parameter in parseInt so that the number isn't the wrong base (a decimal instead of base 00)
+    "wrap-iife": [0, "outside"], // requires self invoking functions to be wrapped in parens
+    
+    // Strict mode
+    "no-global-strict": 0, // disallow use of "use strict" in global scope
+    "no-extra-strict": 0, // disallow use of extra "use strict" statements when already in strict mode
+    "strict": 0, // all functions must be run in strict mode
+    
+    // variable declarations
+    "no-catch-shadow": 0, // disallow catch clause parameter from overwriting some other variable
+    "no-delete-var": 0, // disallow use of the delete operator
+    "no-label-var": 0, // disallow labels that share a name with a variable
+    "no-undef": 0, // disallow use of undeclared variables not mentioned in /*global */ block
+    "no-undef-init": 0, // disallow explicitly initializing a varible to undefined
+    "no-unused-vars": 0, // disallow variables that are unused
+    "no-use-before-define": 0, // disallow use of variables and functions before they are defined
+ 
+    // Node.js specific rules
+    "handle-callback-err": 0, // enforce that errors are handled in callbacks
+    "no-mixed-requires": [0, false], // disallow mixed regular variables and require declarations. Forces them to be grouped together by type
+    "no-new-require": 0, // disallow use of new operator with require function
+    "no-path-concat": 0, // disallow string concatantion with __dirname and __filename
+    "no-process-exit": 0, // disallow process.exit()
+    "no-restricted-modules": 0, // specify modules you don't want to be used.  Make the option an array of strings
+    "no-sync": 0, // disallow use of synchronous methods. almost all node modules should be synchronous
+    
+    // Stylistic issues
+    "brace-style": 0, // enforce "one false" brace style
+    "camelcase": 0, // require camelcase names
+    "consistent-this": [0, "self"], // require the renaming of "this" to the consistent
+    "eol-last": 0, // enforce newline at the end of file, with no multiple empty lines
+    "func-names": 0, // require functions to have name so they can be identified in a stack trace instead of being called "anonymous function"
+    "func-style": [0, "declaration"], // establish a consistent way to create functions, either as a declaration or an expression
+    "new-cap": 0, // require a capital letter for constructors
+    "new-parens": 0, // require parens in a new declaration even if there are no parameters
+    "no-nested-ternary": 0, // disallow nexted ternary expressions
+    "no-array-constructor": 0, // disallow use of the Array constructor
+    "no-lonely-if": 0, // disallow if as the only statment in an else block
+    "no-new-object": 0, // disallow use of the Object constructor
+    "no-spaced-func": 0, // disallow whitespace between function and executing parens
+    "no-space-before-semi": 0, // disallow space before a semicolon
+    "no-ternary": 0, // disallow use of ternary operators
+    "no-trailing-spaces": 0, // disallow trailing whitespaces at end of lines
+    "no-underscore-dangle": 0, // disallow dangling underscores
+    "no-wrap-func": 0, // disallow wrapping functions in parens that isn't a immediately-invoking function expression (IIFE)
+    "no-mixed-spaces-and-tabs": 0, // disallow mixed spaces and tabs for indentation
+    "quotes": [0, "single"], // keep consistent quotation mark style 
+    "quote-props": 0, // require quotes around property names
+    "semi": [0, "always"], // require semi-colons when they are needed
+    "sort-vars": 0, // require variables in the same declaration block to be sorted alphabetically
+    "space-after-keywords": [ 0, "always" ], // require a space after keywords 
+    "space-in-brackets": [ 0, "always" ], // require a space between brackets
+    "space-infix-ops": 0,// require a space in between operators
+    "space-return-throw-case": 0, // require a space after return, throw, and case
+    "space-unary-word-ops": 0, // require a space around words like typeof
+    "max-nested-callbacks": [0, 3], // max number of nested callbacks
+    "one-var": 0, // only one var statement per function.  Keeps all var declarations at top to avoid hoisting confusion
+    "wrap-regex": 0, // require regex literals to be wrapped in parens
+    
+    // Legacy - for compatability with JSHint
+    "max-depth": [ 0, 4 ], // the maximum depth that blocks can be nested
+    "max-len": [0, 80, 4], // the maximum length of a line in the program
+    "max-params": [0, 4], // the maximum nuber of parameters that can be used in a function declaration
+    "max-statements": [ 0, 00 ], // the maximum number of statements allowed in a function
+    "no-bitwise": 0, // disallow use of bitwise operators
+    "no-plusplus": 0 // disallow use of unary operators, ++ and -- 
+  },
+
+  /* 
+  * ESLINT Globals
+  * define what your global variables are
+  */
+  "globals": {
+    
+  }
+}
