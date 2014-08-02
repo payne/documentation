@@ -1,4 +1,5 @@
 {
+	"color_scheme": "Packages/User/Monokai (SL).tmTheme",
 	"font_size": 10.0,
 	"ignored_packages":
 	[
@@ -6,8 +7,10 @@
 		"Markdown"
 	],
 	"open_files_in_new_window": false,
-	// The number of spaces a tab is considered equal to
-  "tab_size": 2,
-	// Set to true to insert spaces when tab is pressed
-  "translate_tabs_to_spaces": true
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	// Disables horizontal scrolling if enabled.
+  // May be set to true, false, or "auto", where it will be disabled for
+  // source code, and otherwise enabled.
+  "word_wrap": "true",
 }
