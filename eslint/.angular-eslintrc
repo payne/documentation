@@ -121,7 +121,7 @@
     "consistent-this": [2, "self"], // require the renaming of "this" to the consistent
     "eol-last": 2, // enforce newline at the end of file, with no multiple empty lines
     "func-names": 0, // require functions to have name so they can be identified in a stack trace instead of being called "anonymous function"
-    "func-style": [2, "declaration"], // establish a consistent way to create functions, either as a declaration or an expression
+    "func-style": [2, "expression"], // establish a consistent way to create functions, either as a declaration or an expression
     "new-cap": 2, // require a capital letter for constructors
     "new-parens": 2, // require parens in a new declaration even if there are no parameters
     "no-nested-ternary": 2, // disallow nexted ternary expressions
