@@ -34,7 +34,7 @@ Basic Ubuntu 64-bit config
   * Extract the tar.gz file to the desktop
 
    ```bash
-   cd Desktop/vmware-tools-distrib
+   cd ~/Desktop/vmware-tools-distrib
    sudo ./vmware-install.pl -d
    ```
 

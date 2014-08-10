@@ -18,4 +18,6 @@ Installing Sublime Text 3 to Ubuntu 64 bit
 4. Install MarkdownEditing Package
   * Follow instructions at https://github.com/brandyn1bennett/documentation/blob/master/ubuntu64Config/installMarkdownEditing.md
 
-5. 
+5. Install the BufferScroll package which remembers code foldings and scroll locations
+  * Use ctrl+shift+p and type 'install'. Press Enter
+  * Type "BufferScroll". Select the one that says "BufferScroll" and press Enter
