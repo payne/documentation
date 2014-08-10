@@ -90,7 +90,7 @@
     "no-with": 2, // disallows with statements
     "no-yoda": 2, // disallows Yoda expressions.  The code needs to read like straight english, not like how yoda talks
     "radix": 2, // requires the second parameter in parseInt so that the number isn't the wrong base (a decimal instead of base 10)
-    "wrap-iife": [2, "outside"], // requires self invoking functions to be wrapped in parens
+    "wrap-iife": [2, "inside"], // requires self invoking functions to be wrapped in parens
     
     // Strict mode
     "no-global-strict": 0, // disallow use of "use strict" in global scope, if node mode is on this over overridden
