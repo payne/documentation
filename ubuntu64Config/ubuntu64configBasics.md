@@ -96,6 +96,7 @@ Basic Ubuntu 64-bit config
     ```
 
 14. Make a globalnode script
+  * Nvm installs node into your user directory and makes it inaccessible to the whole system.  To make it available system wide and still keep the niceness of nvm you'll need to use a "globolnode" script
   * Make a new file called 'globalnode'
 
   ```bash
