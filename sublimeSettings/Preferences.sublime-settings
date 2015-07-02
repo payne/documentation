@@ -1,5 +1,17 @@
 {
-  "color_scheme": "Packages/User/Monokai (SL).tmTheme",
+  // Exclude files matching the pattern(s) from the project sidebar and fuzzy searches
+  "file_exclude_patterns":
+  [
+    ".DS_Store",
+    "*.scssc"
+  ],
+  "folder_exclude_patterns":
+  [
+    "tmp",
+    ".git",
+    ".svn"
+  ],
+  "color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
   "font_size": 10.0,
   "ignored_packages":
   [
@@ -7,16 +19,12 @@
     "Markdown"
   ],
   "open_files_in_new_window": false,
-  // By default, shift+tab will only unindent if the selection spans
-  // multiple lines. When pressing shift+tab at other times, it'll insert a
-  // tab character - this allows tabs to be inserted when tab_completion is
-  // enabled. Set this to true to make shift+tab always unindent, instead of
-  // inserting tabs.
+  "rulers" : [80, 100],               // show rulers at the 80 character and 100 character mark
   "shift_tab_unindent": true,
+  "show_full_path": true,
   "tab_size": 2,
   "translate_tabs_to_spaces": true,
-  // Disables horizontal scrolling if enabled.
-  // May be set to true, false, or "auto", where it will be disabled for
-  // source code, and otherwise enabled.
-  "word_wrap": "true",
+  "word_wrap": false,
+  "trim_automatic_white_space": true,  // removes auto-indentation white space when moving off the line
+  "trim_trailing_white_space_on_save": true // removes trailing white space on save
 }
