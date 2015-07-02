@@ -101,7 +101,7 @@ Basic Ubuntu 64-bit config
   ```bash
   sudo chmod 755 /usr/local/bin/globalnode
   ```
-  * Open the file in vi
+  * Open the file in vi or sublime (Make sure you run the editor as a super user)
 
   ```bash
   sudo vi /usr/local/bin/globalnode
