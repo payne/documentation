@@ -54,6 +54,11 @@ Basic Ubuntu 64-bit config
    git config --global user.email brandynlbennett@gmail.com
    git config --global user.name "Brandyn Bennett"
    ```
+  * You may also want to have git cache passwords so you don't have to type each time you push
+  
+  ```bash
+  git config --global credential.helper cache
+  ```
 
 12. NVM
   * Clone nvm into ~/.nvm
