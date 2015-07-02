@@ -11,5 +11,6 @@ Install SublimeLinter-eslint
   * type 'eslint' and select 'SublimeLinter-contrib-eslint'
 
 4. Configure settings
-  * Create a .eslintrc file in a project and put the settings from https://github.com/brandyn1bennett/documentation/blob/master/.eslintrc in it
+  * Create a .eslintrc file in a project and put the settings from https://github.com/brandyn1bennett/documentation/blob/master/eslint/.eslintrc in it
+  
   **Note:** When you make changes to .eslintrc you have to close and reopen sublime for sublimelinter to reload the changes.  Its a bit glitchy this way.  You didn't have to do that in sublime text 2
