@@ -97,7 +97,7 @@
     "wrap-iife": [2, "inside"], // requires self invoking functions to be wrapped in parens
 
     // Strict mode
-    "strict": [2, "global"], // all functions must be run in strict mode
+    "strict": [2, "function"], // all functions must be run in strict mode
 
     // variable declarations
     "no-catch-shadow": 2, // disallow catch clause parameter from overwriting some other variable
