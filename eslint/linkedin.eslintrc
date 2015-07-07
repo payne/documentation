@@ -46,7 +46,9 @@
       "prefer": {
         "return":"return", // enforce using either @return or @returns
         },
-      "requireReturn": false // if a function doesn't return anything, you don't have to include @return {void}
+      "requireReturn": false, // if a function doesn't return anything, you don't have to include @return {void}
+      "requireParamDescription": true, // require param descriptions
+      "requireReturnDescription": true // require a return description
     }],
     "valid-typeof": 2, // ensure that typeof are comparing a valid string
 
