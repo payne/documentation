@@ -14,3 +14,20 @@ Install SublimeLinter-eslint
   * Create a .eslintrc file in a project and put the settings from https://github.com/brandyn1bennett/documentation/blob/master/eslint/.eslintrc in it
   
   **Note:** When you make changes to .eslintrc you have to close and reopen sublime for sublimelinter to reload the changes.  Its a bit glitchy this way.  You didn't have to do that in sublime text 2
+
+5. To change the the default linting file from conf/eslint.json
+  * Put the .eslintrc file from https://github.com/brandyn1bennett/documentation/blob/master/eslint/.eslintrc in your home directory
+  * In the user settings for the SublimeLinter package add `"-c ~/.eslintrc` to the `args` section for the eslint linter
+
+  ```json
+  "linters": {
+    "eslint": {
+        "@disable": false,
+        "args": [
+            "-c ~/.eslintrc"
+        ],
+        "excludes": []
+    },
+  ```
+
+  **Note:** The command line configuration options get precedence over .eslintrc files so I don't know if this will make it so .eslintrc files that are found will be ignored.
