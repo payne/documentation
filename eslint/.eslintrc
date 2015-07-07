@@ -2,14 +2,14 @@
 /*
   * ESLINT environments
   * Adds global variables for these environments
-  */ 
+  */
   "env": {
     "browser": true, // Browser global variables
     "node": true, // node global variables and node rules
     "amd": true, // require() and define() variables
     "mocha":true // mocha testing variables
   },
- 
+
  /*
  * ESLINT rules
  * Use the rules from http://eslint.org/docs/rules/
@@ -19,7 +19,7 @@
  */
   "rules": {
     // Possible Errors
-    "no-cond-assign":2, // disallow assignment in conditional expressions 
+    "no-cond-assign":2, // disallow assignment in conditional expressions
     "no-console": 2, // disallow use of the console. don't want this in prod unless using node.js
     "no-constant-condition":2, // disallow use of constant expressions in conditions ('true','false', a number)
     "no-comma-dangle": 2, // disallow dangling commas in object literals (early ie versions don't support it)
@@ -34,7 +34,7 @@
     "no-extra-semi": 2, // disallow unnecessary semi-colons
     "no-func-assign": 1, // disallow overwriting functions that were created as a function declaration
     "no-inner-declarations": 2, // disallow declaring functions in another function, keeps declarations at the top for clarity
-    "no-invalid-regexp": 2, // disallow invalid regex 
+    "no-invalid-regexp": 2, // disallow invalid regex
     "no-negated-in-lhs": 2, // disallow negated left operand of an in operator
     "no-obj-calls": 2, // disallow global object function calls, cant use Math and JSON objects as functions
     "no-regex-spaces": 2, // disallow multiple spaces in a regular expression literal
@@ -42,12 +42,14 @@
     "no-unreachable": 2, // disallow unreachable code
     "use-isnan": 2, // disallow comparison with the value NaN
     // ensure jsdocs comments are valid
-    "valid-jsdoc": [ 2, {
-      "return":"return", // enforce using either @return or @returns
+    "valid-jsdoc": [2, {
+      "prefer": {
+        "return":"return", // enforce using either @return or @returns
+        },
       "requireReturn": false // if a function doesn't return anything, you don't have to include @return {void}
     }],
     "valid-typeof": 2, // ensure that typeof are comparing a valid string
-  
+
     // Best Practices
     "block-scoped-var": 2, // requires using variables inside of the scope they were defined in
     "complexity": [ 2, 7 ], // specifies the maximum cyclomatic complexity allowed in a program
@@ -56,7 +58,7 @@
     "default-case": 2, // require a default case in switch statements
     "dot-notation": 2, // encourage dot notation whenever possible
     "eqeqeq": 2, // require use of ===
-    "guard-for-in": 2, // make sure for-in loops do hasOwnProperty 
+    "guard-for-in": 2, // make sure for-in loops do hasOwnProperty
     "no-alert": 2, // prevents alerts
     "no-caller": 2, // disallow arguments.caller or arguments.callee
     "no-div-regex": 2, // disallow division operator at beginning of regular expression
@@ -88,15 +90,13 @@
     "no-unused-expressions": 2, // disallow usage of expressions in statement position
     "no-warning-comments": 2, // disallows warning comments.  Makes sure TODO: and FIXME: comments are found
     "no-with": 2, // disallows with statements
-    "no-yoda": 2, // disallows Yoda expressions.  The code needs to read like straight english, not like how yoda talks
+    "yoda": [2, "never"], // disallows Yoda expressions.  The code needs to read like straight english, not like how yoda talks
     "radix": 2, // requires the second parameter in parseInt so that the number isn't the wrong base (a decimal instead of base 10)
     "wrap-iife": [2, "inside"], // requires self invoking functions to be wrapped in parens
-    
+
     // Strict mode
-    "no-global-strict": 2, // disallow use of "use strict" in global scope
-    "no-extra-strict": 2, // disallow use of extra "use strict" statements when already in strict mode
-    "strict": 2, // all functions must be run in strict mode
-    
+    "strict": [2, "global"], // all functions must be run in strict mode
+
     // variable declarations
     "no-catch-shadow": 2, // disallow catch clause parameter from overwriting some other variable
     "no-delete-var": 2, // disallow use of the delete operator
@@ -105,7 +105,7 @@
     "no-undef-init": 2, // disallow explicitly initializing a varible to undefined
     "no-unused-vars": 2, // disallow variables that are unused
     "no-use-before-define": 2, // disallow use of variables and functions before they are defined
- 
+
     // Node.js specific rules
     "handle-callback-err": 2, // enforce that errors are handled in callbacks
     "no-mixed-requires": [2, true], // disallow mixed regular variables and require declarations. Forces them to be grouped together by type
@@ -114,7 +114,7 @@
     "no-process-exit": 2, // disallow process.exit()
     "no-restricted-modules": 2, // specify modules you don't want to be used.  Make the option an array of strings
     "no-sync": 2, // disallow use of synchronous methods. almost all node modules should be synchronous
-    
+
     // Stylistic issues
     "brace-style": 2, // enforce "one true" brace style
     "camelcase": 2, // require camelcase names
@@ -135,33 +135,33 @@
     "no-underscore-dangle": 2, // disallow dangling underscores
     "no-wrap-func": 2, // disallow wrapping functions in parens that isn't a immediately-invoking function expression (IIFE)
     "no-mixed-spaces-and-tabs": 2, // disallow mixed spaces and tabs for indentation
-    "quotes": [2, "single"], // keep consistent quotation mark style 
+    "quotes": [2, "single"], // keep consistent quotation mark style
     "quote-props": 2, // require quotes around property names
     "semi": [2, "always"], // require semi-colons when they are needed
     "sort-vars": 2, // require variables in the same declaration block to be sorted alphabetically
-    "space-after-keywords": [ 2, "always" ], // require a space after keywords 
+    "space-after-keywords": [ 2, "always" ], // require a space after keywords
     "space-in-brackets": [ 2, "always" ], // require a space between brackets
     "space-infix-ops": 2,// require a space in between operators
     "space-return-throw-case": 2, // require a space after return, throw, and case
-    "space-unary-word-ops": 2, // require a space around words like typeof
+    "space-unary-ops": [2, { "words": true, "nonwords": true }],// require a space around words like typeof
     "max-nested-callbacks": [2, 3], // max number of nested callbacks
     "one-var": 2, // only one var statement per function.  Keeps all var declarations at top to avoid hoisting confusion
     "wrap-regex": 2, // require regex literals to be wrapped in parens
-    
+
     // Legacy - for compatability with JSHint
     "max-depth": [ 2, 4 ], // the maximum depth that blocks can be nested
     "max-len": [2, 80, 4], // the maximum length of a line in the program
     "max-params": [2, 4], // the maximum nuber of parameters that can be used in a function declaration
     "max-statements": [ 2, 20 ], // the maximum number of statements allowed in a function
     "no-bitwise": 2, // disallow use of bitwise operators
-    "no-plusplus": 0 // disallow use of unary operators, ++ and -- 
+    "no-plusplus": 0 // disallow use of unary operators, ++ and --
   },
 
-  /* 
+  /*
   * ESLINT Globals
   * define what your global variables are
   */
   "globals": {
-    
+
   }
 }
