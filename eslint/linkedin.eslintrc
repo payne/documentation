@@ -7,7 +7,8 @@
     "browser": true, // Browser global variables
     "node": true, // node global variables and node rules
     "amd": true, // require() and define() variables
-    "mocha":true // mocha testing variables
+    "mocha":true, // mocha testing variables
+    "jquery":true, // jquery global variables
   },
 
  /*
@@ -20,11 +21,11 @@
   "rules": {
     // Possible Errors
     "no-cond-assign":2, // disallow assignment in conditional expressions
-    "no-console": 2, // disallow use of the console. don't want this in prod unless using node.js
+    "no-console": 1, // disallow use of the console. don't want this in prod unless using node.js
     "no-constant-condition":2, // disallow use of constant expressions in conditions ('true','false', a number)
     "no-comma-dangle": 2, // disallow dangling commas in object literals (early ie versions don't support it)
     "no-control-regex": 2, // disallow control characters in regular expressions
-    "no-debugger": 2, // disallow debugger statements. don't want this in prod
+    "no-debugger": 1, // disallow debugger statements. don't want this in prod
     "no-dupe-keys": 2, // disallow having the same key in an object
     "no-empty": 2, // disallow have empty block statements
     "no-empty-class": 2, // disallow use of empty character classes in regular expressions
@@ -94,7 +95,7 @@
     "no-with": 2, // disallows with statements
     "yoda": [2, "never"], // disallows Yoda expressions.  The code needs to read like straight english, not like how yoda talks
     "radix": 2, // requires the second parameter in parseInt so that the number isn't the wrong base (a decimal instead of base 10)
-    "wrap-iife": [2, "inside"], // requires self invoking functions to be wrapped in parens
+    "wrap-iife": [2, "outside"], // requires self invoking functions to be wrapped in parens
 
     // Strict mode
     "strict": [2, "function"], // all functions must be run in strict mode
@@ -134,11 +135,11 @@
     "no-space-before-semi": 2, // disallow space before a semicolon
     "no-ternary": 2, // disallow use of ternary operators
     "no-trailing-spaces": 2, // disallow trailing whitespaces at end of lines
-    "no-underscore-dangle": 2, // disallow dangling underscores
+    "no-underscore-dangle": 0, // disallow dangling underscores
     "no-wrap-func": 2, // disallow wrapping functions in parens that isn't a immediately-invoking function expression (IIFE)
     "no-mixed-spaces-and-tabs": 2, // disallow mixed spaces and tabs for indentation
     "quotes": [2, "single"], // keep consistent quotation mark style
-    "quote-props": 2, // require quotes around property names
+    "quote-props": [2, "as-needed"], // require quotes around property names
     "semi": [2, "always"], // require semi-colons when they are needed
     "sort-vars": 2, // require variables in the same declaration block to be sorted alphabetically
     "space-after-keywords": [ 2, "always" ], // require a space after keywords
@@ -146,7 +147,7 @@
     "space-in-parens": [2, "never"], // Allow/disallow space inside of parenthesis
     "space-infix-ops": 2,// require a space in between operators
     "space-return-throw-case": 2, // require a space after return, throw, and case
-    "space-unary-ops": [2, { "words": true, "nonwords": true }],// require a space around words like typeof
+    "space-unary-ops": [2, { "words": true, "nonwords": false }],// require a space around words like typeof
     "max-nested-callbacks": [2, 3], // max number of nested callbacks,
     "space-before-function-paren": [2, "never"], // Allow/disallow space before function paren
     "one-var": 2, // only one var statement per function.  Keeps all var declarations at top to avoid hoisting confusion
@@ -154,7 +155,7 @@
 
     // Legacy - for compatability with JSHint
     "max-depth": [ 2, 4 ], // the maximum depth that blocks can be nested
-    "max-len": [2, 80, 4], // the maximum length of a line in the program
+    "max-len": [2, 100, 4], // the maximum length of a line in the program
     "max-params": [2, 4], // the maximum nuber of parameters that can be used in a function declaration
     "max-statements": [ 2, 20 ], // the maximum number of statements allowed in a function
     "no-bitwise": 2, // disallow use of bitwise operators
@@ -166,6 +167,7 @@
   * define what your global variables are
   */
   "globals": {
-
+    "LIModules": true,
+    "expect": true // for Expect.js
   }
 }
