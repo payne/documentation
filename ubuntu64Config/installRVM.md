@@ -6,7 +6,7 @@ Install RVM
 2. Use the magical curl install script for the stable version
   
   ```bash
-  \curl -L https://get.rvm.io | bash -s stable
+  curl -L https://get.rvm.io | bash -s stable
   ```
 
 3. Close the terminal and reopen it or source the rvm script
