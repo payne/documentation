@@ -9,6 +9,14 @@
     "amd": true, // require() and define() variables
     "mocha":true, // mocha testing variables
     "jquery":true, // jquery global variables
+    "es6": true // ES6 Environemt, enable all ES6 features, except modules
+  },
+
+/*
+ * ES6 Features
+ */
+  "ecmaFeatures": {
+    "modules": true
   },
 
  /*
@@ -20,15 +28,17 @@
  */
   "rules": {
     // Possible Errors
+    "comma-dangle": [1, "always"], // disallow or enforce dangling commas
     "no-cond-assign":2, // disallow assignment in conditional expressions
     "no-console": 1, // disallow use of the console. don't want this in prod unless using node.js
     "no-constant-condition":2, // disallow use of constant expressions in conditions ('true','false', a number)
-    "no-comma-dangle": 2, // disallow dangling commas in object literals (early ie versions don't support it)
     "no-control-regex": 2, // disallow control characters in regular expressions
     "no-debugger": 1, // disallow debugger statements. don't want this in prod
+    "no-dupe-args": 2, // disallow duplicate arguments in functions
     "no-dupe-keys": 2, // disallow having the same key in an object
+    "no-duplicate-case": 2, // disallow a duplicate case label
+    "no-empty-character-class": 2, // disallow use of empty character classes in regular expressions
     "no-empty": 2, // disallow have empty block statements
-    "no-empty-class": 2, // disallow use of empty character classes in regular expressions
     "no-ex-assign": 2, // disallow overrighting a reference to an error in a catch block
     "no-extra-boolean-cast": 2, // disallow extra boolean conditions (double negation)
     "no-extra-parens": 2, // disallow unnecessary parens
@@ -36,30 +46,35 @@
     "no-func-assign": 1, // disallow overwriting functions that were created as a function declaration
     "no-inner-declarations": 2, // disallow declaring functions in another function, keeps declarations at the top for clarity
     "no-invalid-regexp": 2, // disallow invalid regex
+    "no-irregular-whitespace": 2, // disallow irregular whitespace outside of strings and comments
     "no-negated-in-lhs": 2, // disallow negated left operand of an in operator
     "no-obj-calls": 2, // disallow global object function calls, cant use Math and JSON objects as functions
     "no-regex-spaces": 2, // disallow multiple spaces in a regular expression literal
     "no-sparse-arrays": 2, // disallow arrays with empty spots [,,]
     "no-unreachable": 2, // disallow unreachable code
     "use-isnan": 2, // disallow comparison with the value NaN
+
     // ensure jsdocs comments are valid
     "valid-jsdoc": [2, {
       "prefer": {
         "return":"return", // enforce using either @return or @returns
-        },
+      },
       "requireReturn": false, // if a function doesn't return anything, you don't have to include @return {void}
       "requireParamDescription": true, // require param descriptions
       "requireReturnDescription": true // require a return description
     }],
     "valid-typeof": 2, // ensure that typeof are comparing a valid string
+    "no-unexpected-multiline": 2,
 
     // Best Practices
+    "accessor-pairs": [2, {"getWithoutSet": true, "setWithoutGet": true}],
     "block-scoped-var": 2, // requires using variables inside of the scope they were defined in
     "complexity": [ 2, 7 ], // specifies the maximum cyclomatic complexity allowed in a program
     "consistent-return": 2, // require return statements to either always or never specify values within a block;
     "curly": 2, // require following curly braces
     "default-case": 2, // require a default case in switch statements
     "dot-notation": 2, // encourage dot notation whenever possible
+    "dot-location": 2, // enforces consistent newlines before or after dots
     "eqeqeq": 2, // require use of ===
     "guard-for-in": 2, // make sure for-in loops do hasOwnProperty
     "no-alert": 2, // prevents alerts
@@ -70,6 +85,7 @@
     "no-eq-null": 2, // have to use === when comparing with null
     "no-eval": 2, // can't use eval()
     "no-extend-native": 1, // can't extend native types
+    "no-extra-bind": 2, // disallow unnecessary function binding
     "no-fallthrough": 2, // have to use break; in switch statements
     "no-floating-decimal": 2, // can't have a number start with . (e.g. var num = .5)
     "no-implied-eval": 2, // disallow use of eval-like methods (e.g. setTimeout("alert('hi');"))
@@ -77,6 +93,7 @@
     "no-iterator": 2, // disallow use of __iterator__ property
     "no-lone-blocks": 2, // disallow unnecessary nested blocks
     "no-loop-func": 2, // disallow creation of function within loops
+    "no-multi-spaces": 2, // disallow use of multiple spaces
     "no-multi-str": 2, // disallow use of multi-string lines
     "no-native-reassign": 2, // disallow reassignment of native objects
     "no-new": 2, // disallow new operator when not part of an assignment
@@ -84,28 +101,35 @@
     "no-new-wrappers": 2, // disallow creating new instances of String, Number, and Boolean
     "no-octal": 2, // disallow use of octal literals ( e.g. var num = 071 )
     "no-octal-escape": 2, // disallow use of octal escape characters ( e.g. var foo = "Copyright \251"; )
+    "no-param-reassign": 2, // disallow reassignment of function parameters
     "no-proto": 2, // disallow use of __proto__ property
     "no-redeclare": 2, // disallow redeclaring the same variable more than once
     "no-return-assign": 2, // disallow use of assignment in return statement
     "no-script-url": 2, // no javascript: urls (e.g. location.href = "javascript:void(0)"; )
     "no-self-compare": 2, // don't compare a value to itself
     "no-sequences": 2, // disallow use of comma operator
+    "no-throw-literal": 2, // restrict what can be thrown as an exception
     "no-unused-expressions": 2, // disallow usage of expressions in statement position
-    "no-warning-comments": 2, // disallows warning comments.  Makes sure TODO: and FIXME: comments are found
+    // "no-useless-call": 2, // disallow unnecessary .call() and .apply()
+    "no-void": 2, // disallow use of the void operator
+    "no-warning-comments": 1, // disallows warning comments.  Makes sure TODO: and FIXME: comments are found
     "no-with": 2, // disallows with statements
-    "yoda": [2, "never"], // disallows Yoda expressions.  The code needs to read like straight english, not like how yoda talks
     "radix": 2, // requires the second parameter in parseInt so that the number isn't the wrong base (a decimal instead of base 10)
+    "vars-on-top": 2, // require declaration of all vars at the top of their containing scope
     "wrap-iife": [2, "outside"], // requires self invoking functions to be wrapped in parens
+    "yoda": [2, "never"], // disallows Yoda expressions.  The code needs to read like straight english, not like how yoda talks
 
     // Strict mode
     "strict": [2, "function"], // all functions must be run in strict mode
 
     // variable declarations
+    // "init-declarations": 2, // enforce or disallow variable initializations at definition
     "no-catch-shadow": 2, // disallow catch clause parameter from overwriting some other variable
     "no-delete-var": 2, // disallow use of the delete operator
     "no-label-var": 2, // disallow labels that share a name with a variable
-    "no-undef": 2, // disallow use of undeclared variables not mentioned in /*global */ block
+    "no-shadow-restricted-names": 2, // disallow shadowing of names such as arguments
     "no-undef-init": 2, // disallow explicitly initializing a varible to undefined
+    "no-undef": 2, // disallow use of undeclared variables not mentioned in /*global */ block
     "no-unused-vars": 2, // disallow variables that are unused
     "no-use-before-define": 2, // disallow use of variables and functions before they are defined
 
@@ -119,39 +143,74 @@
     "no-sync": 2, // disallow use of synchronous methods. almost all node modules should be synchronous
 
     // Stylistic issues
+    "array-bracket-spacing": [2, "always"], // enforce spacing inside array brackets
     "brace-style": 2, // enforce "one true" brace style
     "camelcase": 2, // require camelcase names
+    "comma-spacing": [2, {"before": false, "after": true}], // enforce spacing before and after comma
+    "comma-style": [2, "last"], // enforce one true comma style
+    "computed-property-spacing": [2, "always"], // Disallow or enforce spaces inside of computed properties
     "consistent-this": [2, "self"], // require the renaming of "this" to the consistent
     "eol-last": 2, // enforce newline at the end of file, with no multiple empty lines
     "func-names": 0, // require functions to have name so they can be identified in a stack trace instead of being called "anonymous function"
     "func-style": [2, "declaration"], // establish a consistent way to create functions, either as a declaration or an expression
+    //"id-length": [2, {"min": 3, "max": 10}], // Limit minimum and maximum length for identifiers
+    "id-match": 0,
+    "indent": [2, 2], // Validate Indentation
+    "key-spacing": [2, {"beforeColon": false, "afterColon": true}], // Enforce Property Spacing
+    "lines-around-comment": [2, { "beforeBlockComment": true, "beforeLineComment": true }], // Enforce empty lines around comments
+    "linebreak-style": 2, // disallow mixed 'LF' and 'CRLF' as linebreaks
+    "max-nested-callbacks": [2, 3], // specify the maximum depth callbacks can be nested
     "new-cap": 2, // require a capital letter for constructors
     "new-parens": 2, // require parens in a new declaration even if there are no parameters
-    "no-nested-ternary": 2, // disallow nexted ternary expressions
+    "newline-after-var": [2, "always"], // require or disallow an empty newline after variable declarations
     "no-array-constructor": 2, // disallow use of the Array constructor
+    "no-continue": 2, // disallow use of the continue statement
+    "no-inline-comments": 2, // disallow comments inline after code
     "no-lonely-if": 2, // disallow if as the only statment in an else block
+    "no-mixed-spaces-and-tabs": 2, // disallow mixed spaces and tabs for indentation
+    "no-multiple-empty-lines": [2, {"max": 2}], // disallow multiple empty lines
+    "no-nested-ternary": 2, // disallow nexted ternary expressions
     "no-new-object": 2, // disallow use of the Object constructor
     "no-spaced-func": 2, // disallow whitespace between function and executing parens
-    "no-space-before-semi": 2, // disallow space before a semicolon
     "no-ternary": 2, // disallow use of ternary operators
     "no-trailing-spaces": 2, // disallow trailing whitespaces at end of lines
     "no-underscore-dangle": 0, // disallow dangling underscores
-    "no-wrap-func": 2, // disallow wrapping functions in parens that isn't a immediately-invoking function expression (IIFE)
+    "no-unneeded-ternary": 2, // disallow the use of Boolean literals in conditional expressions
     "no-mixed-spaces-and-tabs": 2, // disallow mixed spaces and tabs for indentation
-    "quotes": [2, "single"], // keep consistent quotation mark style
+    "object-curly-spacing": [2, "always"], // Disallow or enforce spaces inside of curly braces in objects
+    "one-var": 2, // only one var statement per function.  Keeps all var declarations at top to avoid hoisting confusion
+    "operator-assignment": [2, "never"], // Operator Assignment Shorthand
+    "operator-linebreak": [2, "before"], // enforce operators to be placed before or after line breaks
+    "padded-blocks": [2, "always"], // enforce padding within blocks
     "quote-props": [2, "as-needed"], // require quotes around property names
+    "quotes": [2, "single"], // keep consistent quotation mark style
+    "semi-spacing": [2, {"before": false, "after": true}], // enforce spacing before and after semicolons
     "semi": [2, "always"], // require semi-colons when they are needed
     "sort-vars": 2, // require variables in the same declaration block to be sorted alphabetically
     "space-after-keywords": [ 2, "always" ], // require a space after keywords
-    "space-in-brackets": [ 2, "always" ], // require a space between brackets
+    "space-before-blocks": [2, "always"], // require or disallow a space before blocks
+    "space-before-function-paren": [2, "never"],// require or disallow a space before function opening parenthesis
     "space-in-parens": [2, "never"], // Allow/disallow space inside of parenthesis
     "space-infix-ops": 2,// require a space in between operators
     "space-return-throw-case": 2, // require a space after return, throw, and case
     "space-unary-ops": [2, { "words": true, "nonwords": false }],// require a space around words like typeof
-    "max-nested-callbacks": [2, 3], // max number of nested callbacks,
-    "space-before-function-paren": [2, "never"], // Allow/disallow space before function paren
-    "one-var": 2, // only one var statement per function.  Keeps all var declarations at top to avoid hoisting confusion
+    "spaced-commen": [2, "always",{"exceptions":["-","+"]}], // require or disallow a space immediately following the // or /* in a comment
     "wrap-regex": 2, // require regex literals to be wrapped in parens
+
+    // ES6
+    "arrow-parens": [2, "always"], // require parens in arrow function arguments
+    "arrow-spacing": [2, { "before": true, "after": true }], // require space before/after arrow function's arrow
+    "constructor-super": 2, //  verify calls of super() in constructors
+    "generator-star-spacing": [2, {"before": true, "after": false}], // enforce spacing around the * in generator functions
+    "no-class-assign": 2, // disallow modifying variables of class declarations
+    "no-const-assign": 2, // disallow modifying variables that are declared using const
+    "no-this-before-super": 2, // disallow use of this/super before calling super() in constructors.
+    "no-var": 2, //  require let or const instead of var
+    "object-shorthand": [2, "always"], // require method and property shorthand syntax for object literals
+    "prefer-const": 2, //  suggest using const declaration for variables that are never modified after declared
+    "prefer-spread": 2, // suggest using the spread operator instead of .apply().
+    "prefer-reflect": 2, // suggest using Reflect methods where applicable
+    "require-yield": 2, // disallow generator functions that do not have yield
 
     // Legacy - for compatability with JSHint
     "max-depth": [ 2, 4 ], // the maximum depth that blocks can be nested
@@ -168,6 +227,10 @@
   */
   "globals": {
     "LIModules": true,
-    "expect": true // for Expect.js
+    "expect": true, // for Expect.js
+    "Marionette": true,
+    "Radio": true,
+    "Backbone": true,
+    "_": true
   }
 }
