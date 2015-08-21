@@ -45,7 +45,7 @@
     "no-extra-boolean-cast": 2, // disallow extra boolean conditions (double negation)
     "no-extra-parens": 2, // disallow unnecessary parens
     "no-extra-semi": 2, // disallow unnecessary semi-colons
-    "no-func-assign": 1, // disallow overwriting functions that were created as a function declaration
+    "no-func-assign": 2, // disallow overwriting functions that were created as a function declaration
     "no-inner-declarations": 2, // disallow declaring functions in another function, keeps declarations at the top for clarity
     "no-invalid-regexp": 2, // disallow invalid regex
     "no-irregular-whitespace": 2, // disallow irregular whitespace outside of strings and comments
