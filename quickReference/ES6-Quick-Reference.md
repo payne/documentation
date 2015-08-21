@@ -36,7 +36,7 @@ Repeats a string a certain number of times.
 ###RegEx
 You can duplicate a regular expression.  You can pass in a flag to the constructor and it will override previous flags instead of throwing an error like ES5
 ```Javascript
-  var re1 = /ab/i,
-  // throws an error in ES5, okay in ES6
-  re2 = new RegExp(re1, "g");
+var re1 = /ab/i,
+// throws an error in ES5, okay in ES6
+re2 = new RegExp(re1, "g");
 ```
