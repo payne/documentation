@@ -1,27 +1,27 @@
 ![ES6 Logo](https://cdn.sencha.com/img/20130807-es6.png)
-#ES6 Quick Reference
+ES6 Quick Reference
 =====================
 
-##References
+References
 -------------
 *Understanding ECMAScript 6* - Nicholas Zakas
 
-##Semicolons
+Semicolons
 -------------
 They are not required.
 
-##Dangling Commas
+Dangling Commas
 -----------------
 They are allowed.
 
-##Unicode
+Unicode
 ---------
 Enforces UTF-16.
 
 ###RegEx
 There’s a new u flag for “unicode” in regex that will work on characters and not code units.
 
-##Strings
+Strings
 ---------
 ###Identify strings in other strings
 Each of the following functions takes 2 arguments: a string to search and and optional place to start.  They can’t be passed regex.  Use `indexOf()` and `lastIndexOf()` to find positions of strings. 
