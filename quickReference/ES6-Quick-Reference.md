@@ -1,4 +1,4 @@
-ES6 Quick Reference
+![ES6 Logo](https://cdn.sencha.com/img/20130807-es6.png)ES6 Quick Reference
 ====================
 
 References
