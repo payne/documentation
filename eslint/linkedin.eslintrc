@@ -1,3 +1,5 @@
+// Works with eslint 1.2.1
+
 {
 /*
   * ESLINT environments
@@ -67,7 +69,7 @@
     "no-unexpected-multiline": 2,
 
     // Best Practices
-    "accessor-pairs": [2, {"getWithoutSet": true, "setWithoutGet": true}],
+    "accessor-pairs": [2, {"getWithoutSet": true, "setWithoutGet": true}], // Enforces getter/setter pairs in objects
     "block-scoped-var": 2, // requires using variables inside of the scope they were defined in
     "complexity": [ 2, 7 ], // specifies the maximum cyclomatic complexity allowed in a program
     "consistent-return": 2, // require return statements to either always or never specify values within a block;
@@ -88,20 +90,23 @@
     "no-extra-bind": 2, // disallow unnecessary function binding
     "no-fallthrough": 2, // have to use break; in switch statements
     "no-floating-decimal": 2, // can't have a number start with . (e.g. var num = .5)
+    "no-implicit-coercion": 2, // disallow the type conversions with shorter notations
     "no-implied-eval": 2, // disallow use of eval-like methods (e.g. setTimeout("alert('hi');"))
-    "no-labels": 2, // disallow use of label statements
+    "no-invalid-this": 2, // disallow this keywords outside of classes or class-like objects
     "no-iterator": 2, // disallow use of __iterator__ property
+    "no-labels": 2, // disallow use of label statements
     "no-lone-blocks": 2, // disallow unnecessary nested blocks
     "no-loop-func": 2, // disallow creation of function within loops
     "no-multi-spaces": 2, // disallow use of multiple spaces
     "no-multi-str": 2, // disallow use of multi-string lines
     "no-native-reassign": 2, // disallow reassignment of native objects
-    "no-new": 2, // disallow new operator when not part of an assignment
     "no-new-func": 2, // disallow use of new operator for Function object
     "no-new-wrappers": 2, // disallow creating new instances of String, Number, and Boolean
-    "no-octal": 2, // disallow use of octal literals ( e.g. var num = 071 )
+    "no-new": 2, // disallow new operator when not part of an assignment
     "no-octal-escape": 2, // disallow use of octal escape characters ( e.g. var foo = "Copyright \251"; )
+    "no-octal": 2, // disallow use of octal literals ( e.g. var num = 071 )
     "no-param-reassign": 2, // disallow reassignment of function parameters
+    "no-process-env": 2, // disallow use of process.env
     "no-proto": 2, // disallow use of __proto__ property
     "no-redeclare": 2, // disallow redeclaring the same variable more than once
     "no-return-assign": 2, // disallow use of assignment in return statement
@@ -110,7 +115,7 @@
     "no-sequences": 2, // disallow use of comma operator
     "no-throw-literal": 2, // restrict what can be thrown as an exception
     "no-unused-expressions": 2, // disallow usage of expressions in statement position
-    // "no-useless-call": 2, // disallow unnecessary .call() and .apply()
+    "no-useless-call": 2, // disallow unnecessary .call() and .apply()
     "no-void": 2, // disallow use of the void operator
     "no-warning-comments": 1, // disallows warning comments.  Makes sure TODO: and FIXME: comments are found
     "no-with": 2, // disallows with statements
@@ -123,17 +128,20 @@
     "strict": [2, "function"], // all functions must be run in strict mode
 
     // variable declarations
-    // "init-declarations": 2, // enforce or disallow variable initializations at definition
+    "init-declarations": 2, // enforce or disallow variable initializations at definition
     "no-catch-shadow": 2, // disallow catch clause parameter from overwriting some other variable
     "no-delete-var": 2, // disallow use of the delete operator
     "no-label-var": 2, // disallow labels that share a name with a variable
     "no-shadow-restricted-names": 2, // disallow shadowing of names such as arguments
+    "no-shadow": [2, {"builtinGlobals": true, "hoist": "all" }], // disallow declaration of variables already declared in the outer scope
     "no-undef-init": 2, // disallow explicitly initializing a varible to undefined
     "no-undef": 2, // disallow use of undeclared variables not mentioned in /*global */ block
+    "no-undefined": 2, // disallow use of undefined variable
     "no-unused-vars": 2, // disallow variables that are unused
     "no-use-before-define": 2, // disallow use of variables and functions before they are defined
 
     // Node.js specific rules
+    "callback-return": 2, // enforce return after a callback
     "handle-callback-err": 2, // enforce that errors are handled in callbacks
     "no-mixed-requires": [2, true], // disallow mixed regular variables and require declarations. Forces them to be grouped together by type
     "no-new-require": 2, // disallow use of new operator with require function
@@ -144,6 +152,7 @@
 
     // Stylistic issues
     "array-bracket-spacing": [2, "always"], // enforce spacing inside array brackets
+    "block-spacing": [2, "always"], // disallow or enforce spaces inside of single line blocks
     "brace-style": 2, // enforce "one true" brace style
     "camelcase": 2, // require camelcase names
     "comma-spacing": [2, {"before": false, "after": true}], // enforce spacing before and after comma
@@ -153,7 +162,7 @@
     "eol-last": 2, // enforce newline at the end of file, with no multiple empty lines
     "func-names": 0, // require functions to have name so they can be identified in a stack trace instead of being called "anonymous function"
     "func-style": [2, "declaration"], // establish a consistent way to create functions, either as a declaration or an expression
-    //"id-length": [2, {"min": 3, "max": 10}], // Limit minimum and maximum length for identifiers
+    "id-length": [2, {"min": 3, "max": 10}], // Limit minimum and maximum length for identifiers
     "id-match": 0,
     "indent": [2, 2], // Validate Indentation
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}], // Enforce Property Spacing
@@ -177,6 +186,7 @@
     "no-underscore-dangle": 0, // disallow dangling underscores
     "no-unneeded-ternary": 2, // disallow the use of Boolean literals in conditional expressions
     "no-mixed-spaces-and-tabs": 2, // disallow mixed spaces and tabs for indentation
+    "no-multiple-empty-lines": [1, {"max": 2}], // disallow multiple empty lines
     "object-curly-spacing": [2, "always"], // Disallow or enforce spaces inside of curly braces in objects
     "one-var": 2, // only one var statement per function.  Keeps all var declarations at top to avoid hoisting confusion
     "operator-assignment": [2, "never"], // Operator Assignment Shorthand
@@ -198,19 +208,22 @@
     "wrap-regex": 2, // require regex literals to be wrapped in parens
 
     // ES6
-    // "arrow-parens": [2, "always"], // require parens in arrow function arguments
-    // "arrow-spacing": [2, { "before": true, "after": true }], // require space before/after arrow function's arrow
+    "arrow-parens": [2, "always"], // require parens in arrow function arguments
+    "arrow-spacing": [2, { "before": true, "after": true }], // require space before/after arrow function's arrow
     "constructor-super": 2, //  verify calls of super() in constructors
     "generator-star-spacing": [2, {"before": true, "after": false}], // enforce spacing around the * in generator functions
-    // "no-class-assign": 2, // disallow modifying variables of class declarations
-    // "no-const-assign": 2, // disallow modifying variables that are declared using const
+    "no-class-assign": 2, // disallow modifying variables of class declarations
+    "no-const-assign": 2, // disallow modifying variables that are declared using const
+    "no-dupe-class-members": 2, // disallow duplicate name in class members
     "no-this-before-super": 2, // disallow use of this/super before calling super() in constructors.
     "no-var": 2, //  require let or const instead of var
     "object-shorthand": [2, "always"], // require method and property shorthand syntax for object literals
+    "prefer-arrow-callback": 2, // suggest using arrow functions as callbacks
     "prefer-const": 2, //  suggest using const declaration for variables that are never modified after declared
-    // "prefer-spread": 2, // suggest using the spread operator instead of .apply().
-    // "prefer-reflect": 2, // suggest using Reflect methods where applicable
-    // "require-yield": 2, // disallow generator functions that do not have yield
+    "prefer-spread": 2, // suggest using the spread operator instead of .apply().
+    "prefer-reflect": 2, // suggest using Reflect methods where applicable
+    "prefer-template": 2, // suggest using template literals instead of strings concatenation
+    "require-yield": 2, // disallow generator functions that do not have yield
 
     // Legacy - for compatability with JSHint
     "max-depth": [ 2, 4 ], // the maximum depth that blocks can be nested
