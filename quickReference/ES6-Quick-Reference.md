@@ -301,3 +301,58 @@ You can use function declarations inside a block and they'll only be accessable 
 **Note:** In *non-strict mode* function declarations are hoisted to the containing function or global environment.
 
 ### Arrow Functions
+* Value of `this` inside the function is determined by where the function is defined not where it is used.
+* They can't be used as constructors
+* The value of `this` can't be changed
+* There is no `arguments` object.
+You declare one by declaring the arguments, the arrow, then the body of the function.
+```JavaScript
+var reflect = value => value;
+// effectively equivalent to:
+var reflect = function(value) {
+    return value;
+};
+```
+If you pass in one or more arguments you have to put parents around them.
+You need to include curly braces around the body to have more than one expression and include a `return` statment.
+You can create an IIFE by doing this:
+```JavaScript
+let person = ((name) => {
+    return {
+        getName() {
+            return name;
+        }
+    };
+})("Nicholas");
+console.log(person.getName());      // "Nicholas"
+```
+The parens have to be only around the arrow function definition.
+
+#### Lexical this Binding
+Arrow functions have implicit `this` binding.  `this` always refers to the scope in which the arrows function was defined.
+```JavaScript
+var PageHandler = {
+    id: "123456",
+    init: function() {
+        document.addEventListener("click",
+                event => this.doSomething(event.type), false);
+    },
+    doSomething: function(type) {
+        console.log("Handling " + type  + " for " + this.id);
+    }
+};
+```
+
+Arrow functions are meant to be thrown away and not used to create new types.  You can't use `new` inside of them.  They don't have a `prototype` property.  The arrow functions are really good for using as callbacks and with Array functions.
+
+#### Lexical arguments Binding
+An arrow function always has access to the `arguments` object of its containing function.
+```JavaScript
+function createArrowFunctionReturningFirstArg() {
+    return () => arguments[0];
+}
+var arrowFunction = createArrowFunctionReturningFirstArg(5);
+console.log(arrowFunction());       // 5
+```
+
+#### Identi
