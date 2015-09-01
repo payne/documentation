@@ -86,6 +86,7 @@ It's a good idea to put `let` declarations at the top of the block.
 The value of a `const` can't be reset. It has to be initialized with a value.
 They are scoped within a block and can't be accessed outside of the block.
 You can't declare a `const` with the same name as a variable that's allready been declared in the same scope.
+`const` prevents modification of the binding and not of the value itself.  Objects and arrays can still be modified.
 
 Destructuring Assignment
 -------------------------
@@ -355,4 +356,6 @@ var arrowFunction = createArrowFunctionReturningFirstArg(5);
 console.log(arrowFunction());       // 5
 ```
 
-#### Identi
+Classes
+-------------------------
+Like JSON, but you need comma separators.
