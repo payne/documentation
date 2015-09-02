@@ -7,3 +7,4 @@ Use Sublime SFTP Plugin
 4. Copy the settings from jobs-sftp-config.json into the page that opens
   - Change the remote_path, host, and user arguments as necessary
 5. When you save it should sync to the remote drive and changes in the remote drive should be added to your local drive
+6. Do all your version control (git) stuff on your server box.
