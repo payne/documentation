@@ -356,6 +356,16 @@ var arrowFunction = createArrowFunctionReturningFirstArg(5);
 console.log(arrowFunction());       // 5
 ```
 
+Objects
+-------
+Functions in object literals can have the shorthand
+```JavaScript
+{
+    myFunc() {},
+    otherFunc() {},
+}
+```
+
 Classes
 -------------------------
 Like JSON, but you need comma separators.
