@@ -366,6 +366,14 @@ Functions in object literals can have the shorthand
 }
 ```
 
+You can have computed property names like this:
+```JavaScript
+var person = {
+    ["first" + suffix]: "Nicholas",
+    ["last" + suffix]: "Zakas"
+};
+```
+
 Classes
 -------------------------
 Like JSON, but you need comma separators.
