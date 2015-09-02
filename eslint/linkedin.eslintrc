@@ -151,7 +151,7 @@
     "no-sync": 2, // disallow use of synchronous methods. almost all node modules should be synchronous
 
     // Stylistic issues
-    "array-bracket-spacing": [2, "always"], // enforce spacing inside array brackets
+    "array-bracket-spacing": [2, "never"], // enforce spacing inside array brackets
     "block-spacing": [2, "always"], // disallow or enforce spaces inside of single line blocks
     "brace-style": 2, // enforce "one true" brace style
     "camelcase": 2, // require camelcase names
@@ -162,7 +162,7 @@
     "eol-last": 2, // enforce newline at the end of file, with no multiple empty lines
     "func-names": 0, // require functions to have name so they can be identified in a stack trace instead of being called "anonymous function"
     "func-style": [2, "declaration"], // establish a consistent way to create functions, either as a declaration or an expression
-    "id-length": [2, {"min": 3, "max": 10}], // Limit minimum and maximum length for identifiers
+    "id-length": [2, {"min": 3, "max": 30}], // Limit minimum and maximum length for identifiers
     "id-match": 0,
     "indent": [2, 2], // Validate Indentation
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}], // Enforce Property Spacing
@@ -191,7 +191,7 @@
     "one-var": 2, // only one var statement per function.  Keeps all var declarations at top to avoid hoisting confusion
     "operator-assignment": [2, "never"], // Operator Assignment Shorthand
     "operator-linebreak": [2, "before"], // enforce operators to be placed before or after line breaks
-    "padded-blocks": [2, "always"], // enforce padding within blocks
+    "padded-blocks": [0, "never"], // enforce padding within blocks
     "quote-props": [2, "as-needed"], // require quotes around property names
     "quotes": [2, "single"], // keep consistent quotation mark style
     "semi-spacing": [2, {"before": false, "after": true}], // enforce spacing before and after semicolons
@@ -208,7 +208,7 @@
     "wrap-regex": 2, // require regex literals to be wrapped in parens
 
     // ES6
-    "arrow-parens": [2, "always"], // require parens in arrow function arguments
+    "arrow-parens": [2, "as-needed"], // require parens in arrow function arguments
     "arrow-spacing": [2, { "before": true, "after": true }], // require space before/after arrow function's arrow
     "constructor-super": 2, //  verify calls of super() in constructors
     "generator-star-spacing": [2, {"before": true, "after": false}], // enforce spacing around the * in generator functions
