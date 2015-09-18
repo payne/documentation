@@ -76,7 +76,7 @@
     "curly": 2, // require following curly braces
     "default-case": 2, // require a default case in switch statements
     "dot-notation": 2, // encourage dot notation whenever possible
-    "dot-location": 2, // enforces consistent newlines before or after dots
+    "dot-location": [2, "property"], // enforces consistent newlines before or after dots
     "eqeqeq": 2, // require use of ===
     "guard-for-in": 2, // make sure for-in loops do hasOwnProperty
     "no-alert": 2, // prevents alerts
@@ -162,7 +162,7 @@
     "eol-last": 2, // enforce newline at the end of file, with no multiple empty lines
     "func-names": 0, // require functions to have name so they can be identified in a stack trace instead of being called "anonymous function"
     "func-style": [2, "declaration"], // establish a consistent way to create functions, either as a declaration or an expression
-    "id-length": [2, {"min": 3, "max": 30}], // Limit minimum and maximum length for identifiers
+    "id-length": [0, {"min": 1, "max": 30}], // Limit minimum and maximum length for identifiers
     "id-match": 0,
     "indent": [2, 2], // Validate Indentation
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}], // Enforce Property Spacing
@@ -244,6 +244,7 @@
     "Marionette": true,
     "Radio": true,
     "Backbone": true,
-    "_": true
+    "_": true,
+    "play": true
   }
 }

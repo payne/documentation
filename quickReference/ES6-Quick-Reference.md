@@ -377,3 +377,8 @@ var person = {
 Classes
 -------------------------
 Like JSON, but you need comma separators.
+
+Modules
+--------
+`'use strict'` is not necessary inside of modules, because it is implied inside of a module.
+`export default` means that whatever is exported is the default export for the module and the module itself represents the function.
