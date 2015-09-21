@@ -1,28 +1,28 @@
 ![ES6 Logo](https://cdn.sencha.com/img/20130807-es6.png)
 ES6 Quick Reference
-=====================
+========================================================================================
 
 References
--------------
+-------------------------------------------------------------------------------------------
 *Understanding ECMAScript 6* - Nicholas Zakas
 
 Semicolons
--------------
+-------------------------------------------------------------------------------------------
 They are not required.
 
 Dangling Commas
------------------
+-------------------------------------------------------------------------------------------
 They are allowed.
 
 Unicode
----------
+-------------------------------------------------------------------------------------------
 Enforces UTF-16.
 
 ### RegEx
 There’s a new u flag for “unicode” in regex that will work on characters and not code units.
 
 Strings
----------
+-------------------------------------------------------------------------------------------
 ### Identify strings in other strings
 Each of the following functions takes 2 arguments: a string to search and and optional place to start.  They can’t be passed regex.  Use `indexOf()` and `lastIndexOf()` to find positions of strings. 
 `includes()`
@@ -43,7 +43,7 @@ re2 = new RegExp(re1, "g");
 ```
 
 Object.is()
-------------
+-------------------------------------------------------------------------------------------
 Makes for remaining inconsistencies with `===`
 ```JavaScript
 console.log(Object.is(+0, -0)); // false
@@ -51,7 +51,7 @@ console.log(Object.is(NaN, NaN)); // true
 ```
 
 Block Bindings
----------------
+-------------------------------------------------------------------------------------------
 ### let
 Declares a variable, but keeps its scope to the current code block.  The variable won't be declared anywhere else.
 ```JavaScript
@@ -89,7 +89,7 @@ You can't declare a `const` with the same name as a variable that's allready bee
 `const` prevents modification of the binding and not of the value itself.  Objects and arrays can still be modified.
 
 Destructuring Assignment
--------------------------
+-------------------------------------------------------------------------------------------
 ### Object Destructuring
 This is a shortcut thats lets you turn objects into local variables for easier referencing.
 ```JavaScript
@@ -143,7 +143,7 @@ console.log(secondColor);       // "green"
 ```
 
 Numbers
---------
+-------------------------------------------------------------------------------------------
 ### isFinite() and isNan()
 There is now an `isFinite()` and `isNan()` that are part of the `Number` object instead of being global.  They return false if passed non-numeric values unlike their global counterparts.  
 ```JavaScript
@@ -178,7 +178,7 @@ There's a bunch new math functions.  Checkout the `Math` object before writing i
     * `Math.trunc(x)` Removes fraction digits from a float and returns an integer.
 
 Functions
----------
+-------------------------------------------------------------------------------------------
 ### Default Params
 You can specify default values for when a param isn't formally passed
 ```JavaScript
@@ -357,7 +357,17 @@ console.log(arrowFunction());       // 5
 ```
 
 Objects
--------
+-------------------------------------------------------------------------------------------
+You can eliminate duplication of local variables and prperty names with property initializer shorthand
+```JavaScript
+    function createPerson(name, age) {
+    return {
+        name,
+        age
+    };
+}
+```
+
 Functions in object literals can have the shorthand
 ```JavaScript
 {
@@ -373,6 +383,132 @@ var person = {
     ["last" + suffix]: "Zakas"
 };
 ```
+
+### Object.assign()
+Behaves like a mixin methods.  Adds properties and/or functions from one object to another.  It can accept any number of suppliers.  A second supplier can overwrite the first.
+
+```JavaScript
+var receiver = {};
+Object.assign(receiver, {
+        type: "js",
+        name: "file.js"
+    }, {
+        type: "css"
+    }
+);
+console.log(receiver.type);     // "css"
+console.log(receiver.name);     // "file.js"
+```
+
+You can't mixin accessor properties.  Instead you will get the value returned by the accessor property.
+
+```JavaScript
+    var receiver = {},
+    supplier = {
+        get name() {
+            return "file.js"
+        }
+    };
+
+    Object.assign(receiver, supplier);
+
+    var descriptor = Object.getOwnPropertyDescriptor(receiver, "name");
+
+    console.log(descriptor.value);      // "file.js"
+    console.log(descriptor.get);        // undefined
+```
+
+### Duplicate Object Literal Properties
+In ES6 the last property of a given name will be the value that is taken.
+
+```JavaScript
+    var person = {
+        name: "Nicholas",
+        name: "Greg"        // not an error in ES6
+    };
+
+    console.log(person.name);       // "Greg
+```
+
+### Object.setPrototypeOf()
+Lets you change the prototype of an object.  First argument is the object to change and the second argument is the object that should become the prototype.
+
+### Super references
+`super` points to the current object's prototype.  `super` references aren't dynamic.  They always point to the correct object no matter how many times it's inherited.
+
+Symbols
+-------------------------------------------------------------------------------------------
+An effort to make private object members.  A new primitive value.  Previxed with `@@`.  Symbols don't map to a string beginning with `@@`.
+
+Create a symbol with `Symbol()`
+```JavaScript
+    var firstName = Symbol();
+    var person = {};
+
+    person[firstName] = "Nicholas";
+    console.log(person[firstName]);     // "Nicholas"
+```
+
+You can pass in a description to `Symbol("description")` That will be used for debugging purposes.
+
+You can use `typeof` to identify them.
+
+You can make them readonly
+
+```JavaScript
+    var firstName = Symbol("first name");
+    var person = {
+        [firstName]: "Nicholas"
+    };
+
+    // make the property read only
+    Object.defineProperty(person, firstName, { writable: false });
+```
+
+There is a global symbol registry that you can use to share symbols accross objects.  Use `Symbol.for("identifier/description")` to add a symbol to the registry.
+
+```JavaScript
+    var uid = Symbol.for("uid");
+    var object = {};
+
+    object[uid] = "12345";
+```
+
+You can use `Symbol.keyFor()` to get the key associated with a symbol
+```JavaScript
+    var uid = Symbol.for("uid");
+    console.log(Symbol.keyFor(uid));    // "uid"
+
+    var uid2 = Symbol.for("uid");
+    console.log(Symbol.keyFor(uid2));   // "uid"
+
+    var uid3 = Symbol("uid");
+    console.log(Symbol.keyFor(uid3));   // undefined
+```
+
+You can get all the symbols in an object with `Object.getOwnPropertySymbols()`.  `Object.getOwnPropertyNames()` won't return symbols, because they aren't technically property names.
+
+You can coerce symbols to strings with `String(symbol)`.
+
+### Well-known symbols
+There are some pre-defined symbols in JavaScript
+
+### @@toStringTag
+Is used on native objects and can be added to your own objects to say what should be produced when `Object.prototype.toString.call()` is used on it.
+
+```JavaScript
+    function Person(name) {
+        this.name = name;
+    }
+
+    Person.prototype[Symbol.toStringTag] = "Person";
+
+    var me = new Person("Nicholas");
+
+    console.log(me.toString());                         // "[object Person]"
+    console.log(Object.prototype.toString.call(me));    // "[object Person]"
+```
+
 
 Classes
 -------------------------
