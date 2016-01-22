@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ![Ember Logo](http://www.gravatar.com/avatar/0cf15665a9146ba852bf042b0652780a?s=200)
-=======
-![Ember Logo](https://upload.wikimedia.org/wikipedia/en/6/69/Ember.js_Logo_and_Mascot.png)
->>>>>>> c687dd70e38ded6aad1d08764c6c7d631e61886e
 Ember Quick Reference
 ========================================================================================
 
