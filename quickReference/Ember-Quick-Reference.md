@@ -4,6 +4,9 @@ Ember Quick Reference
 
 * [References](#references)
 * [App](#app)
+* [Routes](#routes)
+* [Controllers](#controllers)
+* [Templates](#templates)
 
 References
 -------------------------------------------------------------------------------------------
@@ -251,93 +254,149 @@ Controllers
 -------------------------------------------------------------------------------------------
 Controllers are the conduit through which data flows into templates.
 In a template, Ember will first check if the controller defines a variable, if it doesn't it will proxy the request to the model.
-If the model on a route is an array, Ember will instantiate an ArrayController if another controller type isn't specified. An ObjectController is used to represent a single model
-Define
-App.IndexController = Ember.Controller. extend({});
-You can create controllers from other controllers. App.TweetsController = App.IndexController. extend();
+If the model on a route is an array, Ember will instantiate an `ArrayController` if another controller type isn't specified. An `ObjectController` is used to represent a single model
+
+### Define
+```javascript
+App.IndexController = Ember.Controller.extend({});
+```
+
+You can create controllers from other controllers. 
+```javascript
+App.TweetsController = App.IndexController.extend();
+```
+
 You can create one with a mixin.
-var ctrl = Ember.Controller.
-createWithMixins(mixin);
-Object Controller
-Data being represented is set as the model property for the controller.
+```javascript
+var ctrl = Ember.Controller.createWithMixins(mixin);
+```
+
+### Object Controller
+Data being represented is set as the `model` property for the controller.
 The properties of the controller get translated as the properties of the model. This doesn't happen with normal controllers.
-This kind is useful when we need computed properties on the controller that are dependent on the model's properties. It makes it so don't have to prefix template variables with model.
-Array Controller
+This kind is useful when we need computed properties on the controller that are dependent on the model's properties. It makes it so we don't have to prefix template variables with `model.`
+
+###Array Controller
 If the model of the controller is enumerable data like an array then we can use this kind of controller and won't have to prefix template variables with model.
-addObject(object)
+
+`addObject(object)`
 Will add an object to the end of the controller model if the object isn't already there.
-pushObject(object)
+
+`pushObject(object)`
 Always adds the object even if it's already there.
-removeObject(object)
+
+`removeObject(object)`
 Remove an object from the array. Will fail silently if the object isn't in the array.
 You can use multiple params in the 3 methods listed above.
-contains(object)
+
+`contains(object)`
 Returns a boolean if the array contains the object
-compact()
+
+`compact()`
 Returns a copy of the underlying model, removing undefined and null items.
-every(callback)
+
+`every(callback)`
 Checks if each item in the array meets a given condition.
-filter(object)
+
+`filter(object)`
 Works the same as the native JavaScript function.
-filterBy(property)
+
+`filterBy(property)`
 Compacts the array with items that contain a given property.
-find(callback)
-Like filter, but once it finds a match it quits.
-findBy(key, value)
-Like find() but more specific insertAt(index,object), objectAt(index),
-removeAt(index,length)
+
+`find(callback)`
+Like `filter`, but once it finds a match it quits.
+
+`findBy(key, value)`
+Like `find()` but more specific 
+`insertAt(index,object)`, `objectAt(index)`, `removeAt(index,length)`
 Does things at given indicies. Can't lookup by negative index.
-map(callback)
+
+`map(callback)`
 Same as native JavaScript function.
-mapBy(property)
+
+`mapBy(property)`
 Creats an array based on the property given.
-forEach(function)
+
+`forEach(function)`
 Invokes a given funciton on each item.
-uniq()
+
+`uniq()``
 Returns a new array devoid of duplicates
-sortProperties and sortAscending
+
+`sortProperties` and `sortAscending`
 These are properties you can set on the controller. Provide
-an array of properties to sort by in the sortProperties property. Choose to sort ascending/descending by setting the sortAscending property to true/false respectively.
-Needs
-You can specify controllers that your controller depends on, by using the needs property. Controllers can depend on each other and not be caught in an infinite loop.
-Action Handlers
+an array of properties to sort by in the `sortProperties` property. Choose to sort ascending/descending by setting the `sortAscending` property to `true`/`false` respectively.
+
+### Needs
+You can specify controllers that your controller depends on, by using the `needs` property. Controllers can depend on each other and not be caught in an infinite loop.
+
+### Action Handlers
 Add a property to the controller named actions that is an object with event handler functions:
+```javascript
 actions: {
   funcName: function(modelData) {
     console.log(modelData.prop);
   }
 }
-Properties
+```
+
+### Properties
 Bound templates can reference the properties of the controller.
-Computed Properties
+
+### Computed Properties
 Make a properties value a function to make it a computed property and add a property function to specify other properties to observe that will trigger a change.
+```javascript
 applicationName: function() {
   var st = this.get('searchTerms');
-return st;
+  return st;
 }.property('searchTerms'),
+```
+
 Instance of objects should never be set on a class definition unless they're meant to be static.
 Controllers can reference other controllers.
-Observables
+
+### Observables
 A function that fires when an observed property changes.
+```javascript
 queryTermDidChange: function() {
   //...
-}.observes('queryTerm'); Debouncing
+}.observes('queryTerm'); 
+```
+
+### Debouncing
 Ember provides a debounce method that takes a context, a function to fire, and the time to wait for invocation if no other calls are made.
+```javascript
 Ember.run.debounce(this, this.searchResults, 100);
-Get/Set
-Use .get() and .set() all the time, because they trigger
+```
+
+### Get/Set
+Use `.get()` and `.set()` all the time, because they trigger
 change and listening events that may be needed by other properties.
-Transitioning Between Routes
-You can transition to new routes in a controller with the transitionToRoute function. The second parameter will get added to the url as a dynamic segment, if it's a string.: this.transitionToRoute('route', data);
-Debugging
-You can lookup any controller globally. It should only be done for debugging purposes. App.__container__.lookup(“controller:index”);
+
+### Transitioning Between Routes
+You can transition to new routes in a controller with the `transitionToRoute` function. The second parameter will get added to the url as a dynamic segment, if it's a string.
+```javascript
+this.transitionToRoute('route', data);
+```
+
+### Debugging
+You can lookup any controller globally. It should only be done for debugging purposes. 
+```javascript
+App.__container__.lookup(“controller:index”);
+```
+
 Templates
-Move your stuff to .hbs files for cleaner code.
-Use the {{}} syntax to reference dynamic elements.
+-------------------------------------------------------------------------------------------
+Move your stuff to `.hbs` files for cleaner code.
+Use the `{{}}` syntax to reference dynamic elements.
 Two-way binding is applied automatically, so any updates to the variable will be reflected in the template.
-Link-to
+
+### Link-to
 You can link to another route like this:
+```handlebars
 {{#linkTo “route-name” attr1=””}}Text{{/linkTo}}
+```
 Input
 {{input type=”text” placeholder=”” valueBinding=”controller.searchTerms” action=”submit”}}
 The valueBinding property will bind the value of the input to a variable. It will be bound by default to the model if another namespace isn't specified.
