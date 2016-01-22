@@ -21,24 +21,24 @@ You can pass these flags into the create object
 * Log bindings as they occur: `LOG_BINDINGS: true`
 * Have Ember log view events on route transitions: `LOG_VIEW_LOOKUPS`
 
-Debugging
--------------------------------------------------------------------------------------------
+### Debugging
 Use `Ember.Logger` methods for debugging Ember objects.
 Methods include: `assert`, `debug`, `error`, `info`, `log`, `warn`
 
-### Log Current State
+#### Log Current State
 To get the current route name you can use
 ```javascript
 this.controllerFor('application').get('currentPath');
 ```
 
-### Log Events
+#### Log Events
 You could make a trace function that posts a timestamp to the server of how long events take to happen.
 
-### Log Errors
+#### Log Errors
 You could use the `Ember.onerror` method to post errors to a server.
 
-### Testing
+Testing
+-------------------------------------------------------------------------------------------
 There is an Ember mocha adapter you can use.
 Make sure the root element of the app has unique id and that it is set in the app.
 ```javascript 
@@ -82,41 +82,77 @@ Goes to the provided url route.
 fillIn(selector, text)
 ```
 Sets the value of an input with the given text.
+
+```javascript
 click(selector)
+```
 Triggers a click event
+
+```javascript
 keyEvent(selector, type, keyCode)
+```
 Triggers a key event on the given selector
+
+```javascript
 triggerEvent(selector, type, options)
+```
 Triggers other DOM events.
-Synchronous Helpers
+
+#### Synchronous Helpers
+```javascript
 find(selector, context)
+```
 Performs an element selection within the given optional context.
+
+```javascript
 currentPath()
+```
 Get's the application's route pathj
+
+```javascript
 currentRouteName()
 currentURL()
-Wait helpers
+```
+
+#### Wait helpers
+```javascript
 andThen
+```
 Runs a block of test operations after the previous async ops have finished.
-Unit Tests
+
+#### Unit Tests
 Unit tests are for testing object-computed properties, observers, and method calls.
-Testing computed properties
+
+##### Testing computed properties
 Set values on the dependent properties of an object and then see if the computed property equals what you'd expect.
-Integration Tests
-Look at Mastering Ember.js Chapter 10 Routes
+
+#### Integration Tests
+Look at *Mastering Ember.js Chapter 10*
+
+Routes
+-------------------------------------------------------------------------------------------
 Routes store the logic to get your app to and from the state represented by the URL.
-You have to use a # in your route URLs: http://localhost:8000/#/ Each route will have a controller and template with the same name as the route.
-Changing the root url
+You have to use a `#` in your route URLs: `http://localhost:8000/#/`
+Each route will have a controller and template with the same name as the route.
+
+### Changing the root url
 If the application isn't served at the root then you can change the rootUrl like so
+```javascript
 App.Router.reopen({
   rootURL: '/contacts/'
 });
-Changing browser location subscription method
+```
+
+### Changing browser location subscription method
+```javascript
 App.Router.reopen({
   location: 'history'
 });
-Or you can set location to 'auto', or 'none'
-Map Routes
+```
+Or you can set location to `'auto'`, or `'none'`
+
+### Map Routes
+```javascript
 App.Router.map(function() {
   this.route('route-name');
   this.route('search-results',{
@@ -128,40 +164,59 @@ App.Router.map(function() {
       this.route('edit');
     });
 });
+```
 Resources allow you to make sub-routes.
 If the route name and what appears in the url are different than you can add an object to the route function with the path name.
-You can add a dynamic segment to a route by adding something like :term to your path.
-Route Handlers
+You can add a dynamic segment to a route by adding something like `:term` to your path.
+
+### Route Handlers
+```javascript
 App.IndexRoute = Ember.Route.extend({
   model: function(params) {
-  } return ['red', 'yellow', params.color];
+    return ['red', 'yellow', params.color];
+  } 
 });
+```
 Ember automatically calls the model method on a route when the route is loaded and passes in dynamic segments from the URL as an object.
 The model method needs to return an Ember model.
 The model method can return a promise and the router will automatically be notified when the promise resolved.
 When the model is resolved Ember will automatically set the model on the corresponding controller using the setupController method.
-Serialization
+
+#### Serialization
 You can override how a route serializes url data
+```javascript
 App.ContactRoute = Ember.Route.extend({
   serialize: function(model, params) {
-var data = {};
+    var data = {};
     data[params[0]] = Ember.get(model, 'id');
-  } return data;
+    return data;  
+  } 
 });
+```
 The model argument is the affected resource, and the params argument is an array of all the segments in the resource definition.
-}
-setupController
-setupController is called after the controller is instantiated and the model method has returned content to the controller. setupController is passed a reference to both the controller and the model method content.
-Can uses this method to set properties on other controllers using: controllerFor('controllerName') or modelFor('modelName')
-Custom Template Rendering
-Route (not resource) handlers usually handle the final template Specify a custom template to use with renderTemplate method. App.ContactEditRoute = Ember.Route.extend({
+
+#### setupController
+`setupController` is called after the controller is instantiated and the model method has returned content to the controller. 
+`setupController` is passed a reference to both the controller and the model method content.
+Can use this method to set properties on other controllers using: `controllerFor('controllerName')`or `modelFor('modelName')`
+
+### Custom Template Rendering
+Route (not resource) handlers usually handle the final template 
+Specify a custom template to use with `renderTemplate` method. 
+
+```
+App.ContactEditRoute = Ember.Route.extend({
   renderTemplate: function() {
     this.render('contacts/form');
     this.render('mainboard', {
       into: 'game',
       outlet: 'mainboard',
-    } controller: 'mainboard'
-} });
+      controller: 'mainboard'
+  } 
+} 
+```
+
+
 You can also render different templates into different outlets.
 Asynchronous Routing
 We can have the route handler's model function return a promise that will make the route load the model once the XHR request is complete.
