@@ -2,15 +2,15 @@
 Ember Quick Reference
 ========================================================================================
 
-[create an anchor](#References)
-[create an anchor](#App)
+* [References](##References)
+* [App](##App)
 
-References
+(##References)
 -------------------------------------------------------------------------------------------
 *Building Web Apps with Ember.js* - Jesse Cravens & Thomas Brady
 *Mastering Ember.js* - Mitchel Kelonye
 
-App
+(##App)
 -------------------------------------------------------------------------------------------
 ```javascript
 var App = Ember.Application.create();
