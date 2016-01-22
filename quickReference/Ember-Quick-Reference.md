@@ -2,6 +2,9 @@
 Ember Quick Reference
 ========================================================================================
 
+[create an anchor](#References)
+[create an anchor](#App)
+
 References
 -------------------------------------------------------------------------------------------
 *Building Web Apps with Ember.js* - Jesse Cravens & Thomas Brady
@@ -184,6 +187,7 @@ When the model is resolved Ember will automatically set the model on the corresp
 
 #### Serialization
 You can override how a route serializes url data
+
 ```javascript
 App.ContactRoute = Ember.Route.extend({
   serialize: function(model, params) {
@@ -203,37 +207,48 @@ Can use this method to set properties on other controllers using: `controllerFor
 ### Custom Template Rendering
 Route (not resource) handlers usually handle the final template 
 Specify a custom template to use with `renderTemplate` method. 
-
-```
+```javascript
 App.ContactEditRoute = Ember.Route.extend({
   renderTemplate: function() {
     this.render('contacts/form');
     this.render('mainboard', {
       into: 'game',
       outlet: 'mainboard',
-      controller: 'mainboard'
-  } 
-} 
+      controller: 'mainboard'  
+    });
+  }
+});
 ```
-
-
 You can also render different templates into different outlets.
-Asynchronous Routing
+
+### Asynchronous Routing
 We can have the route handler's model function return a promise that will make the route load the model once the XHR request is complete.
-Redirect
-You can override the redirect hook in a handlerto transition to another state. Use the transitionTo function here.
-Catching routing errors
+
+### Redirect
+You can override the redirect hook in a `handlerto` transition to another state. Use the `transitionTo` function here.
+
+### Catching routing errors
 Handle routing errors in the action method of a route handler.
+```javascript
 App.ContactsRoute = Ember.Route.extend({
   action: {
     error: function(error){
       this.controllerFor('error')
           .set('error',error);
       this.transitionTo('error');
-}} });
-Debugging
+    }
+  } 
+});
+```
+
+### Debugging
 You can lookup any instantiated router like this:
-App.__container__.lookup(“route:index”); Controllers
+```javascript
+App.__container__.lookup(“route:index”); 
+```
+
+Controllers
+-------------------------------------------------------------------------------------------
 Controllers are the conduit through which data flows into templates.
 In a template, Ember will first check if the controller defines a variable, if it doesn't it will proxy the request to the model.
 If the model on a route is an array, Ember will instantiate an ArrayController if another controller type isn't specified. An ObjectController is used to represent a single model
