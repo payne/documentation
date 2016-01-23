@@ -7,6 +7,7 @@ Ember Quick Reference
 * [Routes](#routes)
 * [Controllers](#controllers)
 * [Templates](#templates)
+* [Views](#views)
 
 References
 -------------------------------------------------------------------------------------------
@@ -247,7 +248,7 @@ App.ContactsRoute = Ember.Route.extend({
 ### Debugging
 You can lookup any instantiated router like this:
 ```javascript
-App.__container__.lookup(“route:index”); 
+App.__container__.lookup("route:index"); 
 ```
 
 Controllers
@@ -321,7 +322,7 @@ Creats an array based on the property given.
 `forEach(function)`
 Invokes a given funciton on each item.
 
-`uniq()``
+`uniq()`
 Returns a new array devoid of duplicates
 
 `sortProperties` and `sortAscending`
@@ -383,7 +384,7 @@ this.transitionToRoute('route', data);
 ### Debugging
 You can lookup any controller globally. It should only be done for debugging purposes. 
 ```javascript
-App.__container__.lookup(“controller:index”);
+App.__container__.lookup("controller:index");
 ```
 
 Templates
@@ -395,163 +396,261 @@ Two-way binding is applied automatically, so any updates to the variable will be
 ### Link-to
 You can link to another route like this:
 ```handlebars
-{{#linkTo “route-name” attr1=””}}Text{{/linkTo}}
+{{#linkTo "route-name" attr1=""}}Text{{/linkTo}}
 ```
-Input
-{{input type=”text” placeholder=”” valueBinding=”controller.searchTerms” action=”submit”}}
-The valueBinding property will bind the value of the input to a variable. It will be bound by default to the model if another namespace isn't specified.
-Adding an action helper to the input will link it to the submit event that forms fire.
-Checkbox
-{{view Ember.Checkbox checkedBinding=”artistsIsChecked”}}
-The checked value will be bound to whatever is passed to teh checkedBinding attribute.
-Outlet
+
+### Input
+```handlebars
+{{input type="text" placeholder="" valueBinding="controller.searchTerms" action="submit"}}
+```
+The `valueBinding` property will bind the value of the input to a variable. It will be bound by default to the model if another namespace isn't specified.
+Adding an `action` helper to the input will link it to the `submit` event that forms fire.
+
+### Checkbox
+```handlebars
+{{view Ember.Checkbox checkedBinding="artistsIsChecked"}}
+```
+The checked value will be bound to whatever is passed to the `checkedBinding` attribute.
+
+### Outlet
 Tells Ember where to render the template for the current route:
+``` handlebars
 {{outlet}}
+```
 You can render different templates with different controller contexts in the same template.
+```handlebars
 {{outlet leaderboard}}
 {{outlet mainboard}}
+```
 A parent template can specify named outlets into which child templates can be rendered
-Each
+
+### Each
 Iterate over an array of objects.
+```handlebars
 {{#each index in App.someArr}}
-  <li><a href=”#”>{{index.name}}</a></li>
+  <li><a href="#">{{index.name}}</a></li>
 {{/each}}
-Can throw an else statment in there to catch cases where the iteration data is empty.
-If/Else
+```
+Can throw an `else` statment in there to catch cases where the iteration data is empty.
+
+### If/Else
+```handlebars
 {{#if nickname}}
-  <li><a href=”#”>{{nickname}}</a></li>
+  <li><a href="#">{{nickname}}</a></li>
 {{else}}
-  <li><a href=”#”>{{name}}</a></li>
+  <li><a href="#">{{name}}</a></li>
 {{/if}}
-If the value is false, null, undefined, '', 0, NaN, or the array is empty the condition will evalute to false.
-You can also use an unless condition that will only be met when the variable evaluated is falsy.
+```
+If the value is `false`, `null`, `undefined`, `''`, `0`, `NaN`, or the array is empty the condition will evalute to `false`.
+You can also use an `unless` condition that will only be met when the variable evaluated is falsy.
 You can't use logic in the conditions, but you can use them in computed properties in the controller.
-Action
+
+### Action
+```handlebars
 <a{{action 'funcName' param1}}>text</a>
-The action can capture a click event and call a handler function on the template's controller. It can pass parameters to the handler. You can specify which kind of event with the on handler.
-An actions handler can be defined in the route or the controller. The action's function is first looked up in the corresponding controller, and then the corresponding router. In the route handler layer Ember will look up the function name in the parent route handlers. If an action handler returns true Ember will keep looking for the handler.
+```
+The action can capture a click event and call a handler function on the template's controller. It can pass parameters to the handler. You can specify which kind of event with the `on` handler.
+An `actions` handler can be defined in the route or the controller. The action's function is first looked up in the corresponding controller, and then the corresponding router. In the route handler layer Ember will look up the function name in the parent route handlers. If an action handler returns true Ember will keep looking for the handler.
 You can also specify the controller that holds the action function by using the target attribute
-Bind-attr
-{{bind-attr href=”model.biography.url”}}
-If the bound attribute is a boolean, the attribute will exist or not exist based on the value of the boolean.
-Binding Class Names
-Works the same way as bind-attr with some additional things. You can toggle a class name based on a controller's property.
-<a href='/'{{bind-attr class =' selected:active:inactive'}}>Click me</a>
+
+### Bind-attr
+```handlebars
+{{bind-attr href="model.biography.url"}}
+```
+If the `bound` attribute is a boolean, the attribute will exist or not exist based on the value of the boolean.
+
+### Binding Class Names
+Works the same way as `bind-attr` with some additional things. You can toggle a class name based on a controller's property.
+```handlebars
+<a href='/'{{bind-attr class ='selected:active:inactive'}}>Click me</a>
+```
 If the class name will be active/inactive based on whether the selected property is true/false respectively.
-If only one argument is passed after the colon, the arg willl be used as the class name.
-<a href='/'{{bind-attr class=' isSelected:selected'}}>Click me</a>
-If the isSelected property is true, then selected will be used as the class name.
-CamelCase names will get dehasherized into names with hypens. You can add multiple classes with the same signature seperated by spaces.
-You can include an unbound class name by having it start with a colon :active
-You can't have both a class attribute and classes established in a bind-attr helper
-Custom Helpers
+If only one argument is passed after the colon, the arg will be used as the class name.
+```handlebars
+<a href='/'{{bind-attr class='isSelected:selected'}}>Click me</a>
+```
+If the `isSelected` property is true, then selected will be used as the class name.
+CamelCase names will get dehasherized into names with hypens. 
+You can add multiple classes with the same signature seperated by spaces.
+You can include an unbound class name by having it start with a colon `:active`
+You can't have both a class attribute and classes established in a `bind-attr` helper
+
+### Custom Helpers
 You can add a custom helpers to your App like this:
+```javascript
 Ember.Handlebars.helper('helper-name',
   function(value, options) {
     var h = parseFloat(value);
-    var html = “<h4>Hotness: “ + h;
+    var html = "<h4>Hotness: " + h;
     return new Handlebars.SafeString(html);
+  }
 });
+```
 You can call the helper in your template and pass in values:
-{{helper-name value}} Subexpressions
+```handlebars
+{{helper-name value}} 
+```
+
+### Subexpressions
+```handlebars
 {{outer-helper (inner-helper 'arg1') 'arg2'}}
-Unbound Expressions
+```
+
+### Unbound Expressions
 If you don't want the template to reflect changes in the controller or model, then use 3 curly braces.
+```handlebars
 {{{post}}}
-Comments
+```
+
+### Comments
+```handlebars
 {{! some comment }}
+```
 These aren't rendered to HTML comments.
-Switching Contexts
+
+### Switching Contexts
 If you want to specify which context to prioritize during a check use:
+```handlebars
 {{#with controller.controllers.contact as contact}}...{{/with}}
-Partials
+```
+
+### Partials
 Inserts a template where the partial expression is identified
-{{partial “contacts/form”}}
+```handlebars
+{{partial "contacts/form"}}
+```
 You don't lose context when you use the handler.
-You can also use the render helper which works like the partial helper, but can take an optional context as the second argument.
-Debugging
+You can also use the `render` helper which works like the `partial` helper, but can take an optional context as the second argument.
+
+### Debugging
 You can access any template like this:
+```javascript
 Ember.TEMPLATES['index']
-You can debug the template by dropping in a {{debugger}} You can log within templates like this {{log model}}
+```
+You can debug the template by dropping in a `{{debugger}}`
+You can log within templates like this `{{log model}}`
+
 Views
-Good to use when a section of the app requires sophisticated event management, there's a need for reusable components, the app needs to integrate 3rd party libs.
-Views are usually backed by an instance of the corresponding controller. You can access the controller with view. getController()
+-------------------------------------------------------------------------------------------
+Good to use when a section of the app requires sophisticated event management, there's a need for reusable components, or the app needs to integrate 3rd party libs.
+Views are usually backed by an instance of the corresponding controller. You can access the controller with `view.getController()`
 Every view renders a template into the DOM. You define one like this:
+```javascript
 App.SongView = Em.View.extend({
   didInsertElement: function(){},
   click: function(jQueryEvent){},
   eventManager: Ember.Object.create({
-  })click: function(jQueryEvent, view){}
+    click: function(jQueryEvent, view){}
+  })
 });
-Ember automatically cleans up unused variables and bindings as
-views are hidden and shown.
-Specify template
+```
+Ember automatically cleans up unused variables and bindings as views are hidden and shown.
+
+### Specify template
 You can specify a template to override the Ember convention with the templateName property.
-Element tag
-Views are all wrapped in an div tag by default. You can change this with the tagName property.
-Element tag class attribute
-You can specify the class names that should go in the wrapper element with the classNames property.
-You can use the classNameBindings property to add class names dynamically based on the boolean value of a property in the view.
-Other attribute of element tag
-Add the attributes you want in the tag to the attributeBindings property. Make the values for the attributes normal properties of the view class.
+
+### Element tag
+Views are all wrapped in an div tag by default. You can change this with the `tagName` property.
+
+### Element tag class attribute
+You can specify the class names that should go in the wrapper element with the `classNames` property.
+You can use the `classNameBindings` property to add class names dynamically based on the boolean value of a property in the view.
+
+###Other attribute of element tag
+Add the attributes you want in the tag to the `attributeBindings` property. Make the values for the attributes normal properties of the view class.
 The attributes values or existence can be computed with computed properties.
-Inserting in the DOM
-If you need to manuall insert use the view. appendTo('selector') or view.append() to add to the body, or view.remove(), or you can use view.destory() which will destroy the view and automatically remove it from the DOM
-Inserting views into templates
-Use the view helper.
+
+### Inserting in the DOM
+If you need to manually insert use the `view.appendTo('selector')` or `view.append()` to add to the body, or `view.remove()`, or you can use `view.destory()` which will destroy the view and automatically remove it from the DOM
+
+### Inserting views into templates
+Use the view helper
+```handlebars
 {{view App.HeaderView}}
+```
+
 You can also do them as block statements for further nesting
+```handlebars
 {{#view App.ContentView}}
   {{view.App.SideView}}
   {{view.App.PaneView}}
 {{/view}}
-You an manually manage child views with a containerView var contentView = Ember.ContainerView.create(); contentView.pushObjects([
+```
+You can manually manage child views with a `ContainerView` 
+```javascript
+var contentView = Ember.ContainerView.create(); contentView.pushObjects([
   sideView, paneView
 ]);
-You can also use this childViews property to do this. Container views cannot have templates or layouts.
-You can access a child's view parent view with the parentView property.
-Layouts
-A template is marked as a layout by adding the {{yield}} expression in it. This tells Ember where to insert the template, much like the {{outlet}}
-Specify the layout for the view with the layoutName property in the view's class definition
+```
+You can also use this `childViews` property to do this. Container views cannot have templates or layouts.
+You can access a child's view parent view with the `parentView` property.
+
+### Layouts
+A template is marked as a layout by adding the `{{yield}}` expression in it. This tells Ember where to insert the template, much like the `{{outlet}}`
+Specify the layout for the view with the `layoutName` property in the view's class definition
 Html elments with self-closing layouts, can't be views
-Registering event handlers
+
+### Registering event handlers
 You can have a view send event messages.
+```javascript
 click: function(event){
-} this.get('controller').send('checkout');
+  this.get('controller').send('checkout');
+} 
+```
+
 A view only manages events invoked in their templates. Child views bubble events up to parent views usually.
-A view can send user-initiated events with the send method You can add click listeners.
-You can add an eventManager which helps when there are nested views.
-Built-in views
-Textfields
+A view can send user-initiated events with the send method 
+You can add `click` listeners.
+You can add an `eventManager` which helps when there are nested views.
+
+### Built-in views
+#### Textfields
 We can subscribe to change events with the change event handler.
+```javascript
 App.InputView=Ember.TextField.extend({
   change: function(event){
     console.log(this.get('value'));
   }
 });
-{{view App.InputView name=”name”
-valueBinding=”controller.name”}}
-Textarea
+```
+```handlebars
+{{view App.InputView name="name" valueBinding="controller.name"}}
+```
+
+#### Textarea
 Like textfield, but with more properties such as rows, and cols.
-Select Menu
-Can select which content to bind to with the contentBinding attribute.
+
+### Select Menu
+Can select which content to bind to with the `contentBinding` attribute.
+```javascript
 App.AppCtrl = Ember.Controller.extend({
   selectedFruit: null,
   fruits: [{id:1, name:'mango'},
-});       {id:2, name:'apple'}]
+          {id:2, name:'apple'}]
+});       
+```
+```handlebars
 {{view Ember.Select
-  prompt=”Select a Fruit”,
-  contentBinding=”fruits”,
-  selectionBinding=”selectedFruit”,
-  optionLabelPath=”content.name”,
-  optionValuePath=”content.id”}}
+  prompt="Select a Fruit",
+  contentBinding="fruits",
+  selectionBinding="selectedFruit",
+  optionLabelPath="content.name",
+  optionValuePath="content.id"}}
+```
 The selection property holds the selected choice.
-When the items in the array are objects you can use the optionLabelPath and the optionValuePath to indicate what should be the label and what should be the value
-Checkboxes
-{{view Ember.Checkbox name=”is-complete” value-
-binding=”isComplete”}}
-3rd-party DOM manipulation libs
-Use the didInsertElement to make sure that the view has been inserted into the DOM. Make sure you call the _super method to not lose parent functionality. Use the schedule method to run the code after the view's been rendered. Ember.run.schedule('afterRender', this, function Calling this.$() returns a jQuery element selector relative to the view.
+When the items in the array are objects you can use the `optionLabelPath` and the `optionValuePath` to indicate what should be the label and what should be the value
+
+#### Checkboxes
+```handlbears
+{{view Ember.Checkbox name="is-complete" value-binding="isComplete"}}
+```
+
+### 3rd-party DOM manipulation libs
+Use the `didInsertElement` to make sure that the view has been inserted into the DOM. Make sure you call the `_super` method to not lose parent functionality. Use the `schedule` method to run the code after the view's been rendered. 
+```javascript
+Ember.run.schedule('afterRender', this, function});
+```
+Calling this.$() returns a jQuery element selector relative to the view.
 Use willDestroy to tear down events a plugin has setup, before you remove the view.
 Debugging
 Instantiated views have unique ids. You can look them up by their id.
@@ -583,7 +682,7 @@ var artist = App.Artist.create({
   name: 'Tom Waits'
 });
 Object Class
-Good for holding transient data and being a “proto-model”. You define one like this:
+Good for holding transient data and being a "proto-model". You define one like this:
 App.Artist = Em.Object.extend({
 id: null,
   name: null
@@ -598,9 +697,9 @@ Promise.all([
   anotherFunctionOnWhichWeDepend(),
   yetAnotherFunctionOnWhichWeDepend()])
   .then(function() {
-    console.log(“They're all finished”)
+    console.log("They're all finished")
   }, function() {
-    console.error(“One or more FAILED!”)
+    console.error("One or more FAILED!")
 });
 jQuery can be referenced as Ember.$
 Can use jQuery promises, Ember.Deferred, or Ember.RSVP
@@ -680,14 +779,14 @@ FixtureAdapater
 You can add some dummy data to the store by adding to the built in FIXTURES array for a model:
 App.MyModel.FIXTURES = [{
   id: 0,
-  display_id: “Activity1”,
+  display_id: "Activity1",
   hotttnesss: 54,
-  timestamp: “Fri Dec 06 2013”
+  timestamp: "Fri Dec 06 2013"
 }, {
 id: 1,
-  display_id: “Activity2”,
+  display_id: "Activity2",
   hotttnesss: 99,
-  timestamp: “Fri Dec 06 2013”
+  timestamp: "Fri Dec 06 2013"
 }];
 LocalStorageAdapater
 3rd-party adapater by Ryan Florence. Lets you communicate with local storage.
@@ -716,7 +815,7 @@ App.BinaryBool = DS.Transform.extend({
   }
 });
 Ember.Application.initializer({
-  name: “myInitializer”,
+  name: "myInitializer",
   initialize: function(container,application) {}
 });
 Workflow Tools
@@ -724,8 +823,8 @@ Ember CLI
 Uses Broccoli as an asset pipeline instead of Grunt's watch task. This makes it rebuild individual files instead of the entire project for faster build times.
 Uses the ES6 Module Transpiler.
 Ember Inspector
-Get the Ember inspector plugin for Chrome/Firefox. Make sure “Experimental Extension APIs is enabled in chrome://flags. You can inspect all your routes and their properties in the Routes tab.
-You can inspect the View Tree tab to see an overlay of the current “state” of the rendered application.
+Get the Ember inspector plugin for Chrome/Firefox. Make sure "Experimental Extension APIs is enabled in chrome://flags. You can inspect all your routes and their properties in the Routes tab.
+You can inspect the View Tree tab to see an overlay of the current "state" of the rendered application.
 You can inspect the Data tab to see a snapshot of all the records in Ember Data.
 You can log out your app's objects to the console with the $E variable.
 Real-time Apps
