@@ -8,6 +8,10 @@ Ember Quick Reference
 * [Controllers](#controllers)
 * [Templates](#templates)
 * [Views](#views)
+* [Components](#components)
+* [Models](#models)
+* [Promises](#promises)
+* [Ember Data](#ember-data)
 
 References
 -------------------------------------------------------------------------------------------
@@ -650,48 +654,82 @@ Use the `didInsertElement` to make sure that the view has been inserted into the
 ```javascript
 Ember.run.schedule('afterRender', this, function});
 ```
-Calling this.$() returns a jQuery element selector relative to the view.
-Use willDestroy to tear down events a plugin has setup, before you remove the view.
-Debugging
+Calling `this.$()` returns a jQuery element selector relative to the view.
+Use `willDestroy` to tear down events a plugin has setup, before you remove the view.
+
+### Debugging
 Instantiated views have unique ids. You can look them up by their id.
+```javascript
 Ember.views['ember1']
+```
+
 Components
+-------------------------------------------------------------------------------------------
 The controller context of a component is isolated from the rest of the application, unlike views which are accessible to different controllers.
-Define:
-In app/scripts/components
+
+### Define:
+In `app/scripts/components`
+```javascript
 App.ActivityLogComponent =
   Ember.Component.extend({});
-In templates/components create an hbs file with the dashed name of the component. Custom elements must be namespaced with a hyphen.
+```
+In `templates/components` create an `hbs` file with the dashed name of the component. Custom elements must be namespaced with a hyphen.
+```handlebars
 <p>display_id: {{display-id}}</p>
 <p>type: {{type}}</p>
-Use:
-In a template file include the component as a directive. You can pass in data to the component handlebars template. You can access passed in data as properties of the component. {{activity-log display_id=display_id type=type}}
-Change Component's tag
-You can change the component's tag with the tagName property Changing class name
+```
+
+### Use:
+In a template file include the component as a directive. You can pass in data to the component handlebars template. You can access passed in data as properties of the component. 
+```handlebars
+{{activity-log display_id=display_id type=type}}
+```
+
+### Change Component's tag
+You can change the component's tag with the `tagName` property 
+
+### Changing class name
 The component class attribute can be manipulated in the same way it can in a view
-Actions
+
+### Actions
 Components can have their own actions, because they act as controllers that are isolated from the rest of the app.
-Interfacing with rest of the app
-A component can send action events to its parent controller with the sendAction function. The first argument of sendAction is always 'action' and the next param is the object(s) we wish to send along. Make the action attribute of the component have the handler name that's inside the parent controller.
-As Layouts
-Not defined in the view layer. Additional content can be inserted without losing scope. Uses the {{yield}} expression.
+
+### Interfacing with rest of the app
+A component can send action events to its parent controller with the `sendAction` function. The first argument of `sendAction` is always `'action'` and the next param is the object(s) we wish to send along. Make the action attribute of the component have the handler name that's inside the parent controller.
+
+### As Layouts
+Not defined in the view layer. Additional content can be inserted without losing scope. Uses the `{{yield}}` expression.
+
 Models
+-------------------------------------------------------------------------------------------
 Models mainly exist for the sake of persistence. You instantiate one like this:
+```javascript
 var artist = App.Artist.create({
   id: 'ADSF31431',
   name: 'Tom Waits'
 });
-Object Class
+```
+
+### Object Class
 Good for holding transient data and being a "proto-model". You define one like this:
+```javascript
 App.Artist = Em.Object.extend({
 id: null,
   name: null
 });
+```
 The values you set in the definition, will be the default values.
-Extending
-If you need to add new properties and methods to a class after defining it. You can use Ember.Object.reopenClass()
+
+### Extending
+If you need to add new properties and methods to a class after defining it. You can use 
+```javascript
+Ember.Object.reopenClass()
+```
+
 Promises
+-------------------------------------------------------------------------------------------
 Ember includes a promise library called RSVP.
+```javascript
 Promise.all([
   functionOnWhichWeDepend(),
   anotherFunctionOnWhichWeDepend(),
@@ -701,34 +739,59 @@ Promise.all([
   }, function() {
     console.error("One or more FAILED!")
 });
-jQuery can be referenced as Ember.$
+```
+jQuery can be referenced as `Ember.$`
 Can use jQuery promises, Ember.Deferred, or Ember.RSVP
+
 Ember Data
-Data Store
-A DS.Store is created with the application and can be accessed by controllers and routes using this.store
-find():
-store.find('my-model', 1); filter():
+-------------------------------------------------------------------------------------------
+### Data Store
+A `DS.Store` is created with the application and can be accessed by controllers and routes using `this.store`
+
+`find()`
+```javascript
+store.find('my-model', 1); 
+```
+
+`filter()`
+```javascript
 store.filter('activity', function(activity){
   return activity.get('type', 'song');
 });
-all():
+```
+
+`all()`
+```javascript
 store.all('activity');
+```
 Is an alternative to find, when you don't want to make a network request.
-getById():
-store.getById('activity'); Doesn't make a network request.
-Create a new record:
-var record = this.store.createRecord('my-model',
-{
+
+`getById()`
+```javascript
+store.getById('activity'); 
+```
+Doesn't make a network request.
+
+#### Create a new record:
+```javascript
+var record = this.store.createRecord('my-model', {
   display_id: model.enid,
   hotttnesss: model.hotttnesss,
   timestamp: date
 });
 record.save();
-Delete a record:
-var record = store.find('record',1); record.deleteRecord();
+```
+
+#### Delete a record:
+```javascript
+var record = store.find('record',1); 
+record.deleteRecord();
 record.save();
-You can also use destroyRecord() which combines the save and delete function calls.
-Define a model
+```
+You can also use `destroyRecord()` which combines the save and delete function calls.
+
+### Define a model
+```javascript
 App.MyModel = DS.Model.extend({
   display_id: DS.attr('string'),
   hotttnesss: DS.attr('number', {
@@ -736,16 +799,20 @@ App.MyModel = DS.Model.extend({
   }),
   timestamp: DS.attr()
 });
-DS.attr takes 2 arguments a type and an options object. Attributes are usually either string, number, date, or boolean.
-Relations
-one-to-one
-Use belongsTo to establish this kind of relationship. The thing it belongs to will be another model.
+```
+`DS.attr` takes 2 arguments a `type` and an `options` object. Attributes are usually either `string`, `number`, `date`, or `boolean`.
+
+### Relations
+#### one-to-one
+Use `belongsTo` to establish this kind of relationship. The thing it belongs to will be another model.
+```javascript
 App.User = DS.Model.extend({
   profile: DS.belongsTo('profile');
 });
 App.Profile = DS.Model.extend({
   user: DS.belongsTo('user');
 });
+```
 one-to-many
 Use belongsTo and hasMany App.Post = DS.Model.extend({
   comments: DS.hasMany('comment');
