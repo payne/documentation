@@ -2,19 +2,22 @@ RegEx Quick Reference
 ========================================================================================
 
 * [References](#references)
+* [Guidelines](#guidelines)
 * [Choice](#choice)
 * [Sequence](#sequence)
 * [Factor](#factor)
 * [Escapement](#escapement)
 * [Group](#group)
 * [Class](#class)
-* [Quantifier](#quantifire)
+* [Quantifier](#quantifier)
 * [Examples](#examples)
 
 References
 -------------------------------------------------------------------------------------------
 *JavaScript the Good Parts* - Douglas Crockford
 
+Guidelines
+-------------------------------------------------------------------------------------------
 Sloppy regular expressions are a popular security exploit.
 
 Simplicity is the best strategy
@@ -92,7 +95,7 @@ Specify a set of characters. Denoted by `[]`. Simpler to use than a non-capturin
 
 Can specify a range of characters by using the `-`
 
-If you place a `^`` at the beginning of the class, then the specified characters will be excluded
+If you place a `^` at the beginning of the class, then the specified characters will be excluded
 
 ### Escapement
 Same as for [factor](#factor) except `\b` is the backspace character
