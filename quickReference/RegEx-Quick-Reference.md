@@ -110,7 +110,6 @@ Place it after a factor to specify how many times to match it
 
 `{3,}` - will match 3 or more times
 
-
 `?` - same as `{0,1}`
 
 `*` - same as `{0,}`
