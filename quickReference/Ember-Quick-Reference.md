@@ -214,8 +214,11 @@ App.IndexRoute = Ember.Route.extend({
 });
 ```
 Ember automatically calls the model method on a route when the route is loaded and passes in dynamic segments from the URL as an object.
+
 The model method needs to return an Ember model.
+
 The model method can return a promise and the router will automatically be notified when the promise resolved.
+
 When the model is resolved Ember will automatically set the model on the corresponding controller using the `setupController` method.
 
 #### Serialization
@@ -234,7 +237,9 @@ The model argument is the affected resource, and the params argument is an array
 
 #### setupController
 `setupController` is called after the controller is instantiated and the model method has returned content to the controller. 
+
 `setupController` is passed a reference to both the controller and the model method content.
+
 Can use this method to set properties on other controllers using: `controllerFor('controllerName')`or `modelFor('modelName')`
 
 ### Custom Template Rendering
