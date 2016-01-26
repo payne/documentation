@@ -4,6 +4,7 @@ Ember Quick Reference
 
 * [References](#references)
 * [App](#app)
+* [Active Generation](#active-generation)
 * [Routes](#routes)
 * [Controllers](#controllers)
 * [Templates](#templates)
@@ -12,6 +13,8 @@ Ember Quick Reference
 * [Models](#models)
 * [Promises](#promises)
 * [Ember Data](#ember-data)
+* [Workflow Tools](#workflow-tools)
+* [Real-time Apps](#real-time-apps)
 
 References
 -------------------------------------------------------------------------------------------
@@ -47,6 +50,30 @@ You could make a trace function that posts a timestamp to the server of how long
 
 #### Log Errors
 You could use the `Ember.onerror` method to post errors to a server.
+
+Active Generation
+-------------------------------------------------------------------------------------------
+When you start an Ember application Ember searches for `ApplicationRoute`, `ApplicationController`, and an `application` template. If it doesn't find them it will create them.
+
+### Lifecycle
+1. app.js instantiates the Application
+2. The `Application` looks for an `ApplicationRoute` or creates one
+3. The `Application` looks for an `ApplicationController` or creates one
+4. Any event hooks defined in the `ApplicationRoute` are fired
+5. The `Application` looks for an application template and sets it up with the `ApplicationController` as its controller.
+6. If you are at the route URL, the `Application` will find/instantiate an `IndexRoute`.
+7. Ember will call the model function of `IndexRoute` passing it the last portion of your URL.
+8. The `Application` will then find/instantiate an `IndexController`.
+9. Ember will find the template named `index` and render it to the `outlet` helper in the `application` template.
+
+### Application Initializer
+Does things when the app initializes.
+```javascript
+Ember.Application.initializer({
+  name: “myInitializer”,
+  initialize: function(container,application) {}
+});
+```
 
 Testing
 -------------------------------------------------------------------------------------------
@@ -813,17 +840,24 @@ App.Profile = DS.Model.extend({
   user: DS.belongsTo('user');
 });
 ```
-one-to-many
-Use belongsTo and hasMany App.Post = DS.Model.extend({
+
+#### one-to-many
+Use `belongsTo` and `hasMany` 
+```javascript
+App.Post = DS.Model.extend({
   comments: DS.hasMany('comment');
 });
 App.Comment = DS.Model.extend({
   post: DS.belongsTo('post');
 });
-many-to-many
-Use hasMany on both models.
-Explicit Inverses
-If you have multiple belongsTo/hasManys for the same type you can specify which property on the related model is the inverse with the hasMany's inverse option.
+```
+
+#### many-to-many
+Use `hasMany` on both models.
+
+#### Explicit Inverses
+If you have multiple `belongsTo`/`hasManys` for the same type you can specify which property on the related model is the inverse with the `hasMany's` inverse option.
+```javascript
 App.Comment = DS.Model.extend({
   onePost: DS.belongsTo('post'),
   twoPost: DS.belongsTo('post')
@@ -833,46 +867,63 @@ App.Post = DS.Model.extend({
     inverse: 'redPost'
   })
 });
-Reflexive Relationships
-Have to explicitly define the other side or if you don't need the other, set the inverse to null.
+```
+
+#### Reflexive Relationships
+Have to explicitly define the other side or if you don't need the other, set the `inverse` to `null`.
+```javascript
 App.Folder = DS.Model.extend({
- children:hasMany('folder',{inverse: 'parent'}),
- parent:belongsTo('folder',{inverse:
-'children'})
+ children: hasMany('folder',{inverse: 'parent'}),
+ parent: belongsTo('folder',{inverse: 'children'})
 });
-Adapters
-Adapters need to sit at the network layer and make the API calls. Ember comes with a fixture adapter and a rest adapter.
-FixtureAdapater
-You can add some dummy data to the store by adding to the built in FIXTURES array for a model:
+```
+
+### Adapters
+Adapters need to sit at the network layer and make the API calls. Ember comes with a `fixture` adapter and a `rest` adapter.
+
+#### FixtureAdapater
+You can add some dummy data to the store by adding to the built in `FIXTURES` array for a model:
+```javascript
 App.MyModel.FIXTURES = [{
   id: 0,
   display_id: "Activity1",
   hotttnesss: 54,
   timestamp: "Fri Dec 06 2013"
 }, {
-id: 1,
+  id: 1,
   display_id: "Activity2",
   hotttnesss: 99,
   timestamp: "Fri Dec 06 2013"
 }];
-LocalStorageAdapater
+```
+
+#### LocalStorageAdapater
 3rd-party adapater by Ryan Florence. Lets you communicate with local storage.
-Rest Adapter
-Ember-data expects that a property that is a has many will be the pluralized form of the model.
+
+#### Rest Adapter
+Ember-data expects that a property that is a `hasMany` will be the pluralized form of the model.
 Ember only sends the ids of related objects. The corresponding objects will be side-loaded into the data store though.
-If we need to use different API endpoints for different models we can extend the RESTAdapter and change it's host property.
-Serializer
-This can be used to manipulate the data as it passed back and forth from the external data source. App.ApplicationSerializer =
+If we need to use different API endpoints for different models we can extend the `RESTAdapter` and change it's `host` property.
+
+### Serializer
+This can be used to manipulate the data as it passed back and forth from the external data source. 
+```javascript
+App.ApplicationSerializer =
   DS.RESTSerializer.extend({
     // ...
 });
+```
+
 You can make them on a per model basis as well.
+```javascript
 App.MyModelSerializer =
-  DS.RESTSerializer.extend({
-// ... });
-If the primary key isn't id, you can change the primaryKey property of a serializer.
-Transformations
+  DS.RESTSerializer.extend({});
+```
+If the primary key isn't `id`, you can change the `primaryKey` property of a serializer.
+
+### Transformations
 Transformations are the different kinds of model attributes. We can make new ones if we need to, like if a server api represents booleans as 1s and 0s.
+```javascript
 App.BinaryBool = DS.Transform.extend({
   serialize: function(bool){
     return (!bool) ? 0 : 1;
@@ -885,38 +936,32 @@ Ember.Application.initializer({
   name: "myInitializer",
   initialize: function(container,application) {}
 });
+```
+
 Workflow Tools
-Ember CLI
+-------------------------------------------------------------------------------------------
+### Ember CLI
 Uses Broccoli as an asset pipeline instead of Grunt's watch task. This makes it rebuild individual files instead of the entire project for faster build times.
 Uses the ES6 Module Transpiler.
-Ember Inspector
+
+### Ember Inspector
 Get the Ember inspector plugin for Chrome/Firefox. Make sure "Experimental Extension APIs is enabled in chrome://flags. You can inspect all your routes and their properties in the Routes tab.
 You can inspect the View Tree tab to see an overlay of the current "state" of the rendered application.
 You can inspect the Data tab to see a snapshot of all the records in Ember Data.
 You can log out your app's objects to the console with the $E variable.
+
 Real-time Apps
+-------------------------------------------------------------------------------------------
 Use Socket.io
 Server-sent events are a good option if the client app is meant to constantly receive updates from the backend.
 In the backend use node with Express.io which blends Express framework with Socket.io
 Initialize the client library with the connect method on the exposed io global variable.
+```javascript
 App.io = io.connect();
+```
 Then in a property in our model defintion we can use the new type.
+```javascript
 App.Todo = DS.Todo.extend({
   complete: DS.attr('binaryBoolean');
 });
-Active Generation
-When you start an Ember application Ember searches for ApplicationRoute, ApplicationController, and an application template. If it doesn't find them it will create them.
-Lifecycle
-app.js instantiates the Application
-The Application looks for an ApplicationRoute or creates one
-The Application looks for an ApplicationController or creates one
-Any event hooks defined in the ApplicationRoute are fired
-The Application looks for an application template and sets it up with the ApplicationController as its controller.
-If you are at the route URL, the Application will find/instantiate an IndexRoute.
-Ember will call the model function of IndexRoute passing it the last portion of your URL.
-The Application will then find/instantiate an IndexController.
-Ember will find the template named index and render it to the outlet helper in the application template.
-Application Initializer
-Does things when the app initializes.
-=======
-this.controllerFor('application').get('currentPath');
+```
