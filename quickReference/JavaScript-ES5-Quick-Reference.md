@@ -261,13 +261,18 @@ If `replaceValue` is a string, the `$` has special meaning:
 '(555)666-1212'.replace(/\((\d{3})\)/g, '$1-'); // ‘555-666-1212’
 ```
 
-If replaceValue is a function it will be called by each match. The string returned by the function will be used as replacement text. The 1st param is the matched text, the 2nd param is capture group 1, the 3rd is capture group 2, etc...
-search(regexp) is indexOf but takes a regexp.
-slice(start,end) makes a new string by copying a portion of another string. end is optional and both start and end can be negative and have string.length added to them
-split(separator, limit) creates an array by splitting the array on the separator. limit will limit the number of splits. separator can be a regexp. If it’s a regexp, than capturing groups get included in the split. Some implementations will automatically supress empty strings from the output if the separator is a regexp
-toLocaleLowerCase/toLocaleUpperCase makes a new string in lower/upper case that follows the rules of the local language.
+If `replaceValue` is a function it will be called by each match. The string returned by the function will be used as replacement text. The `1st param` is the matched text, the `2nd param` is capture group 1, the 3rd is capture group 2, etc...
+
+`search(regexp)` is `indexOf` but takes a `regexp`.
+
+`slice(start, end)` makes a new string by copying a portion of another string. `end` is optional and both `start` and `end` can be negative and have `string.length` added to them
+
+`split(separator, limit)` creates an array by splitting the array on the `separator`. `limit` will limit the number of splits. `separator` can be a regexp. If it’s a regexp, than capturing groups get included in the split. Some implementations will automatically supress empty strings from the output if the separator is a regexp
+
+`toLocaleLowerCase`/`toLocaleUpperCase` makes a new string in `lower`/`upper` case that follows the rules of the local language.
 
 Exceptions
+-------------------------------------------------------------------------------------------
 You can throw your own exception object, but you may miss out on information like line number and filename.
 throw { name: 'TypeError', message: 'add needs numbers' };
 An exception object can have more properties added to it
