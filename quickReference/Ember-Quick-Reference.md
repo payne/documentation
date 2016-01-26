@@ -176,7 +176,7 @@ You have to use a `#` in your route URLs: `http://localhost:8000/#/`
 Each route will have a controller and template with the same name as the route.
 
 ### Changing the root url
-If the application isn't served at the root then you can change the rootUrl like so
+If the application isn't served at the root then you can change the `rootUrl` like so
 ```javascript
 App.Router.reopen({
   rootURL: '/contacts/'
@@ -250,6 +250,7 @@ Can use this method to set properties on other controllers using: `controllerFor
 
 ### Custom Template Rendering
 Route (not resource) handlers usually handle the final template 
+
 Specify a custom template to use with `renderTemplate` method. 
 ```javascript
 App.ContactEditRoute = Ember.Route.extend({
@@ -331,9 +332,7 @@ Will add an object to the end of the controller model if the object isn't alread
 Always adds the object even if it's already there.
 
 `removeObject(object)`
-Remove an object from the array. Will fail silently if the object isn't in the array.
-
-You can use multiple params in the 3 methods listed above.
+Remove an object from the array. Will fail silently if the object isn't in the array. You can use multiple params in the 3 methods listed above.
 
 `contains(object)`
 Returns a boolean if the array contains the object
