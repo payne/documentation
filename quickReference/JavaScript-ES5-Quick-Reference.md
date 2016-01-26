@@ -255,7 +255,7 @@ If `replaceValue` is a string, the `$` has special meaning:
 * `$$` - replaces `$`
 * `$&` - replaces matched text
 * `$number` - replaces the capture group
-* ```$```` - replaces the preceding match text, 
+* `` $` ``  - replaces the preceding match text, 
 * `$’` - replaces the after match text. 
 ```javscript
 '(555)666-1212'.replace(/\((\d{3})\)/g, '$1-'); // ‘555-666-1212’
