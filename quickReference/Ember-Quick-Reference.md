@@ -30,8 +30,8 @@ var App = Ember.Application.create();
 ### App Configuration/Configuration Flags
 You can pass these flags into the create object
 * Have Ember log each route transition: `LOG_TRANSITIONS: true`
-* Have Ember log things that it is generating: `LOG_ACTIVE_GENERATION: true`
-* Get more detailed trannsition info: `LOG_TRANSITIONS_INTERNAL: true`
+* Have Ember log the things that it is generating: `LOG_ACTIVE_GENERATION: true`
+* Get more detailed transition info: `LOG_TRANSITIONS_INTERNAL: true`
 * Log bindings as they occur: `LOG_BINDINGS: true`
 * Have Ember log view events on route transitions: `LOG_VIEW_LOOKUPS`
 
@@ -83,7 +83,7 @@ Make sure the root element of the app has unique id and that it is set in the ap
 App.rootElement = '#ember'
 ```
 
-Run the setupForTesting method
+Run the `setupForTesting` method
 ```javascript
 App.setupForTesting();
 ```
@@ -94,7 +94,7 @@ App.injectTestHelpers();
 ```
 
 #### Before/After Each
-In the before hook you can use the visit helper to go to a certain route.
+In the `before` hook you can use the `visit` helper to go to a certain route.
 ```javascript
 App.beforeEach = function() {
   visit('/');
@@ -153,9 +153,7 @@ currentURL()
 ```
 
 #### Wait helpers
-```javascript
-andThen
-```
+`andThen`
 Runs a block of test operations after the previous async ops have finished.
 
 #### Unit Tests
@@ -218,7 +216,7 @@ App.IndexRoute = Ember.Route.extend({
 Ember automatically calls the model method on a route when the route is loaded and passes in dynamic segments from the URL as an object.
 The model method needs to return an Ember model.
 The model method can return a promise and the router will automatically be notified when the promise resolved.
-When the model is resolved Ember will automatically set the model on the corresponding controller using the setupController method.
+When the model is resolved Ember will automatically set the model on the corresponding controller using the `setupController` method.
 
 #### Serialization
 You can override how a route serializes url data
