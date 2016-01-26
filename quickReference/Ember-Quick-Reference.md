@@ -371,11 +371,7 @@ Invokes a given funciton on each item.
 Returns a new array devoid of duplicates
 
 `sortProperties` and `sortAscending`
-These are properties you can set on the controller. 
-
-Provide an array of properties to sort by in the `sortProperties` property. 
-
-Choose to sort ascending/descending by setting the `sortAscending` property to `true`/`false` respectively.
+These are properties you can set on the controller. Provide an array of properties to sort by in the `sortProperties` property. Choose to sort ascending/descending by setting the `sortAscending` property to `true`/`false` respectively.
 
 ### Needs
 You can specify controllers that your controller depends on, by using the `needs` property. 
@@ -529,7 +525,7 @@ Works the same way as `bind-attr` with some additional things. You can toggle a 
 <a href='/'{{bind-attr class ='selected:active:inactive'}}>Click me</a>
 ```
 
-If the class name will be active/inactive based on whether the selected property is true/false respectively.
+If the class name will be `active`/`inactive` based on whether the selected property is `true`/`false` respectively.
 
 If only one argument is passed after the colon, the arg will be used as the class name.
 
