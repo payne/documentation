@@ -37,6 +37,7 @@ You can pass these flags into the create object
 
 ### Debugging
 Use `Ember.Logger` methods for debugging Ember objects.
+
 Methods include: `assert`, `debug`, `error`, `info`, `log`, `warn`
 
 #### Log Current State
@@ -78,6 +79,7 @@ Ember.Application.initializer({
 Testing
 -------------------------------------------------------------------------------------------
 There is an Ember mocha adapter you can use.
+
 Make sure the root element of the app has unique id and that it is set in the app.
 ```javascript 
 App.rootElement = '#ember'
@@ -168,7 +170,9 @@ Look at *Mastering Ember.js Chapter 10*
 Routes
 -------------------------------------------------------------------------------------------
 Routes store the logic to get your app to and from the state represented by the URL.
+
 You have to use a `#` in your route URLs: `http://localhost:8000/#/`
+
 Each route will have a controller and template with the same name as the route.
 
 ### Changing the root url
@@ -202,7 +206,9 @@ App.Router.map(function() {
 });
 ```
 Resources allow you to make sub-routes.
+
 If the route name and what appears in the url are different than you can add an object to the route function with the path name.
+
 You can add a dynamic segment to a route by adding something like `:term` to your path.
 
 ### Route Handlers
@@ -288,7 +294,9 @@ App.__container__.lookup("route:index");
 Controllers
 -------------------------------------------------------------------------------------------
 Controllers are the conduit through which data flows into templates.
+
 In a template, Ember will first check if the controller defines a variable, if it doesn't it will proxy the request to the model.
+
 If the model on a route is an array, Ember will instantiate an `ArrayController` if another controller type isn't specified. An `ObjectController` is used to represent a single model
 
 ### Define
@@ -308,7 +316,9 @@ var ctrl = Ember.Controller.createWithMixins(mixin);
 
 ### Object Controller
 Data being represented is set as the `model` property for the controller.
+
 The properties of the controller get translated as the properties of the model. This doesn't happen with normal controllers.
+
 This kind is useful when we need computed properties on the controller that are dependent on the model's properties. It makes it so we don't have to prefix template variables with `model.`
 
 ###Array Controller
@@ -322,6 +332,7 @@ Always adds the object even if it's already there.
 
 `removeObject(object)`
 Remove an object from the array. Will fail silently if the object isn't in the array.
+
 You can use multiple params in the 3 methods listed above.
 
 `contains(object)`
@@ -344,6 +355,7 @@ Like `filter`, but once it finds a match it quits.
 
 `findBy(key, value)`
 Like `find()` but more specific 
+
 `insertAt(index,object)`, `objectAt(index)`, `removeAt(index,length)`
 Does things at given indicies. Can't lookup by negative index.
 
@@ -360,11 +372,16 @@ Invokes a given funciton on each item.
 Returns a new array devoid of duplicates
 
 `sortProperties` and `sortAscending`
-These are properties you can set on the controller. Provide
-an array of properties to sort by in the `sortProperties` property. Choose to sort ascending/descending by setting the `sortAscending` property to `true`/`false` respectively.
+These are properties you can set on the controller. 
+
+Provide an array of properties to sort by in the `sortProperties` property. 
+
+Choose to sort ascending/descending by setting the `sortAscending` property to `true`/`false` respectively.
 
 ### Needs
-You can specify controllers that your controller depends on, by using the `needs` property. Controllers can depend on each other and not be caught in an infinite loop.
+You can specify controllers that your controller depends on, by using the `needs` property. 
+
+Controllers can depend on each other and not be caught in an infinite loop.
 
 ### Action Handlers
 Add a property to the controller named actions that is an object with event handler functions:
@@ -389,6 +406,7 @@ applicationName: function() {
 ```
 
 Instance of objects should never be set on a class definition unless they're meant to be static.
+
 Controllers can reference other controllers.
 
 ### Observables
@@ -424,7 +442,9 @@ App.__container__.lookup("controller:index");
 Templates
 -------------------------------------------------------------------------------------------
 Move your stuff to `.hbs` files for cleaner code.
+
 Use the `{{}}` syntax to reference dynamic elements.
+
 Two-way binding is applied automatically, so any updates to the variable will be reflected in the template.
 
 ### Link-to
@@ -438,6 +458,7 @@ You can link to another route like this:
 {{input type="text" placeholder="" valueBinding="controller.searchTerms" action="submit"}}
 ```
 The `valueBinding` property will bind the value of the input to a variable. It will be bound by default to the model if another namespace isn't specified.
+
 Adding an `action` helper to the input will link it to the `submit` event that forms fire.
 
 ### Checkbox
@@ -451,11 +472,13 @@ Tells Ember where to render the template for the current route:
 ``` handlebars
 {{outlet}}
 ```
+
 You can render different templates with different controller contexts in the same template.
 ```handlebars
 {{outlet leaderboard}}
 {{outlet mainboard}}
 ```
+
 A parent template can specify named outlets into which child templates can be rendered
 
 ### Each
@@ -465,6 +488,7 @@ Iterate over an array of objects.
   <li><a href="#">{{index.name}}</a></li>
 {{/each}}
 ```
+
 Can throw an `else` statment in there to catch cases where the iteration data is empty.
 
 ### If/Else
@@ -475,22 +499,29 @@ Can throw an `else` statment in there to catch cases where the iteration data is
   <li><a href="#">{{name}}</a></li>
 {{/if}}
 ```
+
 If the value is `false`, `null`, `undefined`, `''`, `0`, `NaN`, or the array is empty the condition will evalute to `false`.
+
 You can also use an `unless` condition that will only be met when the variable evaluated is falsy.
+
 You can't use logic in the conditions, but you can use them in computed properties in the controller.
 
 ### Action
 ```handlebars
 <a{{action 'funcName' param1}}>text</a>
 ```
+
 The action can capture a click event and call a handler function on the template's controller. It can pass parameters to the handler. You can specify which kind of event with the `on` handler.
+
 An `actions` handler can be defined in the route or the controller. The action's function is first looked up in the corresponding controller, and then the corresponding router. In the route handler layer Ember will look up the function name in the parent route handlers. If an action handler returns true Ember will keep looking for the handler.
+
 You can also specify the controller that holds the action function by using the target attribute
 
 ### Bind-attr
 ```handlebars
 {{bind-attr href="model.biography.url"}}
 ```
+
 If the `bound` attribute is a boolean, the attribute will exist or not exist based on the value of the boolean.
 
 ### Binding Class Names
@@ -498,15 +529,23 @@ Works the same way as `bind-attr` with some additional things. You can toggle a 
 ```handlebars
 <a href='/'{{bind-attr class ='selected:active:inactive'}}>Click me</a>
 ```
+
 If the class name will be active/inactive based on whether the selected property is true/false respectively.
+
 If only one argument is passed after the colon, the arg will be used as the class name.
+
 ```handlebars
 <a href='/'{{bind-attr class='isSelected:selected'}}>Click me</a>
 ```
+
 If the `isSelected` property is true, then selected will be used as the class name.
+
 CamelCase names will get dehasherized into names with hypens. 
+
 You can add multiple classes with the same signature seperated by spaces.
+
 You can include an unbound class name by having it start with a colon `:active`
+
 You can't have both a class attribute and classes established in a `bind-attr` helper
 
 ### Custom Helpers
@@ -520,6 +559,7 @@ Ember.Handlebars.helper('helper-name',
   }
 });
 ```
+
 You can call the helper in your template and pass in values:
 ```handlebars
 {{helper-name value}} 
@@ -540,6 +580,7 @@ If you don't want the template to reflect changes in the controller or model, th
 ```handlebars
 {{! some comment }}
 ```
+
 These aren't rendered to HTML comments.
 
 ### Switching Contexts
@@ -553,7 +594,9 @@ Inserts a template where the partial expression is identified
 ```handlebars
 {{partial "contacts/form"}}
 ```
+
 You don't lose context when you use the handler.
+
 You can also use the `render` helper which works like the `partial` helper, but can take an optional context as the second argument.
 
 ### Debugging
@@ -562,12 +605,15 @@ You can access any template like this:
 Ember.TEMPLATES['index']
 ```
 You can debug the template by dropping in a `{{debugger}}`
+
 You can log within templates like this `{{log model}}`
 
 Views
 -------------------------------------------------------------------------------------------
 Good to use when a section of the app requires sophisticated event management, there's a need for reusable components, or the app needs to integrate 3rd party libs.
+
 Views are usually backed by an instance of the corresponding controller. You can access the controller with `view.getController()`
+
 Every view renders a template into the DOM. You define one like this:
 ```javascript
 App.SongView = Em.View.extend({
@@ -578,6 +624,7 @@ App.SongView = Em.View.extend({
   })
 });
 ```
+
 Ember automatically cleans up unused variables and bindings as views are hidden and shown.
 
 ### Specify template
@@ -588,10 +635,12 @@ Views are all wrapped in an div tag by default. You can change this with the `ta
 
 ### Element tag class attribute
 You can specify the class names that should go in the wrapper element with the `classNames` property.
+
 You can use the `classNameBindings` property to add class names dynamically based on the boolean value of a property in the view.
 
 ###Other attribute of element tag
 Add the attributes you want in the tag to the `attributeBindings` property. Make the values for the attributes normal properties of the view class.
+
 The attributes values or existence can be computed with computed properties.
 
 ### Inserting in the DOM
@@ -617,11 +666,14 @@ var contentView = Ember.ContainerView.create(); contentView.pushObjects([
 ]);
 ```
 You can also use this `childViews` property to do this. Container views cannot have templates or layouts.
+
 You can access a child's view parent view with the `parentView` property.
 
 ### Layouts
 A template is marked as a layout by adding the `{{yield}}` expression in it. This tells Ember where to insert the template, much like the `{{outlet}}`
+
 Specify the layout for the view with the `layoutName` property in the view's class definition
+
 Html elments with self-closing layouts, can't be views
 
 ### Registering event handlers
@@ -633,8 +685,11 @@ click: function(event){
 ```
 
 A view only manages events invoked in their templates. Child views bubble events up to parent views usually.
+
 A view can send user-initiated events with the send method 
+
 You can add `click` listeners.
+
 You can add an `eventManager` which helps when there are nested views.
 
 ### Built-in views
@@ -671,7 +726,9 @@ App.AppCtrl = Ember.Controller.extend({
   optionLabelPath="content.name",
   optionValuePath="content.id"}}
 ```
+
 The selection property holds the selected choice.
+
 When the items in the array are objects you can use the `optionLabelPath` and the `optionValuePath` to indicate what should be the label and what should be the value
 
 #### Checkboxes
@@ -680,11 +737,15 @@ When the items in the array are objects you can use the `optionLabelPath` and th
 ```
 
 ### 3rd-party DOM manipulation libs
-Use the `didInsertElement` to make sure that the view has been inserted into the DOM. Make sure you call the `_super` method to not lose parent functionality. Use the `schedule` method to run the code after the view's been rendered. 
+Use the `didInsertElement` to make sure that the view has been inserted into the DOM. Make sure you call the `_super` method to not lose parent functionality. 
+
+Use the `schedule` method to run the code after the view's been rendered. 
 ```javascript
 Ember.run.schedule('afterRender', this, function});
 ```
+
 Calling `this.$()` returns a jQuery element selector relative to the view.
+
 Use `willDestroy` to tear down events a plugin has setup, before you remove the view.
 
 ### Debugging
@@ -703,6 +764,7 @@ In `app/scripts/components`
 App.ActivityLogComponent =
   Ember.Component.extend({});
 ```
+
 In `templates/components` create an `hbs` file with the dashed name of the component. Custom elements must be namespaced with a hyphen.
 ```handlebars
 <p>display_id: {{display-id}}</p>
@@ -725,7 +787,11 @@ The component class attribute can be manipulated in the same way it can in a vie
 Components can have their own actions, because they act as controllers that are isolated from the rest of the app.
 
 ### Interfacing with rest of the app
-A component can send action events to its parent controller with the `sendAction` function. The first argument of `sendAction` is always `'action'` and the next param is the object(s) we wish to send along. Make the action attribute of the component have the handler name that's inside the parent controller.
+A component can send action events to its parent controller with the `sendAction` function. 
+
+The first argument of `sendAction` is always `'action'` and the next param is the object(s) we wish to send along. 
+
+Make the action attribute of the component have the handler name that's inside the parent controller.
 
 ### As Layouts
 Not defined in the view layer. Additional content can be inserted without losing scope. Uses the `{{yield}}` expression.
@@ -748,6 +814,7 @@ id: null,
   name: null
 });
 ```
+
 The values you set in the definition, will be the default values.
 
 ### Extending
@@ -770,7 +837,9 @@ Promise.all([
     console.error("One or more FAILED!")
 });
 ```
+
 jQuery can be referenced as `Ember.$`
+
 Can use jQuery promises, Ember.Deferred, or Ember.RSVP
 
 Ember Data
@@ -794,12 +863,14 @@ store.filter('activity', function(activity){
 ```javascript
 store.all('activity');
 ```
+
 Is an alternative to find, when you don't want to make a network request.
 
 `getById()`
 ```javascript
 store.getById('activity'); 
 ```
+
 Doesn't make a network request.
 
 #### Create a new record:
@@ -809,6 +880,7 @@ var record = this.store.createRecord('my-model', {
   hotttnesss: model.hotttnesss,
   timestamp: date
 });
+
 record.save();
 ```
 
@@ -818,6 +890,7 @@ var record = store.find('record',1);
 record.deleteRecord();
 record.save();
 ```
+
 You can also use `destroyRecord()` which combines the save and delete function calls.
 
 ### Define a model
@@ -830,7 +903,10 @@ App.MyModel = DS.Model.extend({
   timestamp: DS.attr()
 });
 ```
-`DS.attr` takes 2 arguments a `type` and an `options` object. Attributes are usually either `string`, `number`, `date`, or `boolean`.
+
+`DS.attr` takes 2 arguments a `type` and an `options` object. 
+
+Attributes are usually either `string`, `number`, `date`, or `boolean`.
 
 ### Relations
 #### one-to-one
@@ -839,6 +915,7 @@ Use `belongsTo` to establish this kind of relationship. The thing it belongs to 
 App.User = DS.Model.extend({
   profile: DS.belongsTo('profile');
 });
+
 App.Profile = DS.Model.extend({
   user: DS.belongsTo('user');
 });
@@ -850,6 +927,7 @@ Use `belongsTo` and `hasMany`
 App.Post = DS.Model.extend({
   comments: DS.hasMany('comment');
 });
+
 App.Comment = DS.Model.extend({
   post: DS.belongsTo('post');
 });
@@ -865,6 +943,7 @@ App.Comment = DS.Model.extend({
   onePost: DS.belongsTo('post'),
   twoPost: DS.belongsTo('post')
 });
+
 App.Post = DS.Model.extend({
   comments: DS.hasMany('comment', {
     inverse: 'redPost'
@@ -905,7 +984,9 @@ App.MyModel.FIXTURES = [{
 
 #### Rest Adapter
 Ember-data expects that a property that is a `hasMany` will be the pluralized form of the model.
+
 Ember only sends the ids of related objects. The corresponding objects will be side-loaded into the data store though.
+
 If we need to use different API endpoints for different models we can extend the `RESTAdapter` and change it's `host` property.
 
 ### Serializer
@@ -935,6 +1016,7 @@ App.BinaryBool = DS.Transform.extend({
     return (!!!binary) ? false : true;
   }
 });
+
 Ember.Application.initializer({
   name: "myInitializer",
   initialize: function(container,application) {}
@@ -945,23 +1027,31 @@ Workflow Tools
 -------------------------------------------------------------------------------------------
 ### Ember CLI
 Uses Broccoli as an asset pipeline instead of Grunt's watch task. This makes it rebuild individual files instead of the entire project for faster build times.
+
 Uses the ES6 Module Transpiler.
 
 ### Ember Inspector
 Get the Ember inspector plugin for Chrome/Firefox. Make sure "Experimental Extension APIs is enabled in chrome://flags. You can inspect all your routes and their properties in the Routes tab.
+
 You can inspect the View Tree tab to see an overlay of the current "state" of the rendered application.
+
 You can inspect the Data tab to see a snapshot of all the records in Ember Data.
+
 You can log out your app's objects to the console with the $E variable.
 
 Real-time Apps
 -------------------------------------------------------------------------------------------
 Use Socket.io
+
 Server-sent events are a good option if the client app is meant to constantly receive updates from the backend.
+
 In the backend use node with Express.io which blends Express framework with Socket.io
+
 Initialize the client library with the connect method on the exposed io global variable.
 ```javascript
 App.io = io.connect();
 ```
+
 Then in a property in our model defintion we can use the new type.
 ```javascript
 App.Todo = DS.Todo.extend({
