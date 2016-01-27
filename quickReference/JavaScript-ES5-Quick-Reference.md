@@ -206,7 +206,7 @@ No separate integer type
 1 === 1.0
 ```
 
-Exponents: multiply the part before the `e` by `10` then raise to the part after the `e`: 
+Exponents: multiply the part before the `e` by `10` then raise to the part after the `e`
 ```javascript
 100 === 1e2
 ```
@@ -230,7 +230,7 @@ var my_regexp = /"(?:\\.|[ ^\\\"])*"/g;
 ```
 
 ### Flags
-Flags can be appended to the last / that do certain things. 
+Flags can be appended to the last `/` that do certain things. 
 
 `g` - matches multiple times. 
 
@@ -312,7 +312,9 @@ To know which errors are yours create a custom error type
 function MyError( message ) {
   this.message = message;
 }
+
 MyError.prototype = new Error();
+
 if (ex instanceof MyError)
 ```
 
@@ -427,7 +429,8 @@ myModule = (function () {
   // public API
   return {
     func1: function () {},
-  };func2: function () {}
+    func2: function () {}
+  };
 }());
 ```
 
