@@ -2,6 +2,22 @@ JavaScript ES5 Quick Reference
 ========================================================================================
 
 * [References](#references)
+* [Variables](#variables)
+* [Functions](#functions)
+* [JSON](#json)
+* [Truthy/Falsy](#truthy/falsy)
+* [Comparisons](#comparisons)
+* [Control Flow](#control-flow)
+* [Objects](#objects)
+* [Arrays](#arrays)
+* [Numbers](#numbers)
+* [RegEx](#regex)
+* [Strings](#strings)
+* [Patterns](#patterns)
+* [Browser Patterns](#browser-patterns)
+* [ES5](#es5)
+* [Code Style](#code-style)
+* [Never Do This](#never-do-this)
 
 References
 -------------------------------------------------------------------------------------------
