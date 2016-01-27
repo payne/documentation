@@ -19,6 +19,7 @@ Ember Quick Reference
 References
 -------------------------------------------------------------------------------------------
 *Building Web Apps with Ember.js* - Jesse Cravens & Thomas Brady
+
 *Mastering Ember.js* - Mitchel Kelonye
 
 App

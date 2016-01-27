@@ -5,7 +5,7 @@ JavaScript ES5 Quick Reference
 * [Variables](#variables)
 * [Functions](#functions)
 * [JSON](#json)
-* [Truthy/Falsy](#truthy/falsy)
+* [Truthy/Falsy](#truthyfalsy)
 * [Comparisons](#comparisons)
 * [Control Flow](#control-flow)
 * [Objects](#objects)
@@ -22,18 +22,20 @@ JavaScript ES5 Quick Reference
 References
 -------------------------------------------------------------------------------------------
 *JavaScript the Good Parts* - Douglas Crockford
+
 *Maintainable JavaScript* - Nicholas C. Zakas
+
 *JavaScript Patterns* - Stoyan Stefanov
 
 Variables
 -------------------------------------------------------------------------------------------
-JavaScript blocks ( `if`, `for`, `switch`... ) don’t create a new scope, so variables should be defined at the top of functions
+JavaScript blocks ( `if`, `for`, `switch`... ) don't create a new scope, so variables should be defined at the top of functions
 
 Functions
 -------------------------------------------------------------------------------------------
 `return` value will be `undefined` if not specified
 
-Any `function` executed with `new` in front of it will turn the function
+Any function executed with `new` in front of it will turn the function
 into a `constructor` function, which will `return` an object
 
 If `return` is used in a `constructor` function, the value must be
@@ -42,7 +44,7 @@ an object. If no `return` is provided the function will automatically create and
 ### Invocation Patterns
 Method invocation pattern: `this` is bound to the object the function is a property of
 
-Function invocation pattern: `this` is bound to the global object if the function isn’t a property of an object
+Function invocation pattern: `this` is bound to the global object if the function isn't a property of an object
 
 Constructor invocation pattern: `this` is bound to the new object that is created and returned by the constructor function
 
@@ -56,7 +58,11 @@ var add = function add(){};
 
 Unnamed function expression/anonymous function:
 ```javascript
-var add = function (){}; Function declaration:
+var add = function (){}; 
+```
+
+Function declaration:
+```javascript
 function add(){}
 ```
 
@@ -73,7 +79,7 @@ JSON
 -------------------------------------------------------------------------------------------
 All JSON keys and strings must be in double quotes
 
-Make sure to parse the JSON and escape any special characters before adding it to the DOM, so that evil script tags aren’t added to the page
+Make sure to parse the JSON and escape any special characters before adding it to the DOM, so that evil script tags aren't added to the page
 
 If running ES3 you can download the JSON.org library
 
@@ -88,7 +94,7 @@ Comparisons
 isNaN(number);
 ```
 
-It doesn’t equal anything, not even itself
+It doesn't equal anything, not even itself
 
 `typeof null` will return `'object'` so always do `value === null` instead
 
@@ -101,9 +107,9 @@ Object.prototype.toString.apply(value) === '[object Array]';
 
 Objects will only be equal if they are the same object
 
-`typeof` returns a string `‘undefined’`` for both uninitialized and undeclared variables. 
+`typeof` returns a string `'undefined'` for both uninitialized and undeclared variables. 
 
-Uninitialized variables are given a value of undefined. Initialize variables that will later hold values to `null` to avoid confusion.
+Uninitialized variables are given a value of `undefined`. Initialize variables that will later hold values to `null` to avoid confusion.
 
 Use `in` to check the existence of a property in an object. If you want to check an instance property use `hasOwnProperty()`
 
@@ -139,12 +145,12 @@ Objects are passed by reference, they are never copied
 
 `delete` will remove a property in an object, but not from its `prototype`
 
-Don’t modify objects you don’t own
+Don't modify objects you don't own
 
 ### Prototype
 Every object is linked to a `prototype` object that it inherits properties from
 
-If a value isn’t found in an object, then JavaScript automatically looks for it in its `prototype`, all the way up to `Object.prototype`. If it isn’t found anywhere in the `prototype` chain, then `undefined` is returned
+If a value isn't found in an object, then JavaScript automatically looks for it in its `prototype`, all the way up to `Object.prototype`. If it isn't found anywhere in the `prototype` chain, then `undefined` is returned
 
 If a new property is added to a prototype, then all objects that are linked to that prototype will immediately inherit that property
 
@@ -154,7 +160,7 @@ The prototype property should point to an object, not a function
 
 Arrays
 -------------------------------------------------------------------------------------------
-JavaScript doesn’t have real arrays, just objects with array-like properties
+JavaScript doesn't have real arrays, just objects with array-like properties
 
 The `length` property is the largest integer property in the array plus one. Not necessarily the number of properties in the array
 
@@ -171,8 +177,8 @@ arr.concat(3, 4); // [1, 2, 3, 4]
 
 `join(separator)` makes a string from an array, with a given separator
 ```javscript
-var arr = [’a’, ‘b’, ‘c’];
-arr.join(’’); // ‘abc’
+var arr = ['a', 'b', 'c'];
+arr.join(''); // 'abc'
 ```
 
 `push/pop` adds/removes from the end of the array 
@@ -181,14 +187,14 @@ arr.join(’’); // ‘abc’
 
 `slice(start, end)` makes a shallow copy of a portion of an array and takes a `start` and optional `end` parameter. If either parameter is `-` the `length` will automatically be added to it
 ```javascript
-var arr = [’a’, ‘b’, ‘c’];
-arr.slice(1, 2); // [’b’]
+var arr = ['a', 'b', 'c'];
+arr.slice(1, 2); // ['b']
 ```
 
 `splice(start, numDelete)` deletes properties in the array. The first argument is the index to start at, the second arguments is how many properties to delete. Additional arguments will be inserted at the starting point. It returns an array of deleted members.
 ```javascript
-var arr = [’a’, ‘b’, ‘c’];
-arr.splice(1, 1, ‘z’); // [’a’, ‘z’, ‘c’];
+var arr = ['a', 'b', 'c'];
+arr.splice(1, 1, 'z'); // ['a', 'z', 'c'];
 ```
 
 `sort(function(a, b) {})` only works on strings. You can pass it your own sorting function w/ two params that should return `0` if the params are equal, a `negative number` if the first param should be first and a `postitve number` if the second param should come first
@@ -205,7 +211,7 @@ Exponents: multiply the part before the `e` by `10` then raise to the part after
 100 === 1e2
 ```
 
-`NaN` is a number that is the result of an operation that can’t perform a normal result
+`NaN` is a number that is the result of an operation that can't perform a normal result
 
 ### Methods
 `toFixed(numDigits)` turns the number into a string in decimal form with an optional number of digits (i.e. length after the decimal) between 0 and 20
@@ -218,7 +224,7 @@ RegEx
 -------------------------------------------------------------------------------------------
 Must be on a single line
 
-Best to initialize with a literal instead of `RegExp()` so that you don’t have to *double the backslashes*. The literals are passed around by reference not value
+Best to initialize with a literal instead of `RegExp()` so that you don't have to *double the backslashes*. The literals are passed around by reference not value
 ```javascript
 var my_regexp = /"(?:\\.|[ ^\\\"])*"/g;
 ```
@@ -272,9 +278,9 @@ If `replaceValue` is a string, the `$` has special meaning:
 * `$&` - replaces matched text
 * `$number` - replaces the capture group
 * `` $` ``  - replaces the preceding match text, 
-* `$’` - replaces the after match text. 
+* `$'` - replaces the after match text. 
 ```javscript
-'(555)666-1212'.replace(/\((\d{3})\)/g, '$1-'); // ‘555-666-1212’
+'(555)666-1212'.replace(/\((\d{3})\)/g, '$1-'); // '555-666-1212'
 ```
 
 If `replaceValue` is a function it will be called by each match. The string returned by the function will be used as replacement text. The `1st param` is the matched text, the `2nd param` is capture group 1, the 3rd is capture group 2, etc...
@@ -283,7 +289,7 @@ If `replaceValue` is a function it will be called by each match. The string retu
 
 `slice(start, end)` makes a new string by copying a portion of another string. `end` is optional and both `start` and `end` can be negative and have `string.length` added to them
 
-`split(separator, limit)` creates an array by splitting the array on the `separator`. `limit` will limit the number of splits. `separator` can be a regexp. If it’s a regexp, than capturing groups get included in the split. Some implementations will automatically supress empty strings from the output if the separator is a regexp
+`split(separator, limit)` creates an array by splitting the array on the `separator`. `limit` will limit the number of splits. `separator` can be a regexp. If it's a regexp, than capturing groups get included in the split. Some implementations will automatically supress empty strings from the output if the separator is a regexp
 
 `toLocaleLowerCase`/`toLocaleUpperCase` makes a new string in `lower`/`upper` case that follows the rules of the local language.
 
@@ -296,9 +302,9 @@ throw { name: 'TypeError', message: 'add needs numbers' };
 
 An exception object can have more properties added to it
 
-To make sure you get all the browser’s contextual information use 
+To make sure you get all the browser's contextual information use 
 ```javascript
-throw new Error(’some message’);
+throw new Error('some message');
 ```
 
 To know which errors are yours create a custom error type
@@ -314,7 +320,7 @@ Always include function name and the reason for the error
 
 Only throw errors in parts of the code that are likely to fail in a particular way. Mimicking statically typed languages is overkill
 
-If you can’t identify all the places where a function will be called ahead of time, then you need some error checking
+If you can't identify all the places where a function will be called ahead of time, then you need some error checking
 
 Patterns
 -------------------------------------------------------------------------------------------
@@ -329,9 +335,9 @@ Keeps stuff out of the global scope.
 
 You can pass in parameters to it. Especially for dependencies and the global object.
 
-Can use it in object literals, to create a computed property. However, it doesn’t work with `this`.
+Can use it in object literals, to create a computed property. However, it doesn't work with `this`.
 
-If using as a module, it won’t automatically return and this will be the global object. You have to specify what to return
+If using as a module, it won't automatically return and this will be the global object. You have to specify what to return
 ```javascript
 (function () {
   alert('watch out!');
@@ -355,12 +361,12 @@ Good for one-off initialization tasks, but may not minify well
 ### Callback
 Passing a function as a parameter
 
-If the callback relies on `this` you may have to pass in the object you want the function called on, or `this` won’t be correct
+If the callback relies on `this` you may have to pass in the object you want the function called on, or `this` won't be correct
 
 ### Self-defining Function
 Helpful if the function needs some prep work that only happens once
 
-Drawbacks: new properties that get added will be lost. If given a new variable name the redefinition won’t happen
+Drawbacks: new properties that get added will be lost. If given a new variable name the redefinition won't happen
 ```javascript
 var scareMe = function () {
   alert("Boo!");
@@ -376,7 +382,7 @@ Have methods return `this` if they have no other meaningful value to return.
 obj.increment().add(3).shout();
 ```
 
-Can make things harder to debug, if it’s all on one line
+Can make things harder to debug, if it's all on one line
 
 ### Currying
 A function that returns another function
@@ -410,7 +416,7 @@ myFunc.cache = {};
 ```
 
 ### Configuration Objects
-Have an object be a parameter of a function so that it’s more flexible
+Have an object be a parameter of a function so that it's more flexible
 
 ### Module
 ```javascript
@@ -443,7 +449,7 @@ myModule = (function () {
 Keeps private functions working, even if someone messes with public API
 
 ### Privacy
-* `Private members`: Wrap data you want private in a function and make sure it’s local. Don’t pass references to objects and arrays you want to keep private. POLA
+* `Private members`: Wrap data you want private in a function and make sure it's local. Don't pass references to objects and arrays you want to keep private. POLA
 * `Privileged methods`: Functions that can access private members
 * `Static Public`: add a property to a constructor function
 ```javascript
@@ -484,7 +490,7 @@ Loop through all source objects and add their properties to a new child object
 ### Borrowing Methods
 Use `call()` or `apply()`
 
-If the borrowed method depends on `this` and you want to assign the borrowed method in advance or use it as callback it’s best to bind it.
+If the borrowed method depends on `this` and you want to assign the borrowed method in advance or use it as callback it's best to bind it.
 ```javascript
 function bind(o, m) {
   return function() {
@@ -496,7 +502,7 @@ function bind(o, m) {
 ### Singleton
 Object literals are already singletons.
 
-If you are using a constructor function, you can make it return the same object instead of new object each time. Doing this, isn’t very practical. You can do it with a static property or a closure. 
+If you are using a constructor function, you can make it return the same object instead of new object each time. Doing this, isn't very practical. You can do it with a static property or a closure. 
 ```javascript
 function Universe() {
   var instance = this;
@@ -572,7 +578,7 @@ The proxy can also be useful as a cache.
 Several indepenent objects communicate to each other through a mediator object, which knows about all the other objects.
 
 ### Observer
-Instead of calling another object’s method, the object subscribes to the other object’s activities and gets notifications. Also known as `subscriber`/`publisher`.
+Instead of calling another object's method, the object subscribes to the other object's activities and gets notifications. Also known as `subscriber`/`publisher`.
 
 Browser Patterns
 -------------------------------------------------------------------------------------------
@@ -585,32 +591,32 @@ Make it useful with just HTML, then add functionality based on what the browser 
 ### DOM Scripting
 Access the DOM as little as possible.
 
-Don’t access the DOM in loops, assign DOM references to local variables, use selector APIs, cache the length property
+Don't access the DOM in loops, assign DOM references to local variables, use selector APIs, cache the length property
 
 Manipulate the DOM as little as possible. Causes repaints and reflows which are expensive.
 
 Use document fragments to make a batch update outside the live DOM tree, then update the DOM all at once
 
 ### Events
-Don’t attach events directly to DOM elements, instead use `addEventListener()`
+Don't attach events directly to DOM elements, instead use `addEventListener()`
 
-If multiple DOM elements will use the same handler and are wrapped in a common parent element, you can attach one handler to the parent element and then filter out events that aren’t interesting.
+If multiple DOM elements will use the same handler and are wrapped in a common parent element, you can attach one handler to the parent element and then filter out events that aren't interesting.
 
-Don’t put application logic in the event handler.
+Don't put application logic in the event handler.
 
-Don’t put the event object around. Only pass functions what they need to function
+Don't put the event object around. Only pass functions what they need to function
 
 ### Long-running Scripts
 Use `setTimeout()` with a delay of `0`, to imitate threads, so the task is completed as soon as possible without freezing up the UI.
 
 ### Remote Scripts
-JSONP is not restricted by same-domain policy. It’s JSON wrapped in a function call that is provided with the request. The provided function will specifiy which function handles the response
+JSONP is not restricted by same-domain policy. It's JSON wrapped in a function call that is provided with the request. The provided function will specifiy which function handles the response
 
 Inheritance
 -------------------------------------------------------------------------------------------
 "Prefer object composition to class inheritance" - Gang of Four
 
-Always strive for picking a "modern" pattern, one that doesn’t require you to think about classes
+Always strive for picking a "modern" pattern, one that doesn't require you to think about classes
 
 Objects inherit properties directly from other objects
 
@@ -627,7 +633,7 @@ Children objects get copies of inherited members, unlike #1 where they only get 
 
 Solves the problem of passing arguments from child to parent
 
-Child can’t overwrite a parent’s property
+Child can't overwrite a parent's property
 ```javascript
 function Child(name) {
   Parent.apply(this, arguments);
@@ -636,7 +642,7 @@ function Child(name) {
 A drawback is that nothing from the prototype gets inherited
 
 ### Classical Pattern #3 - Rent and Set Prototype
-Objects get copies of the parent’s members and references to the reusable prototype functionality
+Objects get copies of the parent's members and references to the reusable prototype functionality
 ```javascript
 function Child(name) {
   Parent.apply(this, arguments);
@@ -662,7 +668,7 @@ function inherit(C, P) {
   C.prototype.constructor = C;
 }
 ```
-Child only inherits from prototype. Superclass is stored with uber in case it’s needed. The constructor is reset for runtime object introspection.
+Child only inherits from prototype. Superclass is stored with uber in case it's needed. The constructor is reset for runtime object introspection.
 
 Can optimize this by storing the proxy function in a closure in an `IIFE` that returns a function
 
@@ -722,7 +728,7 @@ Modern browsers have Web Workers which can perform expensive operations in the b
 ### Preventing Modification
 `preventExtension()`: no new properties or methods can be added, but existing ones can be modified or deleted.
 
-`seal()`: same as `preventExtension`, but existing properties and methods can’t be deleted.
+`seal()`: same as `preventExtension`, but existing properties and methods can't be deleted.
 
 `freeze()`: Same as `seal`, plus prevents existing properties and methods from being modified
 
@@ -730,7 +736,7 @@ Code Style
 -------------------------------------------------------------------------------------------
 Make a program structure that anticipates, but is not overly burdened by possible modifications
 
-Throw away the "first-draft" and don’t copy and paste from it in the "second-draft"
+Throw away the "first-draft" and don't copy and paste from it in the "second-draft"
 
 ### Variables
 At the top of every function declare all the necessary variables in a comma separated list, with a single `var` statement.
@@ -738,22 +744,22 @@ At the top of every function declare all the necessary variables in a comma sepa
 ### Comments
 `//` Use this style everywhere except for JSDoc
 
-Obsolete comments are worse than no comments. Don’t comment when something is apparent from the code itself.
+Obsolete comments are worse than no comments. Don't comment when something is apparent from the code itself.
 
 Comment on things that might be percieved as errors and browser-specific hacks
 
 Use a documentation generator
 
 ### Indentation
-Don’t use tabs. Use spaces. Pick 2 or 4 spaces, and stick to it.
+Don't use tabs. Use spaces. Pick 2 or 4 spaces, and stick to it.
 
 ### Line-Length
 Use 80 or 100 characters
 
 ### Line-Breaking
-Always end a line with an operator, so the browser doesn’t automatically insert a semi-colon.
+Always end a line with an operator, so the browser doesn't automatically insert a semi-colon.
 
-After a line-break indent two levels, unless it’s a variable declaration, then it should align with the first part of the assignment
+After a line-break indent two levels, unless it's a variable declaration, then it should align with the first part of the assignment
 
 ### Blank Lines
 Add them between methods, between local variables and its first statement, before comments, between logical sections in a method
@@ -797,7 +803,7 @@ Check for `NaN` without using `isNaN()`
 
 Rely on type coercision with `==`, instead use `===` 
 
-Modify things you don’t own
+Modify things you don't own
 
 Use the `with` statement
 
