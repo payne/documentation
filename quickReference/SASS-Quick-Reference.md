@@ -419,53 +419,50 @@ nav[role=”navigation”]{
 ```
 What’s enclosed in the `at-breakpoint` mixin, is what will happen to the selector at the given breakpoint.
 
-#### `span-columns(3,12)`
-This mixin tells Susy how many columns an element should span.
+`span-columns(3,12)` This mixin tells Susy how many columns an element should span.
 
-#### `span-columns(9 omega, 12)`
-You can include the `omega` argument to tell Susy that an element is the last set of column space in the grid, which will float the element to the opposite direction of the flow. 
+`span-columns(9 omega, 12)` You can include the `omega` argument to tell Susy that an element is the last set of column space in the grid, which will float the element to the opposite direction of the flow. 
 
 `omega` also removes margin on one side.
 
 With some setting changes, you can make Susy do right-to-left layouts,
 
 ### Helpers
-#### `prefix(1,12)`
-Adds a column of space before a selector. 
+`prefix(1,12)` Adds a column of space before a selector. 
 
 Pass the number of columns that need a prefix, and then the context (12, if you have a 12 column grid.)
 
-#### `suffix(1,12)`
-Adds a column of padding to the end of a selector. Pass the number of columns, and the number of columns in your grid.
+`suffix(1,12)` Adds a column of padding to the end of a selector. Pass the number of columns, and the number of columns in your grid.
 
-#### `pad(1,1,12)`
-You can split the difference and add some padding to both sides of an element. 
+`pad(1,1,12)` You can split the difference and add some padding to both sides of an element. 
 
 Args: number of left columns, number of right columns, the context.
 
-#### `pre(1)`
-Adds margin before an element. 
+`pre(1)` Adds margin before an element. 
 
 Pass in the number of columns worth of margin to add.
 
-#### `post(3)` 
-Opposite of pre
+`post(3)` Opposite of pre
 
-#### `squish(2,2,12)`
-Like pad, but for margin. This will make things look weird if you apply it something that has `omega`, because `omega` removes the margin on one side.
+`squish(2,2,12)` Like pad, but for margin. This will make things look weird if you apply it something that has `omega`, because `omega` removes the margin on one side.
 
-#### `push(1)` `pull(1)`
+`push(1)` `pull(1)` 
+
 `push` works just like `pre`. 
 
 `pull` adds a negative margin before an element. This won’t have effect on an `omega` element.
 
 ### Nested Grids
-#### `with-grid-settings(4, 12em, 1.5em, 0)`
+`with-grid-settings(4, 12em, 1.5em, 0)`
+
 Lets you create a new grid with different settings. 
+
 Args: number of columns, width of each column, gutter width of each column, any padding on the outside of the grid. 
+
 Any rules that need the new grid should be nested within the mixin.
 
-#### `nth-omega(4n)`
+`nth-omega(4n)`
+
 A shortcut for setting margins on the last item. You pass in the selector number that is the last one. 
 
 It defaults to the the last item.
@@ -479,13 +476,11 @@ Susy by default positions items relative to the items that preceeded them.
 
 Container relative positioning makes more verbose output code than normal.
 
-#### `isolate-grid(1,9)`
-This helper will tell Susy to position an item relative to the container. 
+`isolate-grid(1,9)` This helper will tell Susy to position an item relative to the container. 
 
 Pass it the number of columns to span and the context.
 
-### `isolate`
-This mixin can be used alongside `span-columns` to address discrepencies with individual grid elements. Not super effective if working with multiple grid elements.
+`isolate` This mixin can be used alongside `span-columns` to address discrepencies with individual grid elements. Not super effective if working with multiple grid elements.
 
 Media Queries
 -------------------------------------------------------------------------------------------
@@ -578,6 +573,28 @@ Whichever item is declared first in the background syntax sits on top of the the
 
 Comma separate them.
 
+### CSS Transform
+`@include scale(2, 2);` Will change the size of an element
+`@include translateX(20px);` Will move an element on the screen
+`@include simple-transform(1.05, 3deg);` Performs multiple transforms on a single elements. 
+
+Args are in this order: `scale`, `rotate`, `transform`, `translate-x`, `translate-y`, `skew-x`, `skew-y`, `origin-x`, `origin-y`.
+
+`@include rotate(45deg);` Rotates an element.
+
+#### Shadows around odd shapes.
+Usually just a good idea to make the shape an icon-font and use text-shadow. 
+
+However, if that’s not an option for some reason you can use Compass Filter mixins.
+
+### CSS Filters
+`@include filter(drop-shadow(#ccc 1px 1px 0px));`
+
+### Transitions
+`@include single-transition(all, .3s, ease, 0s);` Performs a CSS transition.
+
+`@include transition()` Adds mutliple transitions on a single element, seperated by commas.
+
 Images
 -------------------------------------------------------------------------------------------
 ```sass
@@ -627,77 +644,114 @@ All these option variables should be included before the `import` directive that
 
 Text Replacement
 -------------------------------------------------------------------------------------------
-### `@include hide-text;`
-Hides the text by indenting it way off the screen.
+`@include hide-text;` Hides the text by indenting it way off the screen.
 
-### `@include squish-text;`
-This will hide inline text well and keep it visible to screen readers.
+`@include squish-text;` This will hide inline text well and keep it visible to screen readers.
 
-### `@include replace-text-with-dimensions(‘image/path.png’);`
-This automatially sets an elements dimensions according to the size of the image.
+`@include replace-text-with-dimensions(‘image/path.png’);` This automatially sets an elements dimensions according to the size of the image.
+
 SVG’s
+-------------------------------------------------------------------------------------------
 Sprites don’t work well with responsive design or “retina” displays. SVGs do.
+
 SVG files are smaller than bitmaps (JPG,PNG), and we can reduce the number of requests by turning SVGs into data URIs. A data URI embeds a file into the code.
+
+`inline-image(“image/path.svg”);` Turns an SVG into a data URI.
+
+You can fallback on non-svg devices in tandem with Modernizr by nesting this:
+```sass
+.no-svg & {
+  background-image:image-url(“image/path.png”);
+```
+
 Math Calculations
+-------------------------------------------------------------------------------------------
 You can do addition and subtraction just like you’d expect.
+
 With multiplication and division you can’t include the unit type on both numbers.
+
 With division you have to include it in parenthesis or as part of another peice of arithmetic.
+
 You can do calculations with variables
+
 Control Directives
-You can use if/else to change your whole color scheme by just changing a few variables, and having your colors be relative to each other.
-for loop
+-------------------------------------------------------------------------------------------
+You can use `if/else` to change your whole color scheme by just changing a few variables, and having your colors be relative to each other.
+
+### for loop
 Pick a style and stick to it
-@for $i from 1 through 4
-Loop goes up to and includes the final number
-@for $i from 1 to 4
-Loop goes up to, but excludes the final number
-Interpolation
-Use the #{$variableName} syntax: .buy_#{$i}
+
+`@for $i from 1 through 4` Loop goes up to and includes the final number
+
+`@for $i from 1 to 4` Loop goes up to, but excludes the final number
+
+### Interpolation
+Use the `#{$variableName}` syntax: `.buy_#{$i}`
+
 You can’t dynamically create variables like this.
-each loop
+
+### each loop
+```sass
 @each $current-color in $colors-list
-Stripping and adding units
-Multiply the variable by a unitless value to strip the unit. Multiply the variable by a value with a unit to add it.
+```
+
+Stripping and Adding Units
+-------------------------------------------------------------------------------------------
+Multiply the variable by a unitless value to strip the unit. 
+
+Multiply the variable by a value with a unit to add it.
+
 Functions
+-------------------------------------------------------------------------------------------
 Like mixins, but used to generate a value, not css property value pairs.
+```sass
 @function funcName($arg1, $arg2) {
   @return something
 }
-@debug
-Can output things to the console.
-@warn
-Like the @debug. Can suppress by adding sass_options = {:quiet => true} to the config.rb file
+```
+
+`@debug` Can output things to the console.
+
+`@warn` Like the @debug. 
+
+Can suppress by adding 
+```ruby
+sass_options = {:quiet => true} 
+```
+to the `config.rb` file
+
 Statistics
-Get compass statistics by going to the root of your project and running compass stats
-To get statistics on css install the css parser gem. When you run compass stats, you will now get css stats too.
+-------------------------------------------------------------------------------------------
+Get compass statistics by going to the root of your project and running 
+```bash
+compass stats
+```
+To get statistics on css install the css parser gem. 
+
+When you run `compass stats`, you will now get css stats too.
+```bash
 gem install css_parser
+```
+
 Clear cache
-To clear the sass cache run compass clean
+-------------------------------------------------------------------------------------------
+To clear the sass cache run `compass clean`
+
 Chrome tools
+-------------------------------------------------------------------------------------------
 You can enable an experimental SASS tools in Chrome.
-You can see how long it takes to paint the page without a cache by enabling “Enable continuous page repainting”. Pages that take more than 16ms to paint should be investigated. Select suspicious elements in the Elements panel and press the h-key to show and hide them.
-Find unused styles with the CSS Profiles feature. Click the Profiles tab. Select “Collect CSS Selector Profile” and press “Start”. Go through all the parts of the site, click on stuff, hover over stuff, etc. Click the red stop sign in the bottom left when you’re done. Click on the profile you just created and sort by matches ascending. Look for things with 0 matches that are associated with a stylesheet.
-inline-image(“image/path.svg”);
-Turns an SVG into a data URI.
-You can fallback on non-svg devices in tandem with Modernizr by nesting this:
-.no-svg & {
-  background-image:image-url(“image/path.png”);
-CSS Transform
-@include scale(2, 2);
-Will change the size of an element
-@include translateX(20px);
-Will move an element on the screen
-@include simple-transform(1.05, 3deg);
-}
-Performs multiple transforms on a single elements. Args are in this order: scale, rotate, transform, translate-x, translate-y, skew-x, skew-y, origin-x, origin-y.
-@include rotate(45deg);
-Rotates an element.
-Shadows around odd shapes.
-Usually just a good idea to make the shape an icon-font and use text-shadow. However, if that’s not an option for some reason you can use Compass Filter mixins.
-CSS Filters
-@include filter(drop-shadow(#ccc 1px 1px 0px));
-Transitions
-@include single-transition(all, .3s, ease, 0s);
-Performs a CSS transition.
-@include transition()
-Adds mutliple transitions on a single element, seperated by commas.
+
+You can see how long it takes to paint the page without a cache by enabling `Enable continuous page repainting`. 
+
+Pages that take more than _16ms_ to paint should be investigated. 
+
+Select suspicious elements in the `Elements` panel and press the h-key to show and hide them.
+
+Find unused styles with the CSS Profiles feature:
+1. Click the Profiles tab. 
+2. Select “Collect CSS Selector Profile”
+3. Press “Start”. 
+4. Go through all the parts of the site, click on stuff, hover over stuff, etc. 
+5. Click the red stop sign in the bottom left when you’re done. 
+6. Click on the profile you just created and sort by matches ascending. 
+7. Look for things with 0 matches that are associated with a stylesheet.
