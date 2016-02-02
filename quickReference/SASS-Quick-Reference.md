@@ -384,7 +384,7 @@ With Compass you don’t have to make a separate class for this, you can instead
 
 You can put this in a placeholder selector and extend it, that way all the selectors that need clearfix code will get combined into a single selector.
 
-Grids w/ Susy
+Grids With Susy
 -------------------------------------------------------------------------------------------
 Use the “Susy” Compass plugin.
 ```bash
