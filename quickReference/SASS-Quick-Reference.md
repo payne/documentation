@@ -72,14 +72,14 @@ You’ll have to rerun the `watch` command.
 #### Include plugins
 ```ruby
 # Require any additional compass plugins here
-require “plugin-name”
+require "plugin-name"
 ```
 
 #### Path names
 ```ruby
 # Set this to the root of your project...
-http_path = “/”
-css_dir = “css”
+http_path = "/"
+css_dir = "css"
 ...
 ```
 All paths will be relative to the `http_path`
@@ -150,7 +150,7 @@ Using `@import url(‘header.css’)` will let you break up your css, but it slo
 
 Filenames for partials look like this: `_mypartial.scss` 
 
-Include them in a style like this: `@import “mypartial”` 
+Include them in a style like this: `@import "mypartial"` 
 
 Variables in a partial will be accessable to the importer.
 
@@ -386,13 +386,13 @@ You can put this in a placeholder selector and extend it, that way all the selec
 
 Grids With Susy
 -------------------------------------------------------------------------------------------
-Use the “Susy” Compass plugin.
+Use the "Susy" Compass plugin.
 ```bash
 gem install susy
 ```
-Add `require “susy”` to the top of the `config.rb` file
+Add `require "susy"` to the top of the `config.rb` file
 
-Include `@import “susy”` at the top of your scss file.
+Include `@import "susy"` at the top of your scss file.
 
 ### Settings
 * `$total-columns` - The numer of columns for the grid.
@@ -411,7 +411,7 @@ Use the `susy-grid-background` mixin to show the columns
 ### Breakpoints
 ```sass
 $M: 47em;
-nav[role=”navigation”]{
+nav[role="navigation"]{
   @include at-breakpoint($M){
     @include span-columns(3,12);
   } 
@@ -598,18 +598,18 @@ However, if that’s not an option for some reason you can use Compass Filter mi
 Images
 -------------------------------------------------------------------------------------------
 ```sass
-image-height(“image/path.png”);
+image-height("image/path.png");
 ```
 Get an images height, (doesn’t work on SVG)
 ```sass
-image-width(“image/path.png”);
+image-width("image/path.png");
 ```
 Get an images width, (doesn’t work on SVG)
 
 ### Cache buster
 Compass automatically adds a random string to the end of an image path whenever the css is modified, so that the browser fetches a new version.
 ```sass
-background-image: image-url(“image/path.png”, false, false);
+background-image: image-url("image/path.png", false, false);
 ```
 This code will turn off cache-busting. 
 The first `false` turns off the `url()` output so only the raw image path is outputed
@@ -619,7 +619,7 @@ The second `false` turns off the cache-busting.
 ### Sprites
 Install the `oily_png` gem to produce the sprite sheets faster. 
 ```sass
-@import “folder /*.png”;
+@import "folder/*.png";
 @include all-folder-sprites;
 ```
 This will import all the PNG images in the folder. 
@@ -652,16 +652,16 @@ Text Replacement
 
 SVG’s
 -------------------------------------------------------------------------------------------
-Sprites don’t work well with responsive design or “retina” displays. SVGs do.
+Sprites don’t work well with responsive design or "retina" displays. SVGs do.
 
 SVG files are smaller than bitmaps (JPG,PNG), and we can reduce the number of requests by turning SVGs into data URIs. A data URI embeds a file into the code.
 
-`inline-image(“image/path.svg”);` Turns an SVG into a data URI.
+`inline-image("image/path.svg");` Turns an SVG into a data URI.
 
 You can fallback on non-svg devices in tandem with Modernizr by nesting this:
 ```sass
 .no-svg & {
-  background-image:image-url(“image/path.png”);
+  background-image:image-url("image/path.png");
 ```
 
 Math Calculations
@@ -749,8 +749,8 @@ Select suspicious elements in the `Elements` panel and press the h-key to show a
 
 Find unused styles with the CSS Profiles feature:
 1. Click the Profiles tab. 
-2. Select “Collect CSS Selector Profile”
-3. Press “Start”. 
+2. Select "Collect CSS Selector Profile"
+3. Press "Start". 
 4. Go through all the parts of the site, click on stuff, hover over stuff, etc. 
 5. Click the red stop sign in the bottom left when you’re done. 
 6. Click on the profile you just created and sort by matches ascending. 
