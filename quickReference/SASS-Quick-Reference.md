@@ -12,7 +12,7 @@ SASS Quick Reference
 * [Mixins](#mixins)
 * [Color](#color)
 * [Clearfix](#clearfix)
-* [Grids with Susy](#grids-with-susy)
+* [Grids With Susy](#grids-with-susy)
 * [Media Queries](#media-queries)
 * [CSS3 Mixins](#css3-mixins)
 * [Images](#images)
