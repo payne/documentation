@@ -15,6 +15,7 @@ Ember Quick Reference
 * [Ember Data](#ember-data)
 * [Workflow Tools](#workflow-tools)
 * [Real-time Apps](#real-time-apps)
+* [Security](#security)
 
 References
 -------------------------------------------------------------------------------------------
@@ -1027,7 +1028,7 @@ Uses Broccoli as an asset pipeline instead of Grunt's watch task. This makes it 
 Uses the ES6 Module Transpiler.
 
 ### Ember Inspector
-Get the Ember inspector plugin for Chrome/Firefox. Make sure "Experimental Extension APIs is enabled in chrome://flags. You can inspect all your routes and their properties in the Routes tab.
+Get the Ember inspector plugin for Chrome/Firefox. Make sure "Experimental Extension APIs is enabled in (chrome://flags). You can inspect all your routes and their properties in the Routes tab.
 
 You can inspect the View Tree tab to see an overlay of the current "state" of the rendered application.
 
@@ -1054,3 +1055,30 @@ App.Todo = DS.Todo.extend({
   complete: DS.attr('binaryBoolean');
 });
 ```
+
+Security
+-------------------------------------------------------------------------------------------
+HTMLBars removes lots of vulnerabilities
+
+_Do Immediately On Starting a New App_
+```bash
+ember install ember-cli-content-security-policy
+```
+* Doesn't come out of the box.
+* Adds stuff to console
+* How we expect app to behave
+* Prevents inline scripts from running
+* Completely close entire class of vulnerability
+* Lets you specify what you allow
+
+Read this: [Ember Security Page](emberjs.com/security/)
+
+Do something like this to prevent inline scripts from running in *jQuery*
+```javascript
+$.ajaxSetup({
+  converters: {
+   'text script': text => text
+  }
+});
+```
+
