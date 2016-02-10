@@ -93,7 +93,7 @@ Read the contents of a file: `grunt.file.read('filePath');`
 
 Write a file: `grunt.file.write('dir/file.txt', fileContent);`
 
-Copy a file: grunt.file.copy('filePath','destPath'); 
+Copy a file: `grunt.file.copy('filePath','destPath');` 
     
 It won't copy an entire folder and its content.
 

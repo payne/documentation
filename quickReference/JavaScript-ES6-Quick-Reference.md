@@ -2,6 +2,19 @@
 ES6 Quick Reference
 ========================================================================================
 
+* [References](#references)
+* [Semicolons](#semicolons)
+* [Dangling Commas](#dangling-commas)
+* [Unicode](#unicode)
+* [Strings](#strings)
+* [Block Bindings](#block-bindings)
+* [Destructuring Assignment](#destructuring-assignment)
+* [Number](#numbers)
+* [Functions](#functions)
+* [Objects](#objects)
+* [Classes](#classes)
+* [Modules](#modules)
+
 References
 -------------------------------------------------------------------------------------------
 *Understanding ECMAScript 6* - Nicholas Zakas
@@ -40,14 +53,6 @@ You can duplicate a regular expression.  You can pass in a flag to the construct
 var re1 = /ab/i,
 // throws an error in ES5, okay in ES6
 re2 = new RegExp(re1, "g");
-```
-
-Object.is()
--------------------------------------------------------------------------------------------
-Makes for remaining inconsistencies with `===`
-```JavaScript
-console.log(Object.is(+0, -0)); // false
-console.log(Object.is(NaN, NaN)); // true
 ```
 
 Block Bindings
@@ -416,6 +421,13 @@ You can't mixin accessor properties.  Instead you will get the value returned by
 
     console.log(descriptor.value);      // "file.js"
     console.log(descriptor.get);        // undefined
+```
+
+### Object.is()
+Makes for remaining inconsistencies with `===`
+```JavaScript
+console.log(Object.is(+0, -0)); // false
+console.log(Object.is(NaN, NaN)); // true
 ```
 
 ### Duplicate Object Literal Properties
