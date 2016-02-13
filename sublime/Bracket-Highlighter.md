@@ -8,4 +8,5 @@ Reference
 Install
 ------------------
 Use package control and search for "BracketHighlighter"
+
 Install it
