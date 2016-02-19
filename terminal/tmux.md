@@ -7,11 +7,6 @@ References
 * [Vim and Tmux on your Mac](http://fideloper.com/mac-vim-tmux)
 
 Install
---------
-
-### Install Vundle
-```bash
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-```
-
-### Configure Vundle
+-------
+1. [Install *Vundle*](https://github.com/brandyn1bennett/documentation/blob/master/terminal/vundle.md)
+2. 

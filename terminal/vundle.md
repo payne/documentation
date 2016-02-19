@@ -4,30 +4,21 @@ Vundle is a package/bundle/plugin manager for Vim
 
 References
 -----------
+* [Vundle docs](https://github.com/VundleVim/Vundle.vim)
 * [Vim and Tmux on your Mac](http://fideloper.com/mac-vim-tmux)
 
 Install
 --------
 ```bash
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
 Configure
 ---------
-```VimL
-set nocompatible
-filetype off    " Required
+Add the configuration less the plugins you want from the [Vundle docs](https://github.com/VundleVim/Vundle.vim) to your `~/.vimrc`
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'    " Required
-
-filetype plugin indent on " Required
-```
-
-Open a new instance of vim and run `:BundleInstall`
+Open a new instance of vim and run `:PluginInstall`
 ```bash
 $ vim # Any file will do
-:BundleInstall
+:PluginInstall
 ```
