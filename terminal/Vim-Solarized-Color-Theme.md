@@ -26,3 +26,5 @@ set background=dark
 let g:solarized_termcolors = 256  
 colorscheme solarized
 ```
+
+3. Run `:PluginInstall` in vim
