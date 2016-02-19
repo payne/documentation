@@ -66,15 +66,15 @@ tmux kill-session -t session-name
 ### In tmux
 tmux command key is `ctrl-b`
 
-### Sessions
-```Shell
+#### Sessions
+```
 d #detach from session
 s #list sessions
 ```
 
-### Windows
+#### Windows
 Close current window
-```Shell
+```
 c #create window
 & #kill window
 w #list windows
@@ -82,8 +82,8 @@ n #next window
 p #previous window
 ```
 
-### Panes
-```Shell
+#### Panes
+```
 % #vertical split
 " #horizontal split
 q #show pane numbers.  When the numbers show up press the number to go to that pane
