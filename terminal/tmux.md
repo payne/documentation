@@ -64,7 +64,17 @@ tmux kill-session -t session-name
 ```
 
 ### In tmux
-tmux command key is `ctrl-b`
+tmux command/prefix key is `ctrl-b`
+
+#### Change Prefix
+Add the following to `~/.tmux.conf`
+```bash
+set -g prefix C-a
+unbind-key C-b
+bind-key C-a send-prefix
+```
+
+You can still use `Ctrl-a` to get to the beginning of a line if you type `Ctrl-aa`.  *You need to hold `Ctrl-a` down while pressing the second `a`*
 
 #### Sessions
 ```
@@ -91,4 +101,21 @@ x #kill pane
 o #swap panes
 { #Move current pane left
 } #Move current pane right
+```
+
+#### Copy Mode
+```
+[ #enter copy mode
+ESC #exit copy mode
+```
+
+Use `vi` bindings by adding this to `~/.tmux.conf`
+```Shell
+# Enable vi key bindings in Copy Mode
+setw -g mode-keys vi     
+```
+
+Detach from the session and run
+```bash
+tmux source-file ~/.tmux.conf
 ```
