@@ -18,7 +18,13 @@ Configure
 ---------
 Add the configuration less the plugins you want from the [Vundle docs](https://github.com/VundleVim/Vundle.vim) to your `~/.vimrc`
 
-However you'll want to move all the Vundle related configs into their own `VundleFile.vim` inside the `~/.vim/config` and pull it into `~/.vimrc` as shown in [here](https://github.com/brandyn1bennett/documentation/blob/master/terminal/Separate-Vim-Configs.md).
+However you'll want to move all the Vundle related configs into their own `VundleFile.vim` inside the `~/.vim/config` and pull it into `~/.vimrc` with this code:  
+```VimL
+if filereadable(expand("~/.vim/config/VundleFile.vim")) 
+  source ~/.vim/config/VundleFile.vim
+endif
+```
+This code will make it so there aren't issues with loading plugins when doing git commit messages
 
 Open a new instance of vim and run `:PluginInstall`
 ```bash

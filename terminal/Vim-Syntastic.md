@@ -16,3 +16,12 @@ Plugin 'scrooloose/syntastic'
 ```
 
 Run `:PluginInstall`
+
+Configure
+------------
+Create `~/.vim/config/SyntasticFile.vim` and add the [recommended settings](https://github.com/scrooloose/syntastic#settings)
+
+Pull it into `~/.vimrc` with
+```VimL
+runtime config/SyntasticFile.vim  
+```
