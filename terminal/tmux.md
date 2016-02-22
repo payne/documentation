@@ -11,7 +11,7 @@ References
 Install
 -------
 1. [Install *Vundle*](https://github.com/brandyn1bennett/documentation/blob/master/terminal/vundle.md)
-2. [Install Solarized Theme](https://github.com/brandyn1bennett/documentation/blob/master/terminal/Vim-Solarized-Color-Theme.md)
+2. [Install Monokai Theme](https://github.com/brandyn1bennett/documentation/blob/master/terminal/Vim-Monokai-Theme.md)
 3. Install tmux
 
 Mac:

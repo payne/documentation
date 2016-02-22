@@ -8,13 +8,13 @@ References
 Install
 -------
 1. [Install *Vundle*](https://github.com/brandyn1bennett/documentation/blob/master/terminal/vundle.md)
-2. Add the following to `~/.vimrc`
+2. Add the following to `~/.vim/config/VundleFile.vim`
 
+Before `vundle#end()`
 ```VimL
 " Add color theme
 Plugin 'crusoexia/vim-monokai' 
 ```
-Before `vundle#end()`
 
 After `vundle#end()`
 ```VimL
