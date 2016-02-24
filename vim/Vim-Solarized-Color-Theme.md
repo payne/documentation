@@ -7,7 +7,7 @@ References
 
 Install
 -------
-1. [Install *Vundle*](https://github.com/brandyn1bennett/documentation/blob/master/terminal/vundle.md)
+1. [Install *Vundle*](https://github.com/brandyn1bennett/documentation/blob/master/vim/vundle.md)
 2. Add the following to `~/.vimrc`
 
 ```VimL

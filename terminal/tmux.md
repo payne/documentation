@@ -10,8 +10,8 @@ References
 
 Install
 -------
-1. [Install *Vundle*](https://github.com/brandyn1bennett/documentation/blob/master/terminal/vundle.md)
-2. [Install Monokai Theme](https://github.com/brandyn1bennett/documentation/blob/master/terminal/Vim-Monokai-Theme.md)
+1. [Install *Vundle*](https://github.com/brandyn1bennett/documentation/blob/master/vim/vundle.md)
+2. [Install Monokai Theme](https://github.com/brandyn1bennett/documentation/blob/master/vim/Vim-Monokai-Theme.md)
 3. Install tmux
 
 Mac:
@@ -106,6 +106,9 @@ o #swap panes
 #### Copy Mode
 ```
 [ #enter copy mode
+SPACE #begin copying
+ENTER #stop copying
+] #paste
 ESC #exit copy mode
 ```
 

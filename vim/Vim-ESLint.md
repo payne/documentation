@@ -8,7 +8,7 @@ References
 
 Install
 --------
-Make sure you install [Syntastic](https://github.com/brandyn1bennett/documentation/blob/master/terminal/Vim-Syntastic.md)
+Make sure you install [Syntastic](https://github.com/brandyn1bennett/documentation/blob/master/vim/Vim-Syntastic.md)
 
 In `~/.vim/config/SyntasticFile.vim` add the following
 ```VimL

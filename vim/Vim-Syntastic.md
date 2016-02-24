@@ -7,7 +7,7 @@ References
 
 Install
 -------
-Make sure you have added [Vundle](https://github.com/brandyn1bennett/documentation/blob/master/terminal/vundle.md)
+Make sure you have added [Vundle](https://github.com/brandyn1bennett/documentation/blob/master/vim/vundle.md)
 
 In `~/.vim/config/VundleFile.vim` add the following
 ```VimL
