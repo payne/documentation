@@ -21,6 +21,12 @@ Configure
 ------------
 Create `~/.vim/config/SyntasticFile.vim` and add the [recommended settings](https://github.com/scrooloose/syntastic#settings)
 
+Also add this to not show the error window
+```VimL
+" Don't show the error window
+let g:syntastic_auto_loc_list = 0
+```
+
 Pull it into `~/.vimrc` with
 ```VimL
 runtime config/SyntasticFile.vim  

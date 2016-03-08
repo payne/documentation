@@ -12,5 +12,7 @@ Make sure you install [Syntastic](https://github.com/brandyn1bennett/documentati
 
 In `~/.vim/config/SyntasticFile.vim` add the following
 ```VimL
+" Set eslint as javascript linter 
 let g:syntastic_javascript_checkers = ["eslint"]
 ```
+
