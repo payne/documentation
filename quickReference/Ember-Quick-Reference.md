@@ -13,7 +13,8 @@ Ember Quick Reference
 * [Models](#models)
 * [Promises](#promises)
 * [Ember Data](#ember-data)
-* [Workflow Tools](#workflow-tools)
+* [Ember CLI](#ember-cli)
+* [Ember Inspector](#ember-inspector)
 * [Real-time Apps](#real-time-apps)
 * [Security](#security)
 
@@ -168,6 +169,14 @@ Set values on the dependent properties of an object and then see if the computed
 
 #### Integration Tests
 Look at *Mastering Ember.js Chapter 10*
+
+### Qunit Built In
+Use `ember-cli` and do `ember server` then go to `localhost:4200/tests`
+
+#### Dashboard Options
+*No try-catch* will make it so that QUnit doesn't do the stack trace and lets it go to Chrome.
+
+*Hide Container* Will hide the container that shows screenshots of the app
 
 Routes
 -------------------------------------------------------------------------------------------
@@ -607,6 +616,8 @@ You can log within templates like this `{{log model}}`
 
 Views
 -------------------------------------------------------------------------------------------
+**These are deprecated**
+
 Good to use when a section of the app requires sophisticated event management, there's a need for reusable components, or the app needs to integrate 3rd party libs.
 
 Views are usually backed by an instance of the corresponding controller. You can access the controller with `view.getController()`
@@ -1020,14 +1031,16 @@ Ember.Application.initializer({
 });
 ```
 
-Workflow Tools
+Ember CLI
 -------------------------------------------------------------------------------------------
-### Ember CLI
 Uses Broccoli as an asset pipeline instead of Grunt's watch task. This makes it rebuild individual files instead of the entire project for faster build times.
 
 Uses the ES6 Module Transpiler.
 
-### Ember Inspector
+`ember serve` starts a server on port `4200`
+
+Ember Inspector
+-------------------------------------------------------------------------------------------
 Get the Ember inspector plugin for Chrome/Firefox. Make sure "Experimental Extension APIs is enabled in (chrome://flags). You can inspect all your routes and their properties in the Routes tab.
 
 You can inspect the View Tree tab to see an overlay of the current "state" of the rendered application.

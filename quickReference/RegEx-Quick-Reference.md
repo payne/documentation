@@ -91,7 +91,9 @@ Negative lookahead: Denoted by `(?! )`. Don’t use this.
 
 Class
 -------------------------------------------------------------------------------------------
-Specify a set of characters. Denoted by `[]`. Simpler to use than a non-capturing group.
+Specify a set of characters. Denoted by `[]`.  
+
+Matches only one character.
 
 Can specify a range of characters by using the `-`
 
