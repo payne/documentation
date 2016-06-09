@@ -7,6 +7,8 @@ References
 * [Vim and Tmux on your Mac](http://fideloper.com/mac-vim-tmux)
 * [Installing tmux Linux](http://linoxide.com/how-tos/install-tmux-manage-multiple-linux-terminals/)
 * [Tmux Shortcuts](https://gist.github.com/MohamedAlaa/2961058)
+* [Tmux Redhat Script](https://gist.github.com/rothgar/cecfbd74597cc35a6018)
+* [iTerm tmux Integration](https://gitlab.com/gnachman/iterm2/wikis/TmuxIntegration)
 
 Install
 -------
@@ -63,6 +65,12 @@ Use this script:
   # open new shell and check tmux version
   tmux -V
 ```
+
+### Use with iTerm Panes
+
+Make sure you install tmux greater than 1.8.
+
+You can ssh into a box with iTerm and run `tmux -CC` or `tmux -CC a` to get into a tmux session that will allow you to use iTerm panes.  This is much easier than using tmux panes and makes copy and pasting easier.
 
 Configure
 ---------
