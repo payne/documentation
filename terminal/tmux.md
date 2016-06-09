@@ -30,6 +30,40 @@ yum install -y -v tmux
 # This may take a while 
 ```
 
+### Install latest version in RedHat
+
+Use this script:
+
+```bash
+  # Install tmux on Centos release 6.5
+
+  # install deps
+  yum install gcc kernel-devel make ncurses-devel
+
+  # DOWNLOAD SOURCES FOR LIBEVENT AND MAKE AND INSTALL
+  wget https://sourceforge.net/projects/levent/files/libevent/libevent-2.0/libevent-2.0.22-stable.tar.gz
+  tar -xvzf libevent-2.0.22-stable.tar.gz
+  cd libevent-2.0.22-stable
+  ./configure --prefix=/usr/local
+  make
+  sudo make install
+
+  # DOWNLOAD SOURCES FOR TMUX AND MAKE AND INSTALL
+  wget https://github.com/tmux/tmux/releases/download/2.2/tmux-2.2.tar.gz
+  tar -xvzf tmux-2.2.tar.gz
+  cd tmux-2.2
+  export LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" 
+  autoreconf -f -i
+  ./configure --prefix=/usr/local
+  make
+  sudo make install
+
+  # pkill tmux
+  # close your terminal window (flushes cached tmux executable)
+  # open new shell and check tmux version
+  tmux -V
+```
+
 Configure
 ---------
 Make/Edit a `~/.tmux.conf` file
