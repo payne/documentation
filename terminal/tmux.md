@@ -70,7 +70,7 @@ Use this script:
 
 Make sure you install tmux greater than 1.8.
 
-You can ssh into a box with iTerm and run `tmux -CC` or `tmux -CC a` to get into a tmux session that will allow you to use iTerm panes.  This is much easier than using tmux panes and makes copy and pasting easier.
+You can ssh into a box with iTerm and run `tmux -CC` or `tmux -CC a` to get into a tmux session that will allow you to use iTerm panes.  This is much easier than using tmux panes and makes copy and pasting easier :)
 
 Configure
 ---------
