@@ -20,7 +20,7 @@ Make it your default shell
 chsh -s $(which zsh)
 ```
 
-**Note:** If you are using LDAP `chsh` may not work, so you'll need to add `exec zsh` to the bottom of your `.bashrc`/`/.bash_profile`
+**Note:** If you are using LDAP `chsh` may not work, so you'll need have an admin add this for you or type `zsh` everytime you login
 
 oh-my-zsh
 ---------

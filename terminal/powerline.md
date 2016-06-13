@@ -18,6 +18,11 @@ Redhat
 sudo yum install -y python-pip
 ```
 
+Install `argparse` if you have a python version less than 2.7
+```zsh
+sudo yum install python-argparse
+```
+
 Make a fonts directory
 ```zsh
 mkdir ~/.fonts/
