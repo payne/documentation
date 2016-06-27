@@ -40,6 +40,13 @@ fc-cache -vf ~/.fonts/
 ```
 
 ### OSX
+
+Install with pip
+
+```zsh
+sudo pip install powerline-status
+```
+
 Navigate to `https://github.com/powerline/fonts.git
 
 Download the font to Finder.
@@ -73,11 +80,28 @@ runtime config/powerline.vim
 ```
 
 ### Tmux
-Add the following to `~/.tmux.conf`
+Get the correct path to powerline
+
+```zsh
+pip show powerline-status
+```
+
+Add the following  `~/.tmux.conf`
+
 ```zsh
 # Use powerline
 run-shell "powerline-daemon -q"
-source "/usr/lib/python2.6/site-packages/powerline/bindings/tmux/powerline.conf"
+source "<your_powerline_path>/powerline/bindings/tmux/powerline.conf"
+```
+
+Make sure you have the correct color settings in `.tmux.conf`
+
+```zsh
+set -g default-terminal "screen-256color"
 ```
 
 Kill all sessions and start tmux over
+
+```zsh
+killall tmux && tmux
+```
