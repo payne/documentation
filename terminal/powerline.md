@@ -47,7 +47,7 @@ Install with pip
 sudo pip install powerline-status
 ```
 
-Navigate to `https://github.com/powerline/fonts.git
+Navigate to `https://github.com/powerline/fonts.git`
 
 Download the font to Finder.
 
