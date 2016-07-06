@@ -54,7 +54,7 @@ set scrolloff=3
 " Enable nicer tab completion for commands
 set wildmenu
 set wildmode=list:longest
-set wildignore+=**/tmp,*.so,*.swp,*.zip,*/.git,**/build,**/dist,**/.eyeglass_cache,**/.gradle
+set wildignore+=**/tmp,*.so,*.swp,*.zip,*/.git,**/build,**/dist,**/.eyeglass_cache,**/.gradle,*.DS_Store
 
 " Show line numbers
 set number
@@ -126,6 +126,9 @@ runtime config/SyntasticFile.vim
 
 " Airline Configuration
 runtime config/airline.vim
+
+" Statusline configuration
+runtim config/statusline.vim
 
 " NerdTree Configurations
 runtime config/nerdtree.vim
