@@ -2,6 +2,7 @@
 " ---------------------
 set nocompatible              " be iMproved, required
 filetype on                  " required
+syntax on
 
 " Change the leader key so all the loaded plugins get the right binding
 let mapleader = ","
