@@ -49,9 +49,14 @@ You don't need an extension when you execute class files
 java Welcome
 ```
 
-Access Modifiers
--------------------------------------------------------------------------------------------
-*public*
+You can run the compiler with *wildcards*
+```zsh
+javac Employee*.java
+```
+
+If the Java compiler sees a class being used in a file it will search for a file with the class
+name and compile it.  If the timestamp is newer it will automatically recompile it
+
 
 Class
 -------------------------------------------------------------------------------------------
@@ -421,6 +426,48 @@ You can print all the values of a multidimensional array with
 `System.out.println(Arrays.deepToString(a));`
 You can make *ragged arrays*, which are multidimensional arrays where the rows have different
 lengths
+
+Object Oriented Programming
+-------------------------------------------------------------------------------------------
+### Constructors
+Constructors always have the same name as the class name
+
+Object variables don't contain objects.  They only refer to them
+```java
+Date deadline = new Date();
+```
+
+You can explicitly set an object variable to `null` to indicate it doesn't refer to an object yet
+
+You can overload a constructor so you can have multiple signatures
+
+It's a best practice not to use variable names that are the same as your class properties
+
+It's a best practice to put `this` in front of class properties to distinguish them from local
+variables
+### Access Modifiers
+`public`
+
+It's a best practice to make all *instance fields/properties* `private`.  This guarantees there
+won't be corruption.
+
+Using methods to mutate properties rather than making the properties public is nice because
+mutator methods can perform validation.
+
+Make sure your accessor methods don't return references to *mutable* objects like `Date`
+Dates
+-------------------------------------------------------------------------------------------
+*UTC* stands for Coordinated Universal Time, which is basically the same as GMT or
+Greenwich Mean Time
+
+The `Date` class refers to points in time and the `LocalDate` class expresses days in the
+familiar calendar notation
+
+You don't use a constructor with `LocalDate` instead you use static factory methods
+```java
+LocalDate.now();
+LocalDate.of(1992, 12, 31);
+```
 
 Main Method
 -------------------------------------------------------------------------------------------
