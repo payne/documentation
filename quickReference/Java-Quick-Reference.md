@@ -6,6 +6,7 @@ Java Quick Reference
 References
 -------------------------------------------------------------------------------------------
 *Core Java Volume 1 Tenth Edition* - Cay S. Horstmann
+[Lynda course on IntelliJ](https://www.lynda.com/Development-Tools-tutorials/Overview-IDEs-Java/486760-2.html)
 
 Environment
 -------------------------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Command Line
 Java is case sensitive
 
 `javac` is the Java compiler.  It compiles `.java` files into `.class` files.
+The `.class` files are the bytecode for java.
 
 You need to run it with the `.java` extension
 ```bash
@@ -55,7 +57,8 @@ Class
 -------------------------------------------------------------------------------------------
 Everything in Java lives inside a class
 
-Class names must begin with a letter and can be any combination of letters or digits after that.  Reserved words can't be class names
+Class names must begin with a letter and can be any combination of letters or digits after that.
+Reserved words can't be class names
 
 Class name convention is a noun with a capital letter with each additional word in camelCase
 
@@ -109,11 +112,12 @@ Some unicode symbols can be done with one `char` value, others require 2
 
 Literal values are enclosed with single quotes `'A'` not double quotes `"A"`
 
-You can set `char` to unicode values like this `\u0008`.  You can also use the unicode notation outside of quoted characters and strings in regular code.
+You can set `char` to unicode values like this `\u0008`.
+You can also use the unicode notation outside of quoted characters and strings in regular code.
 
 Unicode is processed before code is parsed.  Unicode in comments can be dangerous as well
 
-It's better to avoid `char` and just use `Strings` unless you are minuplating UTF-16 code units
+It's better to avoid `char` and just use `Strings` unless you are manipulating UTF-16 code units
 
 ### boolean
 You can't convert between integers and booleans
@@ -126,7 +130,7 @@ Must start with letter and must be a sequence of letters and digits
 
 Don't use `$` because it used by the compiler
 
-You can't use unitialized variables or you'll get an error
+You can't use uninitialized variables or you'll get an error
 
 You can declare variables anywhere you want
 
@@ -150,7 +154,281 @@ Operators
 -------------------------------------------------------------------------------------------
 If you add `strictfp` to a method it will force floating-point operations to have reproducible results.
 
-Integer division by 0 raises exception.  Floating-point division by 0 yeilds `infinite` or  `NaN`
+Integer division by 0 raises exception.  Floating-point division by 0 yields `infinite` or  `NaN`
 
-Math Functions
+### Math Functions
+There is a `Math` class you can use for math things.
+
+`Math.sqrt(x)` Takes the square root of a number.
+*sqrt* is a static method.  It doesn't operate on any object.
+
+`Math.pow(x, a)` is the only way to raise a number to an exponent.  It returns a double and takes
+doubles as its arguments
+
+`Math.floorMod` will do a modulus calculation, but it will always return a positive number (in
+case the first part of the modulus is a negative number.
+
+You can avoid using the `Math` prefix everywhere if you importing the Math class:
+`import static java.lang.Math.*;`
+
+You can use the `StrictMath` class if precision is more important than performance
+
+### Converting Between Numerical Types
+![Numeric Types Diagram](http://1.bp.blogspot.com/_XSXKYiMaow8/SEpInFPUvTI/AAAAAAAAABU/g6g8CsxYijw/s400/Java4.png)
+Solid arrows mean no data will be lost in the conversion, dotted arrows mean some precision will
+be lost
+
+When two different types are used in an operation they will be converted to a common type first:
+* If one is `double`, they will both be `double`
+* If one is `float` they will be both be `float`
+* If one is `long`, they will both be `long`
+* Otherwise they will both be `int`
+
+### Casts
+When casts are performed data is lost.
+
+You do a cast like this:
+
+```java
+double x = 9.997;
+int nx = (int) x;
+```
+
+`Math.round(x)` will a round a floating point to the nearest integer:
+
+```java
+double x = 9.997;
+int nx = (int) Math.round( x);
+```
+
+**Warning:** If you try and cast to a type that can't hold the value, you will get a truncated
+number with a different value.
+
+### Increment and Decrement Operators
+Don't use them inside expressions, because they cause weird bugs.
+
+```java
+int m = 7;
+int n = 7;
+int a = 2 * ++ m; // now a is 16, m is 8
+int b = 2 * n++; // now b is 14, n is 8
+```
+
+### Boolean Operators
+`&&` has higher precedence over `||`
+
+Fundamental Types
 -------------------------------------------------------------------------------------------
+### Enums
+```java
+enum Size { SMALL, MEDIUM, LARGE, EXTRA_LARGE };
+Size s = Size.MEDIUM;
+```
+
+### Strings
+You can make a substring with `String.substring(beg, end)`
+```java
+String greeting = "Hello";
+String s = greeting.substring(0, 3); // "Hel"
+```
+
+You can concatenate with `+`.
+When you concatenate with non-strings they will be turned to strings
+
+You can join strings together with delimiter with `String.join(del, str1, str2)`
+
+Strings are immutable, so you have to do things like this.
+```java
+greeting = greeting.substring(0, 3) + "p!";
+```
+
+To test if strings are equal use `s.equals(a)` or `s.equalsIgnoreCase(s)`
+
+Empty string
+```java
+if (str.length() == 0)
+if (str.equals(""))
+```
+
+is different than `null` string
+```java
+if (str == null)
+```
+
+#### Building Strings
+It expensive to build all strings using concatenation, because you have to save each new string in
+memory.  Instead use the `StringBuilder` class.
+```java
+StringBuilder builder = new StringBuilder();
+builder.append(ch) // append single character
+builder.append(str) // append string
+String completedString = builder.toString();
+```
+
+Console input/output
+-------------------------------------------------------------------------------------------
+You have to use the `Scanner` class
+You must import it from `java.util.*`. (Any class not defined in `java.lang` must be imported)
+```java
+Scanner in = new Scanner(System.in);
+```
+
+The `nextLine` method reads the next line of input
+```java
+System.out.print("What is your name?");
+String name = in.nextLine();
+```
+
+`next` reads the next word
+`nextInt` reads the next integer
+`nextDouble` reads a double
+
+To read a password you need to use the `console` class
+```java
+Console cons = System.console();
+String username = cons.readLine("User name:");
+char[] passwd = cons.readPassword("Password:");
+```
+
+Formatting Console Output
+-------------------------------------------------------------------------------------------
+Can use `System.out.printf`
+```java
+System.out.printf("%8.2f", x);
+```
+
+You can specify multiple arguments to `printf` and each *format specifier* that starts with `%`
+will get replaced with corresponding argument
+
+You can use an index number immediately after the `%` to point to specific arguments. The number
+must have a `$` after it. Indices start at 1 not 0.
+```java
+System.out.printf("%1$s %2$tB %2$te, %2$tY", "Due date:", new Date());
+// Due date: February 9, 2015
+```
+
+You can also use `<` to indicate that argument from the preceding statement should be used again
+
+There are also flags and different types of *format specifiers* you can use
+
+`String.format` creates a formatted string using these same rules
+
+File Input/Output
+-------------------------------------------------------------------------------------------
+Use the `Scanner` class.
+```java
+Scanner in = new Scanner(Paths.get("myfile.txt"), "UTF-8");
+```
+
+Backlashes will need to be escaped with another backslash.
+You should specify the character encoding otherwise it will default to the encoding used by the
+computer the JVM is running on, which will lead to unexpected results
+
+Use the `PrintWriter` class to write to files.
+```java
+PrintWriter out = new PrintWriter("myfile.txt", "UTF-8");
+```
+
+If the file path doesn't exist it will be made.
+You use the `println`, `print`, and `printf` methods like on `System.out`
+
+If you use relative file paths in your file names they will be constructed based on the directory
+where the JVM was started.  It's probably better to use absolute paths to avoid problems. However,
+you can get the JVM starting directory with `String dir = System.getProperty("user.dir");`
+
+If a file path isn't found an exception will be thrown.  You should let the `main` method know that
+input/output exceptions might be thrown.
+```java
+public static void main( String[] args) throws IOException {
+   Scanner in = new Scanner( Paths.get(" myfile.txt"), "UTF-8");
+   ...
+}
+```
+
+Control Flow
+-------------------------------------------------------------------------------------------
+### Block scope
+Can't redefine inner variables in nested blocks
+
+### For loops
+Unwritten rule to only use one counter variable.
+
+If a counter variable is a `double` the loop may never end because of rounding errors
+
+### For Each
+```java
+for (variable : collection) statement
+```
+
+The collection in the loop must be an `array` or something that implements the `Iterable` interface
+such as an `ArrayList`
+
+### Switch statements
+Fallthroughs are possible, so make sure you always use a `break;`
+
+When using an `enum` in the switch you don't have to specify the name of the `enum` in each `case`
+statement.  It will be deduced from the switch statement.
+
+Big Numbers
+-------------------------------------------------------------------------------------------
+You can use `BigInteger` or `BigDecimal` if `int` or `float` precision isn't precise enough.
+
+Use `valueOf` to convert a regular number to a big number.
+
+You can't use regular math operators to combine big numbers, so you have to use methods like `add`
+and `multiply`
+
+Arrays
+-------------------------------------------------------------------------------------------
+All array elements must be same type.  You declare the type as part of the declaration.  You have
+to initialize the array with the `new` keyword and give it the length of the array
+```java
+int[] a = new int[100];
+```
+
+Arrays of numbers are initialized with each number being 0.
+Arrays of boolean are initialized with each value being false.
+Arrays of objects (including `String`) are initialized with each value being `null`.
+
+You can't change the size of an array once it's created.  However you can change the size of an
+*Array List*
+
+Use `Arrays.toString(a)` to print all the values of an array
+
+You can initialize an array with values using the following syntax
+```java
+int[] smallPrimes = { 2, 3, 5, 7, 11, 13 };
+```
+
+You can reinitialize an array like this:
+```java
+smallPrimes = new int[] { 17, 19, 23, 29, 31, 37 };
+```
+
+You can copy an array into a different variable, but then both variables will point to the same
+array and changing the array with one variable will change it in the other as well.
+If you want a completely new copy you must use `Arrays.copyOf(a, len)`.  The second param is the
+new length, which you can use to change the size of the array.
+
+Use `Arrays.sort(a)` to sort an array.  It uses the *QuickSort* algorithm.
+
+You can define a Multidimensional array (matrix) like this:
+```java
+double[][] balances = new double[NYEARS][NRATES]
+```
+
+You can print all the values of a multidimensional array with
+`System.out.println(Arrays.deepToString(a));`
+You can make *ragged arrays*, which are multidimensional arrays where the rows have different
+lengths
+
+Main Method
+-------------------------------------------------------------------------------------------
+The often has `String[] args` in it, which means it excepts an array.  This array is the stuff
+you pass from the command line
+
+Annotations
+-------------------------------------------------------------------------------------------
+Used to send messages to the compiler or process Java class or source files
+
+

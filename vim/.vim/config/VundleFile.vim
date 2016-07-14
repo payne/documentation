@@ -27,6 +27,9 @@ Plugin 'cakebaker/scss-syntax.vim'
 " Markdown Highlighting
 Plugin 'gabrielelana/vim-markdown'
 
+" Handlebars
+Plugin 'mustache/vim-mustache-handlebars'
+
 " File Explorer
 Plugin 'scrooloose/nerdtree'
 
@@ -35,6 +38,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 
 " Commenter
 Plugin 'scrooloose/nerdcommenter'
+
+" JSDoc
+Plugin 'heavenshell/vim-jsdoc'
 
 " Status bar
 Plugin 'vim-airline/vim-airline'

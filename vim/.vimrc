@@ -94,7 +94,8 @@ set tabstop=2
 set shiftwidth=2
 
 " Insert/delete correct number of spaces with shift and backspace
-set softtabstop
+" Commented out cuz we are using vim-sleuth plugin and it keeps showing a message when we start vim
+" set softtabstop
 
 " Copy indentation from previous line
 set autoindent
@@ -113,10 +114,14 @@ set noswapfile
 autocmd BufWritePre * %s/\s\+$//e
 
 " Set working directory to current file's directory
-autocmd BufEnter * lcd %:p:h
+" Commented out cuz it was causing problems with fugitive plugin
+" autocmd BufEnter * lcd %:p:h
 
 " Set scala file type, because it doesn't happen automatically for some reason
 autocmd BufRead,BufNewFile *.scala set filetype=scala
+
+" Set handlebars file type
+autocmd BufRead,BufNewFile *.hbs set filetype=mustache
 
 " Plugin Settings
 " ---------------
@@ -128,7 +133,10 @@ runtime config/SyntasticFile.vim
 runtime config/airline.vim
 
 " Statusline configuration
-runtim config/statusline.vim
+runtime config/statusline.vim
+
+" JSDoc config
+runtime config/jsdoc.vim
 
 " NerdTree Configurations
 runtime config/nerdtree.vim
@@ -138,6 +146,9 @@ runtime config/nerdcommenter.vim
 
 " NerdCommenter Settings
 runtime config/ctrlp.vim
+
+" Handlebars configs
+runtime config/handlebars.vim
 
 " Key bindings
 runtime config/keybindings.vim
