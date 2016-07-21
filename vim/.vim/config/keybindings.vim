@@ -29,8 +29,11 @@ map <leader>n :bn<cr>
 map <leader>p :bp<cr>
 
 " Delete buffer
-map <leader>d :bd<cr>
+map <leader>d :bp\|bd #<cr>
 
 " JsDoc
 " ------------------
 map <leader>j <Plug>(jsdoc)
+
+" Paste mode
+set pastetoggle=<leader>P
