@@ -142,6 +142,8 @@ You can declare variables anywhere you want
 ### Constants
 Use `final` to denote a constant.
 
+Constants must be initialized.
+
 Convention is to name them in all uppercase
 
 To setup a constant that is available to the entire `class` use `static final` like so:
@@ -154,6 +156,8 @@ public class Constants2 {
 ```
 
 If you make a constant `public` it can be accessed by other classes
+
+It's best to only use constants with `immuable` objects or primitives
 
 Operators
 -------------------------------------------------------------------------------------------
@@ -445,6 +449,7 @@ It's a best practice not to use variable names that are the same as your class p
 
 It's a best practice to put `this` in front of class properties to distinguish them from local
 variables
+
 ### Access Modifiers
 `public`
 
@@ -454,7 +459,15 @@ won't be corruption.
 Using methods to mutate properties rather than making the properties public is nice because
 mutator methods can perform validation.
 
-Make sure your accessor methods don't return references to *mutable* objects like `Date`
+Make sure your accessor methods don't return references to *mutable* objects like `Date`. Instead
+you should clone the object.
+
+A method can access the `private` data of any objects it uses which are of the same class.
+
+### Static
+If something is `static` there is only one field per class instead of each object having it's
+own copy
+
 Dates
 -------------------------------------------------------------------------------------------
 *UTC* stands for Coordinated Universal Time, which is basically the same as GMT or

@@ -3,5 +3,6 @@ let NERDSpaceDelims=1
 
 " Specify alternate delimiters for handlebars files
 :let g:NERDCustomDelimiters = {
-\ 'mustache': { 'leftAlt': '{{!--', 'rightAlt': '--}}' }
+\ 'mustache': { 'left': '{{!--', 'right': '--}}' },
+\ 'dustjs': { 'left': '{!', 'right': '!}' }
 \ }

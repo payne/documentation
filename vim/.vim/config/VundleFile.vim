@@ -24,6 +24,9 @@ Plugin 'hail2u/vim-css3-syntax'
 " Add SASS Syntax Highlighting
 Plugin 'cakebaker/scss-syntax.vim'
 
+" Add Dust highlighting
+Plugin 'jimmyhchan/dustjs.vim'
+
 " Markdown Highlighting
 Plugin 'gabrielelana/vim-markdown'
 
