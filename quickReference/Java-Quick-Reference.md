@@ -454,7 +454,7 @@ variables
 `public`
 
 It's a best practice to make all *instance fields/properties* `private`.  This guarantees there
-won't be corruption.
+won't be corruption.  It is ok to have `constants` that are publically accessible.
 
 Using methods to mutate properties rather than making the properties public is nice because
 mutator methods can perform validation.
@@ -467,6 +467,19 @@ A method can access the `private` data of any objects it uses which are of the s
 ### Static
 If something is `static` there is only one field per class instead of each object having it's
 own copy
+
+Static methods can't access `this`, but they can access static fields.
+
+You can use objects to call `static` methods, but it's confusing, so you should only use classes
+to call `static` methods.
+
+You should use `static` methods when a method has all it's parameters defined and doesn't need
+`this` or only needs access to `static` fields.
+
+You can use `static` methods as *factory methods* to generate object instances.  This is useful
+when you want to construct an object other than the type of class (constructors only return `this`)
+or when you want to construct objects using different names (constructors can only be the name
+of the class)
 
 Dates
 -------------------------------------------------------------------------------------------
@@ -486,6 +499,8 @@ Main Method
 -------------------------------------------------------------------------------------------
 The often has `String[] args` in it, which means it excepts an array.  This array is the stuff
 you pass from the command line
+
+Any class can have a `main` method.  This can be helpful for unit testing
 
 Annotations
 -------------------------------------------------------------------------------------------
