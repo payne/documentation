@@ -211,7 +211,7 @@ build_prompt() {
   prompt_dir
   prompt_git
   prompt_hg
-	prompt_newline
+  prompt_newline
   prompt_end
 }
 
