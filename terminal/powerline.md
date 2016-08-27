@@ -47,9 +47,9 @@ Install with pip
 sudo pip install powerline-status
 ```
 
-Navigate to `https://github.com/powerline/fonts.git`
+Navigate to `https://github.com/powerline/fonts/blob/master/Meslo/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.otf`
 
-Download the font to Finder.
+Download the font to Finder by clicking `View Raw`
 
 Open the font and "Install Font"
 

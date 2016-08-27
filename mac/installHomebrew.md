@@ -9,6 +9,8 @@ A handy package manager that makes it easy to get stuff on the command line
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   ```
 
+  Click "Allow" if it asks you something about accessing git in your keychain.
+
 2. This will put a bunch of crap into `/usr/local`
 3. Each thing you install with brew will add a new folder to `/usr/local` and then symlink the binary to `/usr/local/bin`
 
