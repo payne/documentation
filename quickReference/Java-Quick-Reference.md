@@ -450,11 +450,13 @@ It's a best practice not to use variable names that are the same as your class p
 It's a best practice to put `this` in front of class properties to distinguish them from local
 variables
 
+
+
 ### Access Modifiers
 `public`
 
 It's a best practice to make all *instance fields/properties* `private`.  This guarantees there
-won't be corruption.  It is ok to have `constants` that are publically accessible.
+won't be corruption.  It is ok to have `constants` that are publicly accessible.
 
 Using methods to mutate properties rather than making the properties public is nice because
 mutator methods can perform validation.
@@ -480,6 +482,12 @@ You can use `static` methods as *factory methods* to generate object instances. 
 when you want to construct an object other than the type of class (constructors only return `this`)
 or when you want to construct objects using different names (constructors can only be the name
 of the class)
+
+### Method Parameters
+
+Java ALWAYS passes parameters by *value* and not by *reference*.  However, when an initialized
+object is passed it is a copy of a reference to an object, so both the parameter and the
+original object will have their values changed.
 
 Dates
 -------------------------------------------------------------------------------------------
